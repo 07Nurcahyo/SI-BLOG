@@ -1,0 +1,5 @@
+foreign key :
+ALTER TABLE buku ADD FOREIGN KEY (kode_kategori) REFERENCES kategori(id_kategori);
+ALTER TABLE buku ADD FOREIGN KEY (kode_penulis) REFERENCES penulis(id_penulis);
+ALTER TABLE buku ADD FOREIGN KEY (kode_rak) REFERENCES rak(id_rak);
+
