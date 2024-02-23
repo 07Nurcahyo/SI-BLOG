@@ -42,8 +42,12 @@
                             <!-- {!! DNS1D::getBarcodeHTML("$product->product_code",'PHARMA',2,100) !!} -->
                             <!-- {!! DNS2D::getBarcodeHTML("$product->title",'QRCODE') !!} -->
                             {!! DNS2D::getBarcodeHTML(
-                                "$product->title"
-                            ,'QRCODE',4,4) !!}
+                                "[ Informasi Buku ]
+Judul     : $product->title
+Harga     : $product->price 
+Deskripsi : $product->description
+Rak       : Ruang Baca"
+                            ,'QRCODE',2,2) !!}
                             p - {{ $product->product_code }}
                         </td>
                         <td>{{ $product->description }}</td>
