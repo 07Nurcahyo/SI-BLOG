@@ -14,10 +14,11 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('main');
+});
 
-Route::get('/',[ProductController::class,'index']);
-Route::get('/create',[ProductController::class,'create']);
-Route::post('/post',[ProductController::Class,'store']);
+// qrcode
+// Route::get('/',[ProductController::class,'main']);
+// Route::get('/create',[ProductController::class,'create']);
+// Route::post('/post',[ProductController::Class,'store']);
