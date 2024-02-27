@@ -1,8 +1,15 @@
 body{
+    /* color: white; */
+    /* background-color: rgba(20, 28, 43, 1); */
 }
 
 .navbar{
-    background-color: rgba(23, 107, 135, 1);
+    /* background-color: rgba(23, 107, 135, 1); */
+    /* background-color: rgba(134, 182, 246, 1); */
+    background-color: rgba(20, 46, 158, 0.8);
+}
+.navbar-brand,.nav-link{
+    color: white !important;
 }
 .logo-jti{
     height: 35px;
