@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +16,12 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('main');
-});
+// Route::get('/', function () {
+//     return view('main');
+// });
+
+Route::get('/', [MainController::class, 'main']);
+Route::get('/admin', [AdminController::class, 'main']);
 
 // qrcode
 // Route::get('/',[ProductController::class,'main']);
