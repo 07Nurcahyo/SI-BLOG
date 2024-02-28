@@ -22,6 +22,7 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/', [MainController::class, 'main']);
 Route::get('/admin', [AdminController::class, 'main']);
+Route::get('/login', [AdminController::class, 'login']);
 
 // qrcode
 // Route::get('/',[ProductController::class,'main']);

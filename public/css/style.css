@@ -1,5 +1,5 @@
 body{
-    /* color: white; */
+    color: white;
     /* background-color: rgba(20, 28, 43, 1); */
 }
 
@@ -20,4 +20,25 @@ body{
     width: 19px;
     height: 19px;
     padding-bottom: 3px;
+}
+/* login admin */
+.modal{
+    color: black;
+}
+
+/* content */
+section{
+    height: 100vh;
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+section.search{
+    background: rgba(0, 0, 0, 0.5) url(perpus.jpg);
+    background-size: contain;
+    background-blend-mode: darken;
+}
+section.search .content{
+    text-align: center;
 }
