@@ -25,6 +25,6 @@ Route::get('/admin', [AdminController::class, 'main']);
 Route::get('/login', [AdminController::class, 'login']);
 
 // qrcode
-// Route::get('/',[ProductController::class,'main']);
+// Route::get('/qrcode',[ProductController::class,'qrcode']);
 // Route::get('/create',[ProductController::class,'create']);
 // Route::post('/post',[ProductController::Class,'store']);

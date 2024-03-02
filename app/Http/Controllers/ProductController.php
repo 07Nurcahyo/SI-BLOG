@@ -7,10 +7,10 @@ use App\Models\product;
 
 class ProductController extends Controller
 {
-    public function index(){
+    public function qrcode(){
 
         $products = product::all();
-        return view('index',compact('products'));
+        return view('qrcode',compact('products'));
     }
 
     public function create(){
@@ -28,7 +28,7 @@ class ProductController extends Controller
         $request['product_code'] = $number;
         Product::create($request->all());
 
-        return redirect('/');
+        return redirect('/qrcode');
     }
 
     public function productCodeExists($number){

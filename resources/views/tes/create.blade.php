@@ -16,7 +16,7 @@
             <div class="card px-5 mt-3  shadow">
                <h1 class="text-primary pt-4 text-center mb-4">Generate Barcode in Laravel</h1>
                 
-                <form action="/post" method="post">
+                <form action="/SI-BLOG/public/post" method="post">
                  @csrf
                     <label for="">Title:</label>
                     <input type="text" class="form-control mb-3" name="title" required>

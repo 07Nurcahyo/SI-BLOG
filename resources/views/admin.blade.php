@@ -27,6 +27,58 @@
   </div>
 </nav>
 
+<!-- tes qr -->
+    <div class="container">
+      <div class="row justify-content-md-center">
+        
+        <h1 class="text-danger pt-4 text-center mb-4"><b>List of Products</b></h1>
+        <hr>
+        <div class="pb-2">
+          <a href="/SI-BLOG/public/create" class="btn btn-success">New Post</a>
+
+        </div>
+              <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Barcode</th>
+                      <th scope="col">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    @foreach ($products as $product)
+                    <tr>
+                        <th>{{ $product->id }}</th>
+                        <td>{{ $product->title }}</td>
+                        <td>{{ $product->price }}</td>
+                        <td>
+                            <!-- {!! DNS2D::getBarcodeHTML("$product->product_code",'DATAMATRIX') !!} -->
+                            <!-- {!! DNS1D::getBarcodeHTML("$product->product_code",'PHARMA',2,100) !!} -->
+                            <!-- {!! DNS2D::getBarcodeHTML("$product->title",'QRCODE') !!} -->
+                            {!! DNS2D::getBarcodeHTML(
+                                "[ Informasi Buku ]
+Judul     : $product->title
+Harga     : $product->price 
+Deskripsi : $product->description
+Rak       : Ruang Baca"
+                            ,'QRCODE',2,2) !!}
+                            p - {{ $product->product_code }}
+                        </td>
+                        <td>{{ $product->description }}</td>
+                    </tr>
+                    @endforeach
+
+                  </tbody>
+                </table>
+                
+            
+        </div>
+      </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

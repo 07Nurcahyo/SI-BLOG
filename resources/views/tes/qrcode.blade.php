@@ -17,7 +17,7 @@
         <h1 class="text-danger pt-4 text-center mb-4"><b>List of Products</b></h1>
         <hr>
         <div class="pb-2">
-          <a href="/create" class="btn btn-success">New Post</a>
+          <a href="/SI-BLOG/public/create" class="btn btn-success">New Post</a>
 
         </div>
               <table class="table table-hover">
