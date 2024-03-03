@@ -31,51 +31,126 @@
     <div class="container">
       <div class="row justify-content-md-center">
         
-        <h1 class="text-danger pt-4 text-center mb-4"><b>List of Products</b></h1>
+        <h1 class="text-danger pt-4 text-center mb-4"><b>List Buku</b></h1>
         <hr>
         <div class="pb-2">
-          <a href="/SI-BLOG/public/create" class="btn btn-success">New Post</a>
+        <button type="button" class="btn btn-success rounded-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Tambah Data Buku📖📚</button>
+
+        <!-- form add buku -->
+<div class="modal modal-centered fade" id="exampleModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Input Data Buku</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">ISBN</label>
+            <input type="text" class="form-control">
+            <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Judul Buku</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Tahun Terbit</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Penerbit</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Kode Kategori</label>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Kode Penulis</label>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Kode Rak</label>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Stok</label>
+            <input type="number" class="form-control">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-success">Tambah</button>
+      </div>
+    </div>
+  </div>
+</div>
 
         </div>
               <table class="table table-hover">
                   <thead>
                     <tr>
                       <th scope="col">ID</th>
-                      <th scope="col">Title</th>
-                      <th scope="col">Price</th>
-                      <th scope="col">Barcode</th>
-                      <th scope="col">Description</th>
+                      <th scope="col">ISBN</th>
+                      <th scope="col">Judul Buku</th>
+                      <th scope="col">Tahun Terbit</th>
+                      <th scope="col">Penerbit</th>
+                      <th scope="col">Kode Kategori</th>
+                      <th scope="col">Kode Penulis</th>
+                      <th scope="col">Kode Rak</th>
+                      <th scope="col">Stok</th>
+                      <th scope="col">QRCode</th>
                     </tr>
                   </thead>
                   <tbody>
 
-                    @foreach ($products as $product)
+                    @foreach ($data as $d)
                     <tr>
-                        <th>{{ $product->id }}</th>
-                        <td>{{ $product->title }}</td>
-                        <td>{{ $product->price }}</td>
+                        <th>{{ $d->id_buku }}</th>
+                        <td>{{ $d->isbn }}</td>
+                        <td>{{ $d->judul_buku }}</td>
+                        <td>{{ $d->tahun_terbit }}</td>
+                        <td>{{ $d->penerbit }}</td>
+                        <td>{{ $d->kode_kategori }}</td>
+                        <td>{{ $d->kode_penulis }}</td>
+                        <td>{{ $d->kode_rak }}</td>
+                        <td>{{ $d->stok }}</td>
                         <td>
-                            <!-- {!! DNS2D::getBarcodeHTML("$product->product_code",'DATAMATRIX') !!} -->
-                            <!-- {!! DNS1D::getBarcodeHTML("$product->product_code",'PHARMA',2,100) !!} -->
-                            <!-- {!! DNS2D::getBarcodeHTML("$product->title",'QRCODE') !!} -->
+                            <!-- {!! DNS2D::getBarcodeHTML("$d->judul_buku",'DATAMATRIX') !!} -->
+                            <!-- {!! DNS1D::getBarcodeHTML("$d->judul_buku",'PHARMA',2,100) !!} -->
+                            <!-- {!! DNS2D::getBarcodeHTML("$d->judul_buku",'QRCODE') !!} -->
                             {!! DNS2D::getBarcodeHTML(
                                 "[ Informasi Buku ]
-Judul     : $product->title
-Harga     : $product->price 
-Deskripsi : $product->description
-Rak       : Ruang Baca"
-                            ,'QRCODE',2,2) !!}
-                            p - {{ $product->product_code }}
+Judul     : $d->judul_buku
+Rak       : $d->kode_rak"
+                            ,'QRCODE',4,4) !!}
+                            isbn - {{ $d->isbn }}
                         </td>
-                        <td>{{ $product->description }}</td>
                     </tr>
                     @endforeach
 
                   </tbody>
-                </table>
-                
-            
+                </table>  
         </div>
+        
       </div>
     </div>
 

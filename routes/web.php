@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BukuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,8 @@ use App\Http\Controllers\AdminController;
 // });
 
 Route::get('/', [MainController::class, 'main']);
-Route::get('/admin', [AdminController::class, 'main']);
+// Route::get('/admin', [AdminController::class, 'main']);
+Route::get('/admin', [BukuController::class, 'viewbuku']);
 Route::get('/login', [AdminController::class, 'login']);
 
 // qrcode
