@@ -58,16 +58,19 @@
 </div>
 
 <!-- Content -->
-<section class="search" id="search">
-  <!-- <div class="content"> -->
-    <div class="input-group mb-3 searchfield">
-      <input type="text" class="form-control searchfield" placeholder="Cari Buku..." aria-label="" aria-describedby="basic-addon1">
-      <div class="input-group-prepend">
-        <button class="btn btn-secondary btncari" type="button">Cari</button>
+<!-- <div class="text-center">
+  <h3>Selamat Datang</h3> -->
+  <section class="search" id="search">
+    <!-- <div class="content"> -->
+      <div class="input-group mb-3 searchfield">
+        <input type="text" class="form-control searchfield" placeholder="Cari Buku..." aria-label="" aria-describedby="basic-addon1">
+        <div class="input-group-prepend">
+          <button class="btn btn-secondary btncari" type="button">Cari</button>
+        </div>
       </div>
-    </div>
-  <!-- </div> -->
-</section>
+    <!-- </div> -->
+  </section>
+<!-- </div> -->
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
