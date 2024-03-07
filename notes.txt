@@ -5,3 +5,12 @@ ALTER TABLE buku ADD FOREIGN KEY (kode_rak) REFERENCES rak(id_rak);
 
 dashboard :
 - visualisasi (line chart, barchart, bervariasi)
+
+
+command import :
+LOAD DATA INFILE 'D:/Semester 6/buku.csv'
+INTO TABLE buku
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS (isbn,judul_buku,tahun_terbit,penerbit,kode_kategori,kode_penulis,kode_rak,stok);
