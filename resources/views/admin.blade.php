@@ -22,6 +22,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       </ul>
       <form class="d-flex">
+      <button type="button" class="btn btn-danger rounded-3">Logout</button>
       </form>
     </div>
   </div>

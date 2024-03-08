@@ -22,9 +22,27 @@ use App\Http\Controllers\BukuController;
 // });
 
 Route::get('/', [MainController::class, 'main']);
-// Route::get('/admin', [AdminController::class, 'main']);
-Route::get('/admin', [BukuController::class, 'viewbuku']);
-Route::get('/login', [AdminController::class, 'login']);
+Route::post('actionlogin', [AdminController::class, 'actionlogin'])->name('actionlogin');
+Route::get('/admin', [AdminController::class, 'viewbuku'])->name('/admin');
+// Route::get('/admin', [AdminController::class, 'viewbuku']);
+
+
+
+// Route::get('/', [LoginController::class, 'login'])->name('login');
+// Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
+// Route::get('home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+// Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
+
+
+
+
+
+
+
+
+
+
+
 
 // qrcode
 // Route::get('/qrcode',[ProductController::class,'qrcode']);
