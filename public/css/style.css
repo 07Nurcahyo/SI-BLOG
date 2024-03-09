@@ -1,6 +1,10 @@
+*{
+    scroll-behavior: smooth;
+}
+
 body{
-    /* color: white; */
-    /* background-color: rgba(20, 28, 43, 1); */
+    margin: 0;
+    padding: 0;
 }
 
 /* navbar */
@@ -29,41 +33,38 @@ body{
 /* content */
 section{
     height: 80vh;
-    background: #111;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 section.search{
-    background: rgba(0, 0, 0, 0.5) url(perpus.jpg);
-    background-size: contain;
+    background: rgba(0, 0, 0, 0.6) url(perpus.jpg);
+    background-size: cover;
     background-blend-mode: darken;
 }
-.searchfield,.searchfield:focus{
-    width: 47%;
+section h5{
+    color: white;
+}
+section h2{
+    color: white;
+    font-weight: 900;
+}
+section h2.jti{
+    color: yellow;
+}
+.searchbar{
+    width: 500px;
     height: 50px;
-    /* background-color: rgb(128, 128, 128, 0.3); */
-    background-color: gainsboro;
-    /* border: none; */
-    border-radius: 15px;
 }
-.searchfield::placeholder{
-    color: black;
+.tes{
+    margin-top: -30px;
+    z-index: 1;
+    position: absolute;
+    height: 70px;
 }
-.btncari,.btncari:hover{
-    height: 50px;
-    width: 80px;
-    /* background-color: rgb(128, 128, 128, 0.3); */
-    background-color: rgb(220, 220, 220, 0.9);
-    color: black;
-    border: none;
-    border-left: 2px solid white;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
+section.koleksi{
+    z-index: 0 ;
+    background-color: aqua;
+    background-size: cover;
+    background-blend-mode: darken;
 }
-.btncari:enabled{
-    background-color: transparent !important;
-}
-/* section.search .content{
-    text-align: center;
-} */
