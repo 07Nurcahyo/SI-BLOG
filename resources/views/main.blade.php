@@ -40,7 +40,7 @@
         <div class="modal-body">
           @if(session('error'))
             <div class="alert alert-danger">
-                <b>Opps!</b> {{session('error')}}
+                <b>{{session('error')}}</b>
             </div>
           @endif
           <form action="{{ route('actionlogin') }}" method="post">
@@ -76,7 +76,7 @@
           </div>
       </div>
     </section>
-    <button type="button" class="btn btn-light btn-lg tes py-2 px-4 start-50 translate-middle mt-1 rounded-5">Lihat Semua Buku</button>
+    <button type="button" class="btn btn-light btn-lg tes start-50 translate-middle mt-1 rounded-5">Lihat Semua Buku</button>
     <section class="koleksi" id="koleksi">
       <div class="content text-center">
         <p>Koleksi Ruang Baca</p>

@@ -63,7 +63,6 @@ section h2.jti{
     height: 70px;
 }
 section.koleksi{
-    z-index: 0 ;
     background-color: aqua;
     background-size: cover;
     background-blend-mode: darken;
