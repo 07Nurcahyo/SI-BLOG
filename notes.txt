@@ -8,9 +8,9 @@ dashboard :
 
 
 command import :
-LOAD DATA INFILE 'D:/Semester 6/buku.csv'
+LOAD DATA INFILE 'D:/Semester 6/Proyek Sistem Informasi/buku.csv'
 INTO TABLE buku
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n'
-IGNORE 1 ROWS (isbn,judul_buku,tahun_terbit,penerbit,kode_kategori,kode_penulis,kode_rak,stok);
+IGNORE 1 ROWS (id_buku,isbn,judul_buku,tahun_terbit,kode_penerbit,kode_kategori,penulis,kode_rak,stok);
