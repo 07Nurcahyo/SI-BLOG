@@ -23,46 +23,11 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         </ul>
         <form class="d-flex">
-          <button type="button" class="btn btn-light rounded-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Login admin🙍‍♂️</button>
+          <button type="button" class="btn btn-light rounded-4" >Login admin🙍‍♂️</button>
         </form>
       </div>
     </div>
   </nav>
-
-  <!-- form login admin -->
-  <div class="modal modal-centered fade" id="exampleModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Login Admin</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          @if(session('error'))
-            <div class="alert alert-danger">
-                <b>{{session('error')}}</b>
-            </div>
-          @endif
-          <form action="{{ route('actionlogin') }}" method="post">
-          @csrf
-            <div class="mb-3">
-              <label class="form-label">Username</label>
-              <input type="username" name="username" class="form-control">
-              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Password</label>
-              <input type="password" name="password" class="form-control" placeholder="Masukkan Passowrd...">
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-              <button type="submit" class="btn btn-primary">Login</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Content -->
     <section class="search" id="search">

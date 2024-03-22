@@ -22,7 +22,8 @@ use App\Http\Controllers\BukuController;
 // });
 
 Route::get('/', [MainController::class, 'main']);
-Route::post('actionlogin', [AdminController::class, 'actionlogin'])->name('actionlogin');
+// Route::post('actionlogin', [AdminController::class, 'actionlogin'])->name('actionlogin');
+Route::get('/admin/login', [AdminController::class, 'login']);
 Route::get('/admin', [AdminController::class, 'viewbuku'])->name('/admin');
 // Route::get('/admin', [AdminController::class, 'viewbuku']);
 
