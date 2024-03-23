@@ -1,0 +1,77 @@
+*{
+    scroll-behavior: smooth;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background: rgba(0, 0, 0, 0.6) url(perpus.jpg);
+    background-size: cover;
+    background-blend-mode: darken;
+}
+
+/* navbar */
+.navbar{
+    background-color: rgba(23, 107, 135, 1);
+    /* background-color: rgba(134, 182, 246, 1); */
+    /* background-color: rgba(20, 46, 158, 0.8); */
+}
+.navbar-brand,.nav-link{
+    color: white !important;
+}
+.logo-jti{
+    height: 35px;
+    padding-right: 10px;
+}
+.logoadmin{
+    width: 19px;
+    height: 19px;
+    padding-bottom: 3px;
+}
+
+/* text */
+.content{
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+.content h5{
+    color: white;
+}
+.content h2{
+    color: white;
+    font-weight: 900;
+}
+.content h2.jti{
+    color: yellow;
+}
+
+/* form login */
+.card{
+    backdrop-filter: blur(3px);
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 0;
+    border-radius: 14px;
+}
+.card .form-control:focus {
+    outline: none;
+    box-shadow: none;
+}
+.form-group,.mt-3{
+    color: white; 
+}
+.pw{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+/* .card-header{
+    background-color: rgba(255, 165, 0, 0.6);
+    color: white;
+    border: 0;
+    border-radius: 14px 14px 0px 0px !important;
+    font-size: 25px;
+    font-weight: 600;
+} */
+.btn{
+    /* background-color: rgba(255, 165, 0, 0.6); */
+    color: white;
+}

@@ -7,7 +7,7 @@
     <title>Login Admin</title>
     <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></link>
-    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/admin_login.css"/>
 </head>
 <body>
 
@@ -22,35 +22,50 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           </ul>
-          <form class="d-flex">
-          <button type="button" class="btn btn-danger rounded-3">Logout</button>
-          </form>
         </div>
       </div>
     </nav>
-
-    <div class="container"><br>
-        <!-- <div class="col-md-4 col-md-offset-4"> -->
-            @if(session('error'))
-            <div class="alert alert-danger">
-                <b>Opps!</b> {{session('error')}}
-            </div>
-            @endif
-            <form action="{{ url('actionlogin') }}" method="post">
-            @csrf
-                <div class="form-group">
-                    <label>Username</label>
-                    <input type="username" name="username" class="form-control" placeholder="Username" required="">
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" name="password" class="form-control" placeholder="Password" required="">
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">Log In</button>
-                <hr>
-            </form>
-        <!-- </div> -->
+        
+    <div class="content text-center">
+          <h5>Selamat Datang</h5>
+          <h2>Portal Layanan</h2>
+          <h2 class="jti">Ruang Baca JTI</h2>
     </div>
+
+    <!-- form login -->
+        <div class="container mx-auto">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="{{ url('actionlogin') }}" method="post">
+                                @csrf
+                                @if(session('error'))
+                                <div class="alert alert-danger">
+                                    <b>Opps!</b> {{session('error')}}
+                                </div>
+                                @endif
+                                <div class="form-group">
+                                    <label for="username">Username:</label>
+                                    <input type="text" class="form-control" name="username" id="username" required>
+                                </div>
+                                <div class="form-group pw">
+                                    <label for="password">Password:</label>
+                                    <input type="password" class="form-control" name="password" id="password" required>
+                                </div>
+                                <div class="text-center">
+                                  <button type="submit" class="btn btn-primary">Login</button>
+                                  <button class="btn btn-warning">Kembali</button>
+                                </div>
+                            </form>
+                            <!-- <div class="mt-3 text-center">
+                                Lupa username / password? <a href="https://wa.me/62881026595662">Silahkan hubungi nomor ini.</a> Atau bisa dilihat di buku panduan.
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="bootstrap/dist/js/jquery-3.3.1.min.js"></script>

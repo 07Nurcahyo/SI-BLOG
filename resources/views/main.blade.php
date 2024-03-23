@@ -23,7 +23,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         </ul>
         <form class="d-flex">
-          <button type="button" class="btn btn-light rounded-4" >Login admin🙍‍♂️</button>
+          <a href="login_admin" class="btn btn-light rounded-4" role="button">Login admin🙍‍♂️</a>
         </form>
       </div>
     </div>

@@ -16,17 +16,6 @@ class AdminController extends Controller
         return view('admin.admin', ['data' => $buku]);
     }
 
-    // public function login(){
-    //     return view('admin/admin_login');
-    // }
-
-    // public function viewbuku() {
-    //     $buku = BukuModel::all();
-    //     return view('admin', ['data' => $buku]);
-    //     // $databuku = BukuModel::all();
-    //     // return view('/admin',compact('databuku'));
-    // }
-
     public function login()
     {
         if (Auth::check()) {
@@ -35,23 +24,6 @@ class AdminController extends Controller
             return view('admin/admin_login');
         }
     }
-
-    // public function actionlogin(Request $request)
-    // {
-    //     $data = [
-    //         'username' => $request->input('username'),
-    //         'password' => $request->input('password'),
-    //     ];
-    //     $user=AdminModel::firstWhere('username', $data['username']);
-    //     // if (Auth::Attempt($data)) {
-    //     // if (Hash::check($data['password'],$user->password)) {
-    //     if ($data['password']==$user->password) {
-    //         return redirect('/admin');
-    //     }else{
-    //         Session::flash('error', 'Username atau Password Salah');
-    //         return redirect('/');
-    //     }
-    // }
 
     public function actionlogin(Request $request)
     {
@@ -71,7 +43,7 @@ class AdminController extends Controller
     public function actionlogout()
     {
         Auth::logout();
-        return redirect('admin/login_admin');
+        return redirect('login_admin');
     }
 
 

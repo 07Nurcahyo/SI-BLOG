@@ -22,7 +22,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       </ul>
       <form class="d-flex">
-      <button type="button" class="btn btn-danger rounded-3">Logout</button>
+        <a href="{{route('actionlogout')}}" class="btn btn-danger rounded-4"><i class="fa fa-power-off"></i> Log Out</a>
       </form>
     </div>
   </div>
