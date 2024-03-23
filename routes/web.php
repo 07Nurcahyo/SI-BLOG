@@ -21,19 +21,14 @@ use App\Http\Controllers\BukuController;
 //     return view('main');
 // });
 
-Route::get('/', [MainController::class, 'main']);
-// Route::post('actionlogin', [AdminController::class, 'actionlogin'])->name('actionlogin');
-Route::get('/admin/login', [AdminController::class, 'login']);
-Route::get('/admin', [AdminController::class, 'viewbuku'])->name('/admin');
-// Route::get('/admin', [AdminController::class, 'viewbuku']);
+Route::get('/', [MainController::class, 'index']);
+// Route::get('/admin', [AdminController::class, 'viewbuku'])->name('/admin');
 
 
-
-// Route::get('/', [LoginController::class, 'login'])->name('login');
-// Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
-// Route::get('home', [HomeController::class, 'index'])->name('home')->middleware('auth');
-// Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
-
+Route::get('/login_admin', [AdminController::class, 'login'])->name('login');
+Route::post('actionlogin', [AdminController::class, 'actionlogin'])->name('actionlogin');
+Route::get('main', [AdminController::class, 'main'])->name('main');
+Route::get('actionlogout', [AdminController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
 
 
 
