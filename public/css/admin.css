@@ -63,11 +63,11 @@ section h2.jti{
     height: 70px;
 }
 section.koleksi{
-    background-image: linear-gradient(rgba(46, 117, 255, 1), orange);
+    background-color: aqua;
     background-size: cover;
     background-blend-mode: darken;
 }
-.text-koleksi{
-    font-size: 20px;
-    font-weight: bold;
-}
+
+
+
+/* sidebar */
