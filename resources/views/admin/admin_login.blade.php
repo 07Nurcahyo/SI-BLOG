@@ -55,7 +55,7 @@
                                 </div>
                                 <div class="text-center">
                                   <button type="submit" class="btn btn-primary">Login</button>
-                                  <button class="btn btn-warning">Kembali</button>
+                                  <a href="{{ url('/') }}" class="btn btn-warning">Kembali</a>
                                 </div>
                             </form>
                             <!-- <div class="mt-3 text-center">
