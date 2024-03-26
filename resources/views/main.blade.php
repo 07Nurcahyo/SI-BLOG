@@ -11,7 +11,7 @@
 <body >
 
 <div class="">
-  <!-- Navbar -->
+  <!-- Navbar --> 
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <img src="img/jti.png" class="logo-jti" alt="">
