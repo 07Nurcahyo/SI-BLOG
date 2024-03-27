@@ -2,6 +2,8 @@
 // import { Ripple, initMDB } from "mdb-ui-kit";
 // initMDB({ Ripple });
 
+// console.log('Halooooooooooooooo');
+
 function gagalLogin() {
     console.log('Username/Password Salah');
 }
@@ -29,3 +31,8 @@ document.getElementById('sidebar-toggler').onclick = ((e) => {
         document.getElementById('sidebar--dashboard').innerHTML = iconDashboard
     }
 })
+
+// data table
+// import DataTable from 'datatables.net-dt';
+// import 'datatables.net-responsive-dt';
+new DataTable('#myTable');
