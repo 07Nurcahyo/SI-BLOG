@@ -68,6 +68,56 @@ section.koleksi{
     background-blend-mode: darken;
 }
 .text-koleksi{
-    font-size: 20px;
+    font-size: 22px;
+    font-weight: 900;
+}
+.custom-card{
+    background-color: transparent;
+    border-width: 6px;
+    border-radius: 9px;
+    border-color: rgba(244, 206, 20, 1);
+}
+.card-gambar{
+    width: 125px;
+    margin-top: 80px;
+    margin-bottom: -50px;
+}
+.custom-card h1{
+    color: white;
+    font-weight: 700;
+}
+.custom-card .card-title{
+    font-weight: 1000;
+}
+.kategori{
+    margin-left: 160px;
+}
+.badge{
+    border-radius: 14px;
+    width: 15rem;
+}
+.badge h4{
+    color: black !important;
     font-weight: bold;
+}
+.badge p{
+    font-size: 22px;
+    font-weight: 200;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.skripsi{
+    margin-left: 50px;
+}
+.statistik{
+    padding-top: 7px;
+    color: black;
+    background-color: rgba(244, 206, 20, 1);
+    height: 2.5rem;
+}
+.statistik:hover{
+    background-color: rgb(255, 213, 0);
+}
+.fa-long-arrow-right{
+    padding-top: 2px;
+    color: white;
 }

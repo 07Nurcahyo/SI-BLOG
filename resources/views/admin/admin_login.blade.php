@@ -14,7 +14,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <img src="img/jti.png" class="logo-jti" alt="">
+        <img src="img/ekatalog.png" class="logo-jti" alt="">
         <a class="navbar-brand" href="#">SI-BLOG</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>

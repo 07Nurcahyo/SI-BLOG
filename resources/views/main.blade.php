@@ -15,7 +15,7 @@
   <!-- Navbar -->  
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <img src="img/jti.png" class="logo-jti" alt="">
+      <img src="img/ekatalog.png" class="logo-jti" alt="">
       <a class="navbar-brand" href="#">SI-BLOG</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -43,16 +43,50 @@
       </div>
     </section>
     <button type="button" class="btn btn-light btn-lg tes start-50 translate-middle mt-1 rounded-5"><i class="fa fa-book" aria-hidden="true"></i> ‎ Lihat Semua Buku</button>
+
     <section class="koleksi" id="koleksi">
-      <div class="content text-center">
-        <p class="text-koleksi">Koleksi ruang baca</p>
-      </div>
-      <div class="card" style="width: 18rem;">
-        <img src="img/bukumain1.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+      <div class="container mt-5">
+        <div class="row justify-content-center content text-center">
+          <p class="text-koleksi">Koleksi ruang baca</p>
+          <div class="col-lg-3">
+            <div class="card custom-card">
+              <img src="img/bukumain1.png" class="card-img-top card-gambar position-relative start-50 translate-middle" alt="...">
+              <div class="card-body">
+                <h1>900</h1>
+                <h5 class="card-title">Buku Ruang Baca</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 kategori">
+            <div class="card custom-card">
+              <img src="img/bukumain1.png" class="card-img-top card-gambar position-relative start-50 translate-middle" alt="...">
+              <div class="card-body">
+                <h1>900</h1>
+                <h5 class="card-title">Kategori</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row justify-content-center content text-center">
+          <div class="col-lg-4">
+            <span class="badge text-bg-light">
+              <h4>1000</h4>
+              <p>Manual Book</p>
+            </span>
+          </div>
+          <div class="col-lg-4 skripsi">
+            <span class="badge text-bg-light">
+              <h4>1000</h4>
+              <p>Skripsi & TA</p>
+            </span>
+          </div>
+        </div>
+        <br>
+        <div class="row justify-content-center content text-center">
+            <button class="badge btn statistik">
+              <p>Statistik &nbsp;&nbsp;<i class="fa fa-long-arrow-right" aria-hidden="true"></i></p>
+            </button>
         </div>
       </div>
     </section>
