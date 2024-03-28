@@ -24,7 +24,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         </ul>
         <form class="d-flex">
-          <a href="login_admin" class="btn btn-light rounded-4" role="button">Login admin🙍‍♂️</a>
+          <a href="login_admin" class="btn btn-light rounded-4" role="button">Login admin &nbsp;<i class="fa fa-user" aria-hidden="true"></i></a>
         </form>
       </div>
     </div>
@@ -32,17 +32,18 @@
 
   <!-- Content -->
     <section class="search" id="search">
-      <div class="content text-center">
+      <div class="content text-center content-atas">
           <h5>Selamat Datang</h5>
           <h2>Portal Layanan</h2>
-          <h2 class="jti">Ruang Baca JTI</h2>
+          <h1 class="jti">Ruang Baca JTI</h1>
           <div class="input-group searchbar">
             <input type="search" class="form-control" placeholder="Cari Buku.."/>
             <button type="button" class="btn btn-primary btn-lg" data-mdb-ripple-init>Cari</button>
           </div>
       </div>
     </section>
-    <button type="button" class="btn btn-light btn-lg tes start-50 translate-middle mt-1 rounded-5"><i class="fa fa-book" aria-hidden="true"></i> ‎ Lihat Semua Buku</button>
+
+    <button type="button" class="btn btn-light btn-lg start-50 translate-middle mt-1 rounded-5 lihatSemuaBuku"><i class="fa fa-book" aria-hidden="true"></i> ‎ Lihat Semua Buku</button>
 
     <section class="koleksi" id="koleksi">
       <div class="container mt-5">
@@ -82,7 +83,7 @@
             </span>
           </div>
         </div>
-        <br>
+        <br><br>
         <div class="row justify-content-center content text-center">
             <button class="badge btn statistik">
               <p>Statistik &nbsp;&nbsp;<i class="fa fa-long-arrow-right" aria-hidden="true"></i></p>

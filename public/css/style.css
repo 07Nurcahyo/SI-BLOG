@@ -31,6 +31,9 @@ body{
 }
 
 /* content */
+.content-atas{
+    margin-top: -90px;
+}
 section{
     height: 80vh;
     display: flex;
@@ -44,25 +47,38 @@ section.search{
 }
 section h5{
     color: white;
+    font-weight: bold;
 }
 section h2{
     color: white;
     font-weight: 900;
 }
-section h2.jti{
-    color: yellow;
+section h1.jti{
+    color: rgba(244, 206, 20, 1);
+    font-weight: 900;
+    padding-bottom: 25px;
 }
 .searchbar{
     width: 400px;
     height: 50px;
 }
-.tes{
+.searchbar .form-control{
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+.searchbar .btn{
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+.lihatSemuaBuku{
     margin-top: -30px;
     z-index: 1;
     position: absolute;
     height: 70px;
+    width: 250px;
 }
 section.koleksi{
+    height: 100vh;
     background-image: linear-gradient(rgba(46, 117, 255, 1), orange);
     background-size: cover;
     background-blend-mode: darken;
@@ -74,7 +90,7 @@ section.koleksi{
 .custom-card{
     background-color: transparent;
     border-width: 6px;
-    border-radius: 9px;
+    border-radius: 29px;
     border-color: rgba(244, 206, 20, 1);
 }
 .card-gambar{
@@ -99,6 +115,7 @@ section.koleksi{
 .badge h4{
     color: black !important;
     font-weight: bold;
+    padding-top: 7px;
 }
 .badge p{
     font-size: 22px;
