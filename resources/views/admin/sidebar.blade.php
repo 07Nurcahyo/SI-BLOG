@@ -1,11 +1,53 @@
-<div id="sidebar" class="d-flex flex-column flex-1 row-gap-3 p-2" style="width:16rem; background: url({{asset('img/sidebar.png')}})">
-  <button id="sidebar-toggler" class="btn btn-primary ms-auto" style="width: fit-content"><i class="fa fa-bars"></i></button>
-  <div id="sidebar__user-information" style="border-radius:22rem; width: 9rem; height:9rem; display: flex" class="bg-warning flex-column justify-items-center align-items-center mx-auto">
-    <div class="d-flex flex-fill flex-column justify-items-center align-items-center" style="margin-top: 45px">
-        <p>Nadhira</p>
-        <p>Admin</p>
+
+    <div class="sidebar" style="background_cancel: url(css/perpus.jpg) rgba(0, 0, 0, 0.6); background-size: cover; background-blend-mode: darken;">
+      <!-- Sidebar user (optional) -->
+      {{-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Alexander Pierce</a>
+        </div>
+      </div> --}}
+
+      <!-- SidebarSearch Form -->
+      {{-- <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div> --}}
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="{{ url('main') }}" class="nav-link">
+              <i class="nav-icon fas fa-home"></i>
+              <p>
+                Dashboard
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
+          <li class="nav-header">EXAMPLES</li>
+          <li class="nav-item">
+            <a href="../calendar.html" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Data Buku
+                {{-- <span class="badge badge-info right">2</span> --}}
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
     </div>
-  </div>
-  <button id="sidebar--dashboard" class="btn btn-light btn-block">Dashboard</button>
-  <button id="sidebar--data-buku" class="btn btn-primary btn-block">Data Buku</button>
-</div>
+    <!-- /.sidebar -->
