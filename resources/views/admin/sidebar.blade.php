@@ -38,7 +38,7 @@
           </li>
           <li class="nav-header">EXAMPLES</li>
           <li class="nav-item">
-            <a href="../calendar.html" class="nav-link">
+            <a href="{{ url('/data_buku') }}" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Data Buku

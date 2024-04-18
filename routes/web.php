@@ -29,12 +29,11 @@ Route::get('/login_admin', [AdminController::class, 'login'])->name('login');
 Route::post('actionlogin', [AdminController::class, 'actionlogin'])->name('actionlogin');
 Route::get('main', [AdminController::class, 'main'])->name('main');
 Route::get('actionlogout', [AdminController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
+Route::get('/data_buku', [AdminController::class, 'data_buku']);
 
 
 
-
-
-
+Route::get('/backup_admin', [AdminController::class, 'backup']);
 
 
 

@@ -12,7 +12,7 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a href="{{route('actionlogout')}}" class="btn btn-light"><i class="fas fa-power-off"></i>&nbsp;&nbsp;Logout</a>
+        <a href="{{route('actionlogout')}}" class="btn btn-light" style="border-radius: 17px"><i class="fas fa-power-off"></i>&nbsp;&nbsp;Logout</a>
       </li>
     </ul>
   </nav>

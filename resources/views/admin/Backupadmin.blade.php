@@ -40,7 +40,7 @@
 
 <!-- sidebar -->
     <div class="d-flex">
-    @include('admin.sidebar')
+    @include('admin.Bakcupsidebar')
     
 <!-- tes qr dan list buku -->
     <div class="container">

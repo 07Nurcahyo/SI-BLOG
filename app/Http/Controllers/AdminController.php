@@ -15,6 +15,17 @@ class AdminController extends Controller
         $buku = BukuModel::all();
         return view('admin.admin', ['data' => $buku]);
     }
+    public function backup(){
+        $buku = BukuModel::all();
+        return view('admin.Backupadmin', ['data' => $buku]);
+    }
+    public function data_buku(){
+        $buku = BukuModel::all();
+        return view('admin.admin', ['data' => $buku]);
+        $breadcrumb = (object) [
+            'title' => 'Halaman data buku admin'
+        ];
+    }
 
     public function login()
     {
