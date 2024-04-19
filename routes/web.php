@@ -17,25 +17,27 @@ use App\Http\Controllers\BukuController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('main');
-// });
-
 Route::get('/', [MainController::class, 'index']);
 // Route::get('/admin', [AdminController::class, 'viewbuku'])->name('/admin');
 
-
 Route::get('/login_admin', [AdminController::class, 'login'])->name('login');
-Route::post('actionlogin', [AdminController::class, 'actionlogin'])->name('actionlogin');
+Route::post('actionlogin', [AdminController::class, 'index'])->name('index');
 Route::get('main', [AdminController::class, 'main'])->name('main');
 Route::get('actionlogout', [AdminController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
 Route::get('/data_buku', [AdminController::class, 'data_buku']);
 
-
-
 Route::get('/backup_admin', [AdminController::class, 'backup']);
 
-
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('/', [AdminController::class, 'index']);
+    Route::post('/list', [AdminController::class, 'list']); //menampilkan data uer dalam bentuk json untuk datatables
+    Route::get('/create', [AdminController::class, 'create']);
+    Route::post('/', [AdminController::class, 'store']); //menyimpan data user baru
+    Route::get('/{id}', [AdminController::class, 'show']);
+    Route::get('/{id}/edit', [AdminController::class, 'edit']);
+    Route::put('/{id}', [AdminController::class, 'update']); //menyimpan perubahan data user
+    Route::delete('/{id}', [AdminController::class, 'destroy']);
+});
 
 
 

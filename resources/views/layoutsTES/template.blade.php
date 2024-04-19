@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ config('app.name', 'PWL Laravel Starter Code') }}</title>
+  <title>{{ config('app.name', 'SI-BLOG') }}</title>
 
   <meta name="csrf-token" content="{{ csrf_token() }}"> <!-- untuk mengirimkan token laravel csrf pada setiap request ajax -->
 
@@ -24,26 +24,26 @@
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
-  @include('layouts.header')
+  @include('layout.header')
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ url('/') }}" class="brand-link">
+    <a href="" class="brand-link">
       <img src="{{ asset('adminlte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">PWL- Starter Code</span>
+      <span class="brand-text font-weight-light">SI-BLOG - Admin</span>
     </a>
 
     <!-- Sidebar -->
-    @include('layouts.sidebar')
+    @include('layout.sidebar')
     <!-- /.sidebar -->
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    @include('layouts.breadcrumb')
+    @include('layout.breadcrumb')
 
     <!-- Main content -->
     <section class="content">
@@ -55,7 +55,7 @@
   </div>
   <!-- /.content-wrapper -->
 
-  @include('layouts.footer')
+  @include('layout.footer')
 </div>
 <!-- ./wrapper -->
 
