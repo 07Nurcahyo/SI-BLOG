@@ -2,7 +2,7 @@
 @section('content')
     <div class="card card-outline card-primary">
         <div class="card-header">
-            <h3 class="card-title">{{ $sakkarep->title }}</h3>
+            <h3 class="card-title">{{ $page->title }}</h3>
             <div class="card-tools">
                 <a class="btn btn-sm btn-primary mt-1" href="{{ url('admin/create')}}">Tambah</a>
             </div>
@@ -32,7 +32,7 @@
             </div>
             <table class="table table-bordered table-striped table-hover table-sm" id="table_buku">
                 <thead>
-                    <tr>
+                    <tr style="text-align: center">
                         <th>ID</th>
                         <th>ISBN</th>
                         <th>Judul Buku</th>
@@ -41,7 +41,8 @@
                         <th>Kategori</th>
                         <th>Penulis</th>
                         <th>Lokasi</th>
-                        <th>Aksi</th>
+                        {{-- <th>QRCode</th> --}}
+                        <th style="width: 155px">Aksi</th>
                     </tr>
                 </thead>
             </table>

@@ -6,7 +6,7 @@
             <div class="card-tools"></div>
         </div>
         <div class="card-body">
-            @empty($user)
+            @empty($buku)
             <div class="alert alert-danger alert-dismissible">
                 <h5><i class="icon fas fa-ban"></i> Kesalahan!</h5> Data yang Anda cari tidak ditemukan.
             </div>
@@ -14,27 +14,43 @@
             <table class="table table-bordered table-striped table-hover table-sm">
                 <tr>
                     <th>ID</th>
-                    <td>{{ $user->user_id }}</td>
+                    <td>{{ $buku->id_buku }}</td>
                 </tr>
                 <tr>
-                    <th>Level</th>
-                    <td>{{ $user->level->level_nama }}</td>
+                    <th>ISBN</th>
+                    <td>{{ $buku->isbn }}</td>
                 </tr>
                 <tr>
-                    <th>Username</th>
-                    <td>{{ $user->username }}</td>
+                    <th>Judul Buku</th>
+                    <td>{{ $buku->judul_buku }}</td>
                 </tr>
                 <tr>
-                    <th>Nama</th>
-                    <td>{{ $user->nama }}</td>
+                    <th>Tahun Terbit</th>
+                    <td>{{ $buku->tahun_terbit }}</td>
                 </tr>
                 <tr>
-                    <th>Password</th>
-                    <td>********</td>
+                    <th>Kode Penerbit</th>
+                    <td>{{ $buku->penerbit->nama_penerbit }}</td>
+                </tr>
+                <tr>
+                    <th>Kode Kategori</th>
+                    <td>{{ $buku->kategori->jenis_kategori }}</td>
+                </tr>
+                <tr>
+                    <th>Penulis</th>
+                    <td>{{ $buku->penulis }}</td>
+                </tr>
+                <tr>
+                    <th>Lokasi</th>
+                    <td>{{ $buku->lokasi->nama_rak }}</td>
+                </tr>
+                <tr>
+                    <th>stok</th>
+                    <td>{{ $buku->stok }}</td>
                 </tr>
             </table>
             @endempty
-            <a href="{{ url('user') }}" class="btn btn-sm btn-default mt-2">Kembali</a>
+            <a href="{{ url('admin') }}" class="btn btn-sm btn-default mt-2">Kembali</a>
         </div>
     </div>
 @endsection

@@ -74,7 +74,7 @@ class AdminController extends Controller
         $penerbit = PenerbitModel::all();
         $kategori = KategoriModel::all();
         $lokasi = LokasiModel::all();
-        return view('admin.index', ['breadcrumb' => $breadcrumb, 'sakkarep' => $page, 'penerbit' => $penerbit, 'kategori' => $kategori, 'lokasi' => $lokasi, 'activeMenu' => $activeMenu]);
+        return view('admin.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'penerbit' => $penerbit, 'kategori' => $kategori, 'lokasi' => $lokasi, 'activeMenu' => $activeMenu]);
     }
     public function list(Request $request){
         $bukus = BukuModel::select('id_buku', 'isbn', 'judul_buku', 'tahun_terbit', 'kode_penerbit', 'kode_kategori', 'penulis', 'kode_rak', 'stok')->with('penerbit', 'kategori', 'lokasi');
@@ -86,9 +86,9 @@ class AdminController extends Controller
         return DataTables::of($bukus)
             ->addIndexColumn() // menambahkan kolom index / no urut (default nama kolom: DT_RowIndex)
             ->addColumn('aksi', function ($buku) { // menambahkan kolom aksi
-                $btn = '<a href="'.url('/buku/' . $buku->id_buku).'" class="btn btn-info btn-sm">Detail</a> ';
-                $btn .= '<a href="'.url('/buku/' . $buku->id_buku . '/edit').'" class="btn btn-warning btn-sm">Edit</a> ';
-                $btn .= '<form class="d-inline-block" method="POST" action="'.url('/buku/'.$buku->id_buku).'">'. csrf_field() . method_field('DELETE') .'<button type="submit" class="btn btn-danger btn-sm"onclick="return confirm(\'Apakah Anda yakin menghapus data ini?\');">Hapus</button></form>';
+                $btn = '<a href="'.url('/admin/' . $buku->id_buku).'" class="btn btn-info btn-sm">Detail</a> ';
+                $btn .= '<a href="'.url('/admin/' . $buku->id_buku . '/edit').'" class="btn btn-warning btn-sm">Edit</a> ';
+                $btn .= '<form class="d-inline-block" method="POST" action="'.url('/admin/'.$buku->id_buku).'">'. csrf_field() . method_field('DELETE') .'<button type="submit" class="btn btn-danger btn-sm"onclick="return confirm(\'Apakah Anda yakin menghapus data ini?\');">Hapus</button></form>';
                 return $btn;
             })
             ->rawColumns(['aksi']) // memberitahu bahwa kolom aksi adalah html
@@ -112,11 +112,11 @@ class AdminController extends Controller
         $request->validate([
             'isbn'          => 'required|string|max:50',
             'judul_buku'    => 'required|string|max:200',
-            'tahun_terbit'  => 'required|year',
-            'kode_penerbit' => 'required|string|max:10', //fk
-            'kode_kategori' => 'required|string|max:10', //fk
+            'tahun_terbit'  => 'required',
+            'kode_penerbit' => 'required|string|max:10|exists:penerbit,id_penerbit', //fk
+            'kode_kategori' => 'required|string|max:10|exists:kategori,id_kategori', //fk
             'penulis'       => 'required|string|max:100',
-            'kode_rak'      => 'required|string|max:10', //fk
+            'kode_rak'      => 'required|string|max:10|exists:lokasi,id_rak', //fk
             'stok'          => 'required|integer'
         ]);
         BukuModel::create([
@@ -130,9 +130,10 @@ class AdminController extends Controller
             'stok'          => $request->stok
         ]);
         return redirect('/admin')->with('success', 'Data buku berhasil disimpan!');
+        // return 'Yeah'+$request->tahun_terbit;
     }
     public function show(String $id){
-        $buku = BukuModel::with('penerbit', 'kategori', 'rak', 'lokasi')->find($id);
+        $buku = BukuModel::with('penerbit', 'kategori', 'lokasi')->find($id);
         $breadcrumb = (object) [
             'title' => 'Detail Buku',
             'list'  => ['Home', 'Buku', 'Detail']

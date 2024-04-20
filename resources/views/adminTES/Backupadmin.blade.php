@@ -149,9 +149,9 @@
                         <td>{{ $d->kode_rak }}</td>
                         <td>{{ $d->stok }}</td>
                         <td>
-                            <!-- {!! DNS2D::getBarcodeHTML("$d->judul_buku",'DATAMATRIX') !!} -->
-                            <!-- {!! DNS1D::getBarcodeHTML("$d->judul_buku",'PHARMA',2,100) !!} -->
-                            <!-- {!! DNS2D::getBarcodeHTML("$d->judul_buku",'QRCODE') !!} -->
+                            {{-- {!! DNS2D::getBarcodeHTML("$d->judul_buku",'DATAMATRIX') !!} 
+                            {!! DNS1D::getBarcodeHTML("$d->judul_buku",'PHARMA',2,100) !!}  --}}
+                            {{-- {!! DNS2D::getBarcodeHTML("$d->judul_buku",'QRCODE') !!} --}}
                             {!! DNS2D::getBarcodeHTML(
                                 "[ Informasi Buku ]
 Judul     : $d->judul_buku
