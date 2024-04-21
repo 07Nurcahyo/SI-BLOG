@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div class="sidebar" style="">
     <!-- Sidebar user (optional) -->
     {{-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
@@ -38,8 +38,14 @@
         <li class="nav-header">Data Buku</li>
         <li class="nav-item">
             <a href="{{ url('/admin') }}" class="nav-link {{ ($activeMenu == 'admin') ? 'active' : '' }} ">
-                <i class="nav-icon fas fa-layer-group"></i>
+                <i class="nav-icon fas fa-book"></i>
                 <p>Data Buku</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ url('/penerbit') }}" class="nav-link {{ ($activeMenu == 'penerbit') ? 'active' : '' }}">
+                <i class="nav-icon fa fa-male"></i>
+                <p>Data Penerbit</p>
             </a>
         </li>
       </ul>

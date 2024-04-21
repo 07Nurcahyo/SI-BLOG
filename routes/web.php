@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\BukuController;
 
 /*
@@ -37,6 +38,17 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('/{id}/edit', [AdminController::class, 'edit']);
     Route::put('/{id}', [AdminController::class, 'update']); //menyimpan perubahan data user
     Route::delete('/{id}', [AdminController::class, 'destroy']);
+});
+
+Route::group(['prefix' => 'penerbit'], function() {
+    Route::get('/', [PenerbitController::class, 'index']);
+    Route::post('/list', [PenerbitController::class, 'list']); //menampilkan data uer dalam bentuk json untuk datatables
+    Route::get('/create', [PenerbitController::class, 'create']);
+    Route::post('/', [PenerbitController::class, 'store']); //menyimpan data user baru
+    Route::get('/{id}', [PenerbitController::class, 'show']);
+    Route::get('/{id}/edit', [PenerbitController::class, 'edit']);
+    Route::put('/{id}', [PenerbitController::class, 'update']); //menyimpan perubahan data user
+    Route::delete('/{id}', [PenerbitController::class, 'destroy']);
 });
 
 

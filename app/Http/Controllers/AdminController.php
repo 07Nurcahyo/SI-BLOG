@@ -163,7 +163,7 @@ class AdminController extends Controller
         $request->validate([
             'isbn'          => 'required|string|max:50',
             'judul_buku'    => 'required|string|max:200',
-            'tahun_terbit'  => 'required|year',
+            'tahun_terbit'  => 'required',
             'kode_penerbit' => 'required|string|max:10', //fk
             'kode_kategori' => 'required|string|max:10', //fk
             'penulis'       => 'required|string|max:100',

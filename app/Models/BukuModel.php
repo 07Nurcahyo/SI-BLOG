@@ -11,7 +11,7 @@ class BukuModel extends Model
     use HasFactory;
 
     protected $table = 'buku';
-    protected $primarykey = 'id_buku';
+    protected $primaryKey = 'id_buku';
 
     protected $fillable = [
         'isbn',
