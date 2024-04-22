@@ -5,7 +5,9 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PenerbitController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\LokasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +33,7 @@ Route::get('/backup_admin', [AdminController::class, 'backup']);
 
 Route::group(['prefix' => 'admin'], function() {
     Route::get('/', [AdminController::class, 'index']);
+    Route::get('/list', [AdminController::class, 'list']); //menampilkan data uer dalam bentuk json untuk datatables
     Route::post('/list', [AdminController::class, 'list']); //menampilkan data uer dalam bentuk json untuk datatables
     Route::get('/create', [AdminController::class, 'create']);
     Route::post('/', [AdminController::class, 'store']); //menyimpan data user baru
@@ -49,6 +52,28 @@ Route::group(['prefix' => 'penerbit'], function() {
     Route::get('/{id}/edit', [PenerbitController::class, 'edit']);
     Route::put('/{id}', [PenerbitController::class, 'update']); //menyimpan perubahan data user
     Route::delete('/{id}', [PenerbitController::class, 'destroy']);
+});
+
+Route::group(['prefix' => 'kategori'], function() {
+    Route::get('/', [KategoriController::class, 'index']);
+    Route::post('/list', [KategoriController::class, 'list']); //menampilkan data uer dalam bentuk json untuk datatables
+    Route::get('/create', [KategoriController::class, 'create']);
+    Route::post('/', [KategoriController::class, 'store']); //menyimpan data user baru
+    Route::get('/{id}', [KategoriController::class, 'show']);
+    Route::get('/{id}/edit', [KategoriController::class, 'edit']);
+    Route::put('/{id}', [KategoriController::class, 'update']); //menyimpan perubahan data user
+    Route::delete('/{id}', [KategoriController::class, 'destroy']);
+});
+
+Route::group(['prefix' => 'lokasi'], function() {
+    Route::get('/', [LokasiController::class, 'index']);
+    Route::post('/list', [LokasiController::class, 'list']); //menampilkan data uer dalam bentuk json untuk datatables
+    Route::get('/create', [LokasiController::class, 'create']);
+    Route::post('/', [LokasiController::class, 'store']); //menyimpan data user baru
+    Route::get('/{id}', [LokasiController::class, 'show']);
+    Route::get('/{id}/edit', [LokasiController::class, 'edit']);
+    Route::put('/{id}', [LokasiController::class, 'update']); //menyimpan perubahan data user
+    Route::delete('/{id}', [LokasiController::class, 'destroy']);
 });
 
 

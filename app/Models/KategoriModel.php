@@ -11,9 +11,11 @@ class KategoriModel extends Model
     use HasFactory;
 
     protected $table = 'kategori';
-    protected $primarykey = 'id_kategori';
+    protected $primaryKey = 'id_kategori';
+    protected $keyType = 'string';
+    public $incrementing = false;
 
-    protected $fillable = ['jenis_kategori'];
+    protected $fillable = ['id_kategori', 'jenis_kategori'];
 
     public function buku(): HasMany{
         return $this->hasMany(BukuModel::class, 'id_buku', 'id_buku');

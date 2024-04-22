@@ -29,7 +29,7 @@ class PenerbitController extends Controller
         //filter
         if ($request->id_penerbit) {
             $p = strval($request->id_penerbit);
-            $penerbits->where('kode_penerbit', $p);
+            $penerbits->where('id_penerbit', $p);
         }
         return DataTables::of($penerbits)
             ->addIndexColumn() // menambahkan kolom index / no urut (default nama kolom: DT_RowIndex)
@@ -66,7 +66,7 @@ class PenerbitController extends Controller
         return redirect('/penerbit')->with('success', 'Data penerbit berhasil disimpan!');
     }
     public function show(String $id){
-        $penerbit = PenerbitModel::find($id);
+        $penerbit = PenerbitModel::where(['id_penerbit'=>$id])->first();
         $breadcrumb = (object) [
             'title' => 'Detail Penerbit',
             'list'  => ['Home', 'Penerbit', 'Detail']

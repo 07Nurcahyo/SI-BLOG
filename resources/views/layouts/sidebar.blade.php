@@ -48,6 +48,18 @@
                 <p>Data Penerbit</p>
             </a>
         </li>
+        <li class="nav-item">
+          <a href="{{ url('/kategori') }}" class="nav-link {{ ($activeMenu == 'kategori') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-list"></i>
+              <p>Data Kategori</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url('/lokasi') }}" class="nav-link {{ ($activeMenu == 'lokasi') ? 'active' : '' }}">
+              <i class="nav-icon fa fa-map-marker"></i>
+              <p>Data Lokasi Buku</p>
+          </a>
+        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

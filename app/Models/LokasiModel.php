@@ -11,9 +11,11 @@ class LokasiModel extends Model
     use HasFactory;
 
     protected $table = 'lokasi';
-    protected $primarykey = 'id_rak';
+    protected $primaryKey = 'id_rak';
+    protected $keyType = 'string';
+    public $incrementing = false;
 
-    protected $fillable = ['nama_rak', 'nama_ruang', 'lantai'];
+    protected $fillable = ['id_rak', 'nama_rak', 'nama_ruang', 'lantai'];
 
     public function buku(): HasMany{
         return $this->hasMany(BukuModel::class, 'id_buku', 'id_buku');

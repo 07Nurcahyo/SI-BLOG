@@ -6,23 +6,23 @@
             <div class="card-tools"></div>
         </div>
         <div class="card-body">
-            @empty($penerbit)
+            @empty($kategori)
             <div class="alert alert-danger alert-dismissible">
                 <h5><i class="icon fas fa-ban"></i> Kesalahan!</h5> Data yang Anda cari tidak ditemukan.
             </div>
             @else
             <table class="table table-bordered table-striped table-hover table-sm">
                 <tr>
-                    <th>ID Penerbit</th>
-                    <td>{{ $penerbit->id_penerbit }}</td>
+                    <th>ID Kategori</th>
+                    <td>{{ $kategori->id_kategori }}</td>
                 </tr>
                 <tr>
-                    <th>Nama Penerbit</th>
-                    <td>{{ $penerbit->nama_penerbit }}</td>
+                    <th>Jenis Kategori</th>
+                    <td>{{ $kategori->jenis_kategori }}</td>
                 </tr>
             </table>
             @endempty
-            <a href="{{ url('penerbit') }}" class="btn btn-sm btn-default mt-2">Kembali</a>
+            <a href="{{ url('kategori') }}" class="btn btn-sm btn-default mt-2">Kembali</a>
         </div>
     </div>
 @endsection
