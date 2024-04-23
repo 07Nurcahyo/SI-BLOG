@@ -1,4 +1,4 @@
-<p align="center"><a href="" target="_blank"><img src="{{asset('img/ekatalog.png')}}" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="" target="_blank"><img src="img/ekatalog.png" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
