@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 27, 2024 at 04:02 AM
+-- Generation Time: Apr 23, 2024 at 07:25 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -29,20 +29,13 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `id_admin` bigint UNSIGNED NOT NULL,
-  `username` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_admin` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jenis_kelamin` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_admin` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jenis_kelamin` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `admin`
---
-
-INSERT INTO `admin` (`id_admin`, `username`, `password`, `nama_admin`, `jenis_kelamin`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'root', 'nur', 'L', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -52,13 +45,13 @@ INSERT INTO `admin` (`id_admin`, `username`, `password`, `nama_admin`, `jenis_ke
 
 CREATE TABLE `buku` (
   `id_buku` bigint UNSIGNED NOT NULL,
-  `isbn` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `judul_buku` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `isbn` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `judul_buku` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tahun_terbit` year NOT NULL,
-  `kode_penerbit` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `kode_kategori` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `penulis` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `kode_rak` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kode_penerbit` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kode_kategori` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `penulis` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kode_rak` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `stok` int NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -69,7 +62,7 @@ CREATE TABLE `buku` (
 --
 
 INSERT INTO `buku` (`id_buku`, `isbn`, `judul_buku`, `tahun_terbit`, `kode_penerbit`, `kode_kategori`, `penulis`, `kode_rak`, `stok`, `created_at`, `updated_at`) VALUES
-(1, '978-602-8758-27-7', 'Pemroraman Brorientasi Objek C#', 2011, 'INB', 'PG', 'Erico Darmawan H. & Laurentius Risal', 'R1', 1, NULL, NULL),
+(1, '978-602-8758-27-7', 'Pemrograman Brorientasi Objek C#', 2011, 'INB', 'PG', 'Erico Darmawan H. & Laurentius Risal', 'R1', 1, NULL, '2024-04-22 06:37:59'),
 (2, '978-979-29-1664-5', 'Cepat Kuasai PHP & MySQL', 2010, 'AND', 'PG', 'Andreas Hery Prasetya', 'R1', 1, NULL, NULL),
 (3, '978-602-8758-44-4', 'Belajar Otodidak Pemrograman Web dengan PHP +Oracle', 2011, 'INB', 'PG', 'Budi Raharjo', 'R1', 2, NULL, NULL),
 (4, '978-979-29-1301-9', 'Mengembangkan Aplikasi Basis Data Menggunakan C# +SQLServer', 2010, 'AND', 'PG', 'Adi Nugroho', 'R1', 2, NULL, NULL),
@@ -129,11 +122,11 @@ INSERT INTO `buku` (`id_buku`, `isbn`, `judul_buku`, `tahun_terbit`, `kode_pener
 
 CREATE TABLE `failed_jobs` (
   `id` bigint UNSIGNED NOT NULL,
-  `uuid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -144,8 +137,8 @@ CREATE TABLE `failed_jobs` (
 --
 
 CREATE TABLE `kategori` (
-  `id_kategori` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jenis_kategori` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_kategori` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jenis_kategori` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -158,9 +151,10 @@ INSERT INTO `kategori` (`id_kategori`, `jenis_kategori`, `created_at`, `updated_
 ('IIN', 'Ilmu Informasi', NULL, NULL),
 ('ITT', 'Ilmu Terapan dan Teknologi', NULL, NULL),
 ('KHO', 'Kesenian, Hiburan, dan Olahraga', NULL, NULL),
+('LA', 'Laporan Akhir', NULL, NULL),
 ('LSG', 'Literatur, Sejarah, Geografi', NULL, NULL),
+('MB', 'Manual Book', NULL, NULL),
 ('PG', 'Pemrograman', NULL, NULL),
-('tes1', 'tes', NULL, NULL),
 ('UIK', 'Umum dan Ilmu Komputer', NULL, NULL);
 
 -- --------------------------------------------------------
@@ -170,9 +164,9 @@ INSERT INTO `kategori` (`id_kategori`, `jenis_kategori`, `created_at`, `updated_
 --
 
 CREATE TABLE `lokasi` (
-  `id_rak` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_rak` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_ruang` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_rak` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_rak` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_ruang` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lantai` int NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -186,9 +180,10 @@ INSERT INTO `lokasi` (`id_rak`, `nama_rak`, `nama_ruang`, `lantai`, `created_at`
 ('R1', 'Rak 1', 'Ruang Baca JTI', 6, NULL, NULL),
 ('R2', 'Rak 2', 'Ruang Baca JTI', 6, NULL, NULL),
 ('R3', 'Rak 3', 'Ruang Baca JTI', 6, NULL, NULL),
+('R4', 'Rak 4', 'Ruang Baca JTI', 6, NULL, NULL),
+('R5', 'Rak 5', 'Ruang Baca JTI', 6, NULL, NULL),
 ('R6', 'Rak 6', 'Ruang Baca JTI', 6, NULL, NULL),
-('R8', 'Rak 8', 'Ruang Baca JTI', 6, NULL, NULL),
-('ts1', 'tes', 'tes', 1, NULL, NULL);
+('R8', 'Rak 8', 'Ruang Baca JTI', 6, NULL, '2024-04-22 06:19:33');
 
 -- --------------------------------------------------------
 
@@ -198,7 +193,7 @@ INSERT INTO `lokasi` (`id_rak`, `nama_rak`, `nama_ruang`, `lantai`, `created_at`
 
 CREATE TABLE `migrations` (
   `id` int UNSIGNED NOT NULL,
-  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -213,10 +208,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (5, '2024_02_22_090427_create_products_table', 1),
 (6, '2024_03_02_065915_create_admin_table', 1),
-(7, '2024_03_02_071703_create_penulis_table', 2),
-(8, '2024_03_02_072007_create_kategori_table', 3),
-(9, '2024_03_02_072324_create_lokasi_table', 4),
-(10, '2024_03_02_072751_create_buku_table', 5);
+(7, '2024_03_02_071703_create_penulis_table', 1),
+(8, '2024_03_02_072007_create_kategori_table', 1),
+(9, '2024_03_02_072324_create_lokasi_table', 1),
+(10, '2024_03_02_072325_create_penerbit_table', 1),
+(11, '2024_03_02_072751_create_buku_table', 1);
 
 -- --------------------------------------------------------
 
@@ -225,8 +221,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `password_reset_tokens` (
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -237,8 +233,8 @@ CREATE TABLE `password_reset_tokens` (
 --
 
 CREATE TABLE `penerbit` (
-  `id_penerbit` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_penerbit` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_penerbit` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_penerbit` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -248,7 +244,7 @@ CREATE TABLE `penerbit` (
 --
 
 INSERT INTO `penerbit` (`id_penerbit`, `nama_penerbit`, `created_at`, `updated_at`) VALUES
-('AND', 'ANDI', NULL, NULL),
+('AND', 'ANDI', NULL, '2024-04-22 05:46:56'),
 ('ANW', 'ANDI dan Wahana Komputer', NULL, NULL),
 ('BAP', 'Bayumedia Publishing', NULL, NULL),
 ('BSY', 'Bagian Penerbitan STIE YKPN', NULL, NULL),
@@ -262,7 +258,21 @@ INSERT INTO `penerbit` (`id_penerbit`, `nama_penerbit`, `created_at`, `updated_a
 ('LOK', 'LOKOMEDIA', NULL, NULL),
 ('MED', 'MediaKom', NULL, NULL),
 ('MOD', 'Modul', NULL, NULL),
+('POL', 'Polinema', NULL, NULL),
 ('PRC', 'PT. Rineka Cipta', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `penulis`
+--
+
+CREATE TABLE `penulis` (
+  `id_penulis` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_penulis` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -272,11 +282,11 @@ INSERT INTO `penerbit` (`id_penerbit`, `nama_penerbit`, `created_at`, `updated_a
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tokenable_id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -291,21 +301,13 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `products` (
   `id` bigint UNSIGNED NOT NULL,
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `price` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `products`
---
-
-INSERT INTO `products` (`id`, `title`, `price`, `product_code`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'tes', '13', '8433056438', 'tes', '2024-03-02 01:21:32', '2024-03-02 01:21:32'),
-(2, 'tes', '132', '5369554658', 'tes', '2024-03-02 01:22:24', '2024-03-02 01:22:24');
 
 -- --------------------------------------------------------
 
@@ -315,11 +317,11 @@ INSERT INTO `products` (`id`, `title`, `price`, `product_code`, `description`, `
 
 CREATE TABLE `users` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -339,10 +341,9 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `buku`
   ADD PRIMARY KEY (`id_buku`),
+  ADD KEY `buku_kode_penerbit_index` (`kode_penerbit`),
   ADD KEY `buku_kode_kategori_index` (`kode_kategori`),
-  ADD KEY `buku_kode_penulis_index` (`penulis`),
-  ADD KEY `buku_kode_rak_index` (`kode_rak`),
-  ADD KEY `kode_penerbit` (`kode_penerbit`);
+  ADD KEY `buku_kode_rak_index` (`kode_rak`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -382,6 +383,12 @@ ALTER TABLE `penerbit`
   ADD PRIMARY KEY (`id_penerbit`);
 
 --
+-- Indexes for table `penulis`
+--
+ALTER TABLE `penulis`
+  ADD PRIMARY KEY (`id_penulis`);
+
+--
 -- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
@@ -410,13 +417,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_admin` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id_buku` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+  MODIFY `id_buku` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -428,7 +435,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -440,7 +447,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -456,9 +463,9 @@ ALTER TABLE `users`
 -- Constraints for table `buku`
 --
 ALTER TABLE `buku`
-  ADD CONSTRAINT `buku_ibfk_1` FOREIGN KEY (`kode_rak`) REFERENCES `lokasi` (`id_rak`),
-  ADD CONSTRAINT `buku_ibfk_2` FOREIGN KEY (`kode_kategori`) REFERENCES `kategori` (`id_kategori`),
-  ADD CONSTRAINT `buku_ibfk_3` FOREIGN KEY (`kode_penerbit`) REFERENCES `penerbit` (`id_penerbit`);
+  ADD CONSTRAINT `buku_kode_kategori_foreign` FOREIGN KEY (`kode_kategori`) REFERENCES `kategori` (`id_kategori`),
+  ADD CONSTRAINT `buku_kode_penerbit_foreign` FOREIGN KEY (`kode_penerbit`) REFERENCES `penerbit` (`id_penerbit`),
+  ADD CONSTRAINT `buku_kode_rak_foreign` FOREIGN KEY (`kode_rak`) REFERENCES `lokasi` (`id_rak`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
