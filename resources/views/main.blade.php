@@ -81,6 +81,7 @@
               <h4>1000</h4>
               <p>Skripsi & TA</p>
             </span>
+            
           </div>
         </div>
         <br><br>

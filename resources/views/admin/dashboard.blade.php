@@ -152,4 +152,5 @@
 
 @push('js')
 <script src="{{ asset('adminlte/plugins/chart.js/Chart.min.js') }}"></script>
+{{-- <script src="{{ asset('dist/js/pages/dashboard2.js') }}"></script> --}}
 @endpush

@@ -86,6 +86,7 @@
 <script src="{{ asset('plugins/jquery-mapael/jquery.mapael.min.js') }}"></script>
 <!-- ChartJS -->
 <script src="{{ asset('adminlte/plugins/chart.js/Chart.min.js') }}"></script>
+<script src="{{ asset('adminlte/dist/js/pages/dashboard2.js') }}"></script>
 <!-- overlayScrollbars -->
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE for demo purposes -->
