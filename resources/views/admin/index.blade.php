@@ -33,7 +33,7 @@
             <table class="table table-bordered table-striped table-hover " id="table_buku">
                 <thead>
                     <tr style="text-align: center">
-                        <th>ID</th>
+                        <th style="width: 45px">ID</th>
                         <th>ISBN</th>
                         <th>Judul Buku</th>
                         <th>Tahun Terbit</th>
@@ -41,6 +41,7 @@
                         <th>Kategori</th>
                         <th>Penulis</th>
                         <th>Lokasi</th>
+                        <th>Stok</th>
                         {{-- <th>QRCode</th> --}}
                         <th style="width: 155px">Aksi</th>
                     </tr>
@@ -111,6 +112,12 @@
                 },
                 {
                     data: "lokasi.nama_rak",
+                    className: "",
+                    orderable: false, // orderable: true, jika ingin kolom ini bisa diurutkan
+                    searchable: false // searchable: true, jika ingin kolom ini bisa dicari
+                },
+                {
+                    data: "stok",
                     className: "",
                     orderable: false, // orderable: true, jika ingin kolom ini bisa diurutkan
                     searchable: false // searchable: true, jika ingin kolom ini bisa dicari

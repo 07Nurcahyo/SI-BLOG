@@ -30,6 +30,7 @@ Route::post('actionlogin', [DashboardController::class, 'index'])->name('index')
 Route::get('main', [AdminController::class, 'main'])->name('main');
 Route::get('actionlogout', [AdminController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
 Route::get('/data_buku', [AdminController::class, 'data_buku']);
+Route::get('/statistik', [MainController::class, 'statistik']);
 
 Route::get('/backup_admin', [AdminController::class, 'backup']);
 

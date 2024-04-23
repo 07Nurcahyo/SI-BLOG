@@ -34,9 +34,9 @@
 
     <!-- form login -->
         <div class="container mx-auto">
-            <div class="row justify-content-center">
+            <div class="row d-flex justify-content-center">
                 <div class="col-md-6">
-                    <div class="card">
+                    <div class="card ">
                         <div class="card-body">
                             <form action="{{ url('actionlogin') }}" method="post">
                                 @csrf

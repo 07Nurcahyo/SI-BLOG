@@ -85,9 +85,9 @@
         </div>
         <br><br>
         <div class="row justify-content-center content text-center">
-            <button class="badge btn statistik">
+            <a href="#" class="badge btn statistik">
               <p>Statistik &nbsp;&nbsp;<i class="fa fa-long-arrow-right" aria-hidden="true"></i></p>
-            </button>
+            </a>
         </div>
       </div>
     </section>

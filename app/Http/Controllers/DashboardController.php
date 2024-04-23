@@ -12,7 +12,7 @@ class DashboardController extends Controller
             'list' => ['Home', 'Dashboard']
         ];
         $page = (object) [
-            'title' => 'Daftar dashboard'
+            'title' => ''
         ];
         $activeMenu = 'dashboard'; //set menu yang sedang aktif
         return view('admin.dashboard', ['breadcrumb' => $breadcrumb, 'page' => $page, 'activeMenu' => $activeMenu]);

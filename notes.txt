@@ -6,6 +6,11 @@ ALTER TABLE buku ADD FOREIGN KEY (kode_rak) REFERENCES rak(id_rak);
 dashboard :
 - visualisasi (line chart, barchart, bervariasi)
 
+- stok buku hilang 
+- notif stok buku kurang
+- transaksi keluar masuk buku
+- status ketersedian buku
+- notifikasi ketersediaan
 
 command import :
 LOAD DATA INFILE 'D:/Semester 6/Proyek Sistem Informasi/buku.csv'
