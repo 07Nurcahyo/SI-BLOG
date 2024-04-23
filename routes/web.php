@@ -8,6 +8,8 @@ use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\LokasiController;
+use App\Http\Controllers\DashboardController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,12 +26,16 @@ Route::get('/', [MainController::class, 'index']);
 // Route::get('/admin', [AdminController::class, 'viewbuku'])->name('/admin');
 
 Route::get('/login_admin', [AdminController::class, 'login'])->name('login');
-Route::post('actionlogin', [AdminController::class, 'index'])->name('index');
+Route::post('actionlogin', [DashboardController::class, 'index'])->name('index');
 Route::get('main', [AdminController::class, 'main'])->name('main');
 Route::get('actionlogout', [AdminController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
 Route::get('/data_buku', [AdminController::class, 'data_buku']);
 
 Route::get('/backup_admin', [AdminController::class, 'backup']);
+
+Route::group(['prefix' => 'dashboard'], function() {
+    Route::get('/', [DashboardController::class, 'index']);
+});
 
 Route::group(['prefix' => 'admin'], function() {
     Route::get('/', [AdminController::class, 'index']);

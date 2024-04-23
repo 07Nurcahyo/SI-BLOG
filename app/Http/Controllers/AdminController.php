@@ -34,7 +34,7 @@ class AdminController extends Controller
     public function login()
     {
         if (Auth::check()) {
-            return redirect('main');
+            return redirect('admin.dashboard');
         }else{
             return view('admin/admin_login');
         }
@@ -48,7 +48,7 @@ class AdminController extends Controller
         ];
         $user = AdminModel::where([['username', $data['username']],['password', $data['password']]])->first();
         if ($user != null) {
-            return view('admin.index');
+            return view('index');
         }else{
             // Session::flash('error', 'Username atau Password Salah');
             return redirect('login_admin');

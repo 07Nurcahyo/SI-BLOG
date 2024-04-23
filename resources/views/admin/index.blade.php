@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <table class="table table-bordered table-striped table-hover table-sm" id="table_buku">
+            <table class="table table-bordered table-striped table-hover " id="table_buku">
                 <thead>
                     <tr style="text-align: center">
                         <th>ID</th>

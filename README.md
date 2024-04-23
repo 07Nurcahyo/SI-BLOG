@@ -1,4 +1,4 @@
-<p align="center"><a href="" target="_blank"><img src="public/img/ekatalog.png" width="400" alt=""></a></p>
+<p align="center"><a href="" target="_blank"><img src="public/img/ekatalog.png" class="img-thumbnail"></a></p>
 
 ## About SI-BLOG
 
