@@ -81,12 +81,11 @@
               <h4>1000</h4>
               <p>Skripsi & TA</p>
             </span>
-            
           </div>
         </div>
         <br><br>
         <div class="row justify-content-center content text-center">
-            <a href="#" class="badge btn statistik">
+            <a href="guest/statistik" class="badge btn statistik">
               <p>Statistik &nbsp;&nbsp;<i class="fa fa-long-arrow-right" aria-hidden="true"></i></p>
             </a>
         </div>

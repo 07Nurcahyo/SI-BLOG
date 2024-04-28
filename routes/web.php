@@ -9,6 +9,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GuestController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -83,7 +84,8 @@ Route::group(['prefix' => 'lokasi'], function() {
     Route::delete('/{id}', [LokasiController::class, 'destroy']);
 });
 
-
+Route::get('/guest/statistik', [GuestController::class, 'index']);
+Route::get('/main', [GuestController::class, 'main']);
 
 // qrcode
 // Route::get('/qrcode',[ProductController::class,'qrcode']);
