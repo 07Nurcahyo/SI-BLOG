@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BooksController;
 use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\BukuController;
@@ -87,6 +88,8 @@ Route::group(['prefix' => 'lokasi'], function() {
 Route::get('/guest/statistik', [GuestController::class, 'index']);
 Route::get('/main', [GuestController::class, 'main']);
 
+Route::get('/guest/listbook', [BooksController::class, 'index']);
+Route::get('/main', [BooksController::class, 'main']);
 // qrcode
 // Route::get('/qrcode',[ProductController::class,'qrcode']);
 // Route::get('/create',[ProductController::class,'create']);
