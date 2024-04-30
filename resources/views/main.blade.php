@@ -53,7 +53,7 @@
             <div class="card custom-card">
               <img src="img/bukumain1.png" class="card-img-top card-gambar position-relative start-50 translate-middle" alt="...">
               <div class="card-body">
-                <h1>900</h1>
+                <h1 id="jumlah_buku">900</h1>
                 <h5 class="card-title">Buku Ruang Baca</h5>
               </div>
             </div>
@@ -62,7 +62,7 @@
             <div class="card custom-card">
               <img src="img/bukumain1.png" class="card-img-top card-gambar position-relative start-50 translate-middle" alt="...">
               <div class="card-body">
-                <h1>900</h1>
+                <h1 id="jumlah_kategori">900</h1>
                 <h5 class="card-title">Kategori</h5>
               </div>
             </div>
@@ -98,5 +98,23 @@
   <script src="bootstrap/dist/js/jquery-3.3.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/style.js"></script>
+  <script src="{{ asset('adminlte/plugins/chart.js/Chart.min.js') }}"></script>
+  <script src="{{ asset('adminlte/dist/js/pages/dashboard2.js') }}"></script>
+  <script>
+    $(function () {
+      async function getBookCount(){
+        try {
+          const response = await fetch('http://localhost/SI-BLOG/public/api/getBookCount');
+          const data = await response.json();
+          $('#jumlah_buku').html(data.book_count);
+          $('#jumlah_kategori').html(data.category_count);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          return null; // Handle errors gracefully, e.g., display an error message
+        }
+      }
+      getBookCount();
+    })
+  </script>
 </body>
 </html>

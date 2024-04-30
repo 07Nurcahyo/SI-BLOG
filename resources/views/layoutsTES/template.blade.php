@@ -54,8 +54,6 @@
     <!-- /.content -->
   {{-- </div> --}}
   <!-- /.content-wrapper -->
-
-  {{-- @include('layoutsTES.footer') --}}
 </div>
 <!-- ./wrapper -->
 
@@ -76,6 +74,9 @@
 <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.colvis.min.js') }}"></script>
+{{-- graph --}}
+<script src="{{ asset('adminlte/plugins/chart.js/Chart.min.js') }}"></script>
+<script src="{{ asset('adminlte/dist/js/pages/dashboard2.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
