@@ -19,9 +19,6 @@
                           <i class="fas fa-minus"></i>
                         </button>
                         <div class="btn-group">
-                          <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
-                            <i class="fas fa-wrench"></i>
-                          </button>
                           <div class="dropdown-menu dropdown-menu-right" role="menu">
                             <a href="#" class="dropdown-item">ini link</a>
                             {{-- <a href="#" class="dropdown-item">Another action</a>
@@ -30,9 +27,6 @@
                             <a href="#" class="dropdown-item">Separated link</a> --}}
                           </div>
                         </div>
-                        <button type="button" class="btn btn-tool" data-card-widget="remove">
-                          <i class="fas fa-times"></i>
-                        </button>
                       </div>
                     </div>
                     <!-- /.card-header -->
