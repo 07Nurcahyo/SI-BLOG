@@ -19,3 +19,9 @@ FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS (id_buku,isbn,judul_buku,tahun_terbit,kode_penerbit,kode_kategori,penulis,kode_rak,stok);
+
+query kategori
+SELECT COUNT(*), jenis_kategori FROM buku JOIN kategori ON buku.kode_kategori = kategori.id_kategori GROUP BY jenis_kategori;
+
+SELECT COUNT(*) FROM buku
+SELECT COUNT(DISTINCT penulis) FROM buku;

@@ -14,6 +14,12 @@ $(function () {
 
   // Get context with jQuery - using jQuery's .get() method.
   var salesChartCanvas = $('#salesChart').get(0).getContext('2d')
+  const request = new Request("localhost/Bagus-Nurcahyo_PWL/PWL_POS/public/api");
+
+  const url = request.url;
+  const method = request.method;
+  const credentials = request.credentials;
+
 
   var salesChartData = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],

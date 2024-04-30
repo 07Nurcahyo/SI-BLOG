@@ -9,6 +9,7 @@ use App\Models\KategoriModel;
 use App\Models\LokasiModel;
 use App\Models\PenerbitModel;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Session;
 use Yajra\DataTables\Facades\DataTables;
@@ -193,6 +194,33 @@ class AdminController extends Controller
         } catch (\Illuminate\Database\QueryException $te) {
             return redirect('/admin')->with('error', 'Data buku gagal di hapus karena masih terdapat table lain terkait dengan data ini');
         }
+    }
+    public function getBookCountByYear()
+    {
+        $data = BukuModel::select(DB::raw('COUNT(*) as total_buku'), 'tahun_terbit')
+            ->groupBy('tahun_terbit')
+            ->orderBy('tahun_terbit')
+            ->get();
+
+        return response()->json($data);
+    }
+    public function getBookCountByCategory()
+    {
+        $data = BukuModel::select(DB::raw('COUNT(*) as total_buku'), 'jenis_kategori')
+            ->join('kategori', 'buku.kode_kategori', '=', 'kategori.id_kategori')
+            ->groupBy('jenis_kategori')
+            ->get();
+
+        return response()->json($data);
+    }
+    public function getBookCount(){
+        $data = [
+            'book_count' => BukuModel::count(),
+            'category_count' => KategoriModel::count(),
+            'publisher_count' => PenerbitModel::count(),
+            'distinct_author_count' => BukuModel::select(DB::raw('COUNT(DISTINCT penulis) AS distinct_author_count'))->first()->distinct_author_count,
+        ];
+        return response()->json($data);
     }
 
 }
