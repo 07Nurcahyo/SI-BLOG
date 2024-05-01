@@ -13,7 +13,7 @@ dashboard :
 - notifikasi ketersediaan
 
 command import :
-LOAD DATA INFILE 'D:/Semester 6/Proyek Sistem Informasi/buku.csv'
+LOAD DATA INFILE 'C:/Users/bagus/Documents/bukuupdate.csv'
 INTO TABLE buku
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'

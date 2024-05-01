@@ -51,18 +51,18 @@
           <p class="text-koleksi">Koleksi ruang baca</p>
           <div class="col-lg-3">
             <div class="card custom-card">
-              <img src="img/bukumain1.png" class="card-img-top card-gambar position-relative start-50 translate-middle" alt="...">
+              <img src="img/books.svg" class="card-img-top card-gambar position-relative start-50 translate-middle" alt="...">
               <div class="card-body">
-                <h1 id="jumlah_buku">900</h1>
+                <h1 id="jumlah_buku">0</h1>
                 <h5 class="card-title">Buku Ruang Baca</h5>
               </div>
             </div>
           </div>
           <div class="col-lg-3 kategori">
             <div class="card custom-card">
-              <img src="img/bukumain1.png" class="card-img-top card-gambar position-relative start-50 translate-middle" alt="...">
+              <img src="img/categories.svg" class="card-img-top card-gambar position-relative start-50 translate-middle" alt="...">
               <div class="card-body">
-                <h1 id="jumlah_kategori">900</h1>
+                <h1 id="jumlah_kategori">0</h1>
                 <h5 class="card-title">Kategori</h5>
               </div>
             </div>
@@ -72,13 +72,13 @@
         <div class="row justify-content-center content text-center">
           <div class="col-lg-4">
             <span class="badge text-bg-light">
-              <h4>1000</h4>
+              <h4 id="manual_book">0</h4>
               <p>Manual Book</p>
             </span>
           </div>
           <div class="col-lg-4 skripsi">
             <span class="badge text-bg-light">
-              <h4>1000</h4>
+              <h4 id="skripsi">0</h4>
               <p>Skripsi & TA</p>
             </span>
           </div>
@@ -94,8 +94,9 @@
 
 </div>
 
+  <!-- jQuery -->
+  <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script src="bootstrap/dist/js/jquery-3.3.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/style.js"></script>
   <script src="{{ asset('adminlte/plugins/chart.js/Chart.min.js') }}"></script>
@@ -106,6 +107,7 @@
         try {
           const response = await fetch('http://localhost/SI-BLOG/public/api/getBookCount');
           const data = await response.json();
+          console.log(data);
           $('#jumlah_buku').html(data.book_count);
           $('#jumlah_kategori').html(data.category_count);
         } catch (error) {
@@ -114,6 +116,26 @@
         }
       }
       getBookCount();
+
+      // manual book dan skripsi
+      async function getCategoryCountData() {
+        try {
+          const response = await fetch('http://localhost/SI-BLOG/public/api/getBookCountByCategory');
+          const data = await response.json();
+          $.each(data, function(i, item) {
+            if (data[i].jenis_kategori=='Manual Book') {
+              $('#manual_book').html(data[i].total_buku);
+            }else if (data[i].jenis_kategori=='Skripsi & TA') {
+              $('#skripsi').html(data[i].total_buku);
+            }
+            // console.log( data[i].jenis_kategori );
+          });
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          return null; // Handle errors gracefully, e.g., display an error message
+        }
+      }
+      getCategoryCountData();
     })
   </script>
 </body>

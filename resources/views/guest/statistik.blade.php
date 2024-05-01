@@ -34,7 +34,7 @@
                       <div class="chart">
                         <!-- Sales Chart Canvas -->
                         {{-- <canvas id="salesChart" height="180" style="height: 180px;"></canvas> --}}
-                        <canvas id="bukuChart" height="" style="height: 180px;"></canvas>
+                        <canvas id="bukuChart" height="130" style=""></canvas>
                       </div>
                       <!-- /.chart-responsive -->
                     </div>
@@ -44,7 +44,7 @@
                         <p class="text-center">
                           <strong>Jumlah Kategori</strong>
                         </p>
-                        <canvas id="kategoriChart" height="300" style=""></canvas>
+                        <canvas id="kategoriChart" height="250" style=""></canvas>
                       </div>
                     </div>
                     <!-- /.col -->
