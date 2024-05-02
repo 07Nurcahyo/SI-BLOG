@@ -25,3 +25,11 @@ SELECT COUNT(*), jenis_kategori FROM buku JOIN kategori ON buku.kode_kategori = 
 
 SELECT COUNT(*) FROM buku
 SELECT COUNT(DISTINCT penulis) FROM buku;
+
+
+INSERT INTO buku (id_buku, isbn, judul_buku, tahun_terbit, kode_penerbit, kode_kategori, penulis, kode_rak, stok)
+VALUES 
+('73','1','Sistem Pendukung Keputusan Penerima Bantuan Beras Bersubsidi Menggunakan Metode TOPSIS Berbasis Web (Studi Kasus: Kantor Desa Dringu Kabupaten Probolinggo)','2019','POL','MB','Bhaktiar Adi Nugraha, Hanif Hidayatturrohim','R5','1'),
+('75','1','Implementasi Augmented Reality untuk Pengenalan Energi Terbarukan','2017','POL','MB','Damon Satya As Sabili, Rama Adi Nugroho','R5','1'),
+('81','1','Rancang Bangun Sistem Informasi Pengarsipan Pada KB/TK Ceria Mandiri','2022','POL','LA','Abiyan Fawwaz, Erni Srihartini','R6','1')
+;
