@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 23, 2024 at 07:25 AM
+-- Generation Time: May 02, 2024 at 12:49 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -45,7 +45,7 @@ CREATE TABLE `admin` (
 
 CREATE TABLE `buku` (
   `id_buku` bigint UNSIGNED NOT NULL,
-  `isbn` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `isbn` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `judul_buku` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tahun_terbit` year NOT NULL,
   `kode_penerbit` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -112,7 +112,10 @@ INSERT INTO `buku` (`id_buku`, `isbn`, `judul_buku`, `tahun_terbit`, `kode_pener
 (48, '0-321-442-63-6', 'Problem Solving With C++ Sixth Edition', 2006, 'GET', 'ITT', 'Adison Weasley', 'R8', 1, NULL, NULL),
 (49, '978-979-29-1568-6', 'Mengembangkan Aplikasi Basis Data Menggunakan Visual Basic.net dan Oracle', 2010, 'CAO', 'ITT', 'Adi Nugroho', 'R8', 1, NULL, NULL),
 (50, '978-602-6232-21-2', 'Pemrograman Web dengan PHP 7', 2017, 'INB', 'KHO', 'Beta Sidik', 'R8', 1, NULL, NULL),
-(51, '979-3338-33-4', 'Sistem Manajemen Basis Data Pemodelan, Perancangan, dan Terapanya', 2004, 'INB', 'LSG', 'Bambang Harianto', 'R8', 1, NULL, NULL);
+(51, '979-3338-33-4', 'Sistem Manajemen Basis Data Pemodelan, Perancangan, dan Terapanya', 2004, 'INB', 'LSG', 'Bambang Harianto', 'R8', 1, NULL, NULL),
+(54, '1', 'tes', 2000, 'AND', 'IIN', 'tes', 'R1', 1, '2024-04-29 21:41:51', '2024-04-29 21:41:51'),
+(55, '1', 'Tes skripsi dan ta', 2000, 'POL', 'STA', 'Mahasiswa', 'R1', 1, '2024-04-30 20:22:05', '2024-04-30 20:22:05'),
+(56, '1', 'Tes Manual Book', 2000, 'AND', 'MB', 'Wahyu', 'R6', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -148,13 +151,15 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`id_kategori`, `jenis_kategori`, `created_at`, `updated_at`) VALUES
-('IIN', 'Ilmu Informasi', NULL, NULL),
+('IIN', 'Ilmu Informasi', NULL, '2024-04-29 21:38:43'),
 ('ITT', 'Ilmu Terapan dan Teknologi', NULL, NULL),
 ('KHO', 'Kesenian, Hiburan, dan Olahraga', NULL, NULL),
 ('LA', 'Laporan Akhir', NULL, NULL),
 ('LSG', 'Literatur, Sejarah, Geografi', NULL, NULL),
 ('MB', 'Manual Book', NULL, NULL),
 ('PG', 'Pemrograman', NULL, NULL),
+('STA', 'Skripsi & TA', '2024-04-30 20:16:47', '2024-04-30 20:16:47'),
+('TES', 'tes', '2024-04-29 21:37:32', '2024-04-29 21:37:32'),
 ('UIK', 'Umum dan Ilmu Komputer', NULL, NULL);
 
 -- --------------------------------------------------------
@@ -257,6 +262,7 @@ INSERT INTO `penerbit` (`id_penerbit`, `nama_penerbit`, `created_at`, `updated_a
 ('INK', 'INFOKOMPUTER', NULL, NULL),
 ('LOK', 'LOKOMEDIA', NULL, NULL),
 ('MED', 'MediaKom', NULL, NULL),
+('MHS', 'Mahasiswa', '2024-04-30 20:19:22', '2024-04-30 20:19:22'),
 ('MOD', 'Modul', NULL, NULL),
 ('POL', 'Polinema', NULL, NULL),
 ('PRC', 'PT. Rineka Cipta', NULL, NULL);
@@ -423,7 +429,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id_buku` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id_buku` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
