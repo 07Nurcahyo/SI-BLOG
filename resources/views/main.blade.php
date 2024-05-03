@@ -43,7 +43,9 @@
       </div>
     </section>
 
-    <button type="button" class="btn btn-light btn-lg start-50 translate-middle mt-1 rounded-5 lihatSemuaBuku"><i class="fa fa-book" aria-hidden="true"></i> ‎ Lihat Semua Buku</button>
+    <a href="listbook" type="button" class="btn btn-light btn-lg start-50 translate-middle mt-1 rounded-5 lihatSemuaBuku" style="">
+      <p style="padding-top: 10px"><i class="fa fa-book" aria-hidden="true"></i> ‎ Lihat Semua Buku</p>
+    </a>
 
     <section class="koleksi" id="koleksi">
       <div class="container mt-5">

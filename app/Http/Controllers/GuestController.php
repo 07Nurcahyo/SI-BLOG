@@ -10,6 +10,10 @@ class GuestController extends Controller
         return view('guest.statistik');
     }
 
+    public function list(){
+        return view('guest.listbook');
+    }
+
     public function main(){
         return view('main');
     }

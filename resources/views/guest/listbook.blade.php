@@ -63,7 +63,7 @@
                       <img src="https://via.placeholder.com/300/FFFFFF?text=6" class="img-fluid mb-2" alt="white sample"/>
                     </a>
                   </div>
-                  <div class="filtr-item col-sm-2" data-category="1" data-sort="white sample">
+                  {{-- <div class="filtr-item col-sm-2" data-category="1" data-sort="white sample">
                     <a href="https://via.placeholder.com/1200/FFFFFF.png?text=7" data-toggle="lightbox" data-title="sample 7 - white">
                       <img src="https://via.placeholder.com/300/FFFFFF?text=7" class="img-fluid mb-2" alt="white sample"/>
                     </a>
@@ -72,8 +72,8 @@
                     <a href="https://via.placeholder.com/1200/000000.png?text=8" data-toggle="lightbox" data-title="sample 8 - black">
                       <img src="https://via.placeholder.com/300/000000?text=8" class="img-fluid mb-2" alt="black sample"/>
                     </a>
-                  </div>
-                  <div class="filtr-item col-sm-2" data-category="3, 4" data-sort="red sample">
+                  </div> --}}
+                  {{-- <div class="filtr-item col-sm-2" data-category="3, 4" data-sort="red sample">
                     <a href="https://via.placeholder.com/1200/FF0000/FFFFFF.png?text=9" data-toggle="lightbox" data-title="sample 9 - red">
                       <img src="https://via.placeholder.com/300/FF0000/FFFFFF?text=9" class="img-fluid mb-2" alt="red sample"/>
                     </a>
@@ -90,9 +90,9 @@
                   </div>
                   <div class="filtr-item col-sm-2" data-category="2, 4" data-sort="black sample">
                     <a href="https://via.placeholder.com/1200/000000.png?text=12" data-toggle="lightbox" data-title="sample 12 - black">
-                      <img src="https://via.placeholder.com/300/000000?text=12" class="img-fluid mb-2" alt="black sample"/>
+                      <img src="https://via.placeholder.com/300/000000?text=18" class="img-fluid mb-2" alt="black sample"/>
                     </a>
-                  </div>
+                  </div> --}}
                 </div>
               </div>
 
@@ -103,3 +103,4 @@
       </div>
     </div><!-- /.container-fluid -->
   </section>
+  @endsection
