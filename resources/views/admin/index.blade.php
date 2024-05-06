@@ -1,11 +1,9 @@
 @extends('layouts.template')
 @section('content')
     <div class="card card-outline card-primary">
-        <div class="card-header">
+        <div class="card-header d-flex justify-content-between align-items-center">
             <h3 class="card-title">{{ $page->title }}</h3>
-            <div class="card-tools">
-                <a class="btn btn-sm btn-primary mt-1" href="{{ url('admin/create')}}">Tambah</a>
-            </div>
+            <a class="btn btn-sm btn-primary ml-auto" href="{{ url('admin/create')}}">Tambah</a>
         </div>
         <div class="card-body">
             @if (session('success'))
@@ -15,9 +13,9 @@
                 <div class="alert alert-danger">{{ session('error') }}</div>
             @endif
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <div class="form-group row">
-                        <label class="col-1 control-label col-form-label">Filter : </label>
+                        <label class="pl-2 control-label col-form-label">Filter Penerbit : </label>
                         <div class="col-3">
                             <select class="form-control" name="id_penerbit" id="id_penerbit" required>
                                 <option value="">-- Semua --</option>
@@ -25,11 +23,14 @@
                                     <option value="{{ $item->id_penerbit }}">{{ $item->nama_penerbit }}</option>
                                 @endforeach
                             </select>
-                            <small class="form-text text-muted">Penerbit</small>
+                            {{-- <small class="form-text text-muted">Penerbit</small> --}}
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="col-md-4 text-right" >
+                    <div id="buttons" class="btn-group"></div>
+                </div>
+            </div> <br>
             <table class="table table-bordered table-striped table-hover " id="table_buku">
                 <thead>
                     <tr style="text-align: center">
@@ -58,18 +59,18 @@
 <script>
     $(document).ready(function() {
         var dataBuku = $('#table_buku').DataTable({
-            serverSide: true, // serverSide: true, jika ingin menggunakan server side processing
+            serverSide: true,
             ajax: {
-                "url": "{{ url('admin/list') }}",
-                "dataType": "json",
-                "type": "POST",
-                "data": function (d) {
+                url: "{{ url('admin/list') }}",
+                dataType: "json",
+                type: "POST",
+                data: function (d) {
                     d.id_penerbit = $('#id_penerbit').val();
                 }
             },
             columns: [
                 {
-                    data: "DT_RowIndex", // nomor urut dari laravel datatable addIndexColumn()
+                    data: "DT_RowIndex",
                     className: "text-center",
                     orderable: false,
                     searchable: false
@@ -77,62 +78,69 @@
                 {
                     data: "isbn",
                     className: "",
-                    orderable: true, // orderable: true, jika ingin kolom ini bisa diurutkan
-                    searchable: true // searchable: true, jika ingin kolom ini bisa dicari
+                    orderable: true,
+                    searchable: true
                 },
                 {
                     data: "judul_buku",
                     className: "",
-                    orderable: true, // orderable: true, jika ingin kolom ini bisa diurutkan
-                    searchable: true // searchable: true, jika ingin kolom ini bisa dicari
+                    orderable: true,
+                    searchable: true
                 },
                 {
                     data: "tahun_terbit",
                     className: "",
-                    orderable: true, // orderable: true, jika ingin kolom ini bisa diurutkan
-                    searchable: true // searchable: true, jika ingin kolom ini bisa dicari
+                    orderable: true,
+                    searchable: true
                 },
                 {
                     data: "penerbit.nama_penerbit",
                     className: "",
-                    orderable: false, // orderable: true, jika ingin kolom ini bisa diurutkan
-                    searchable: true // searchable: true, jika ingin kolom ini bisa dicari
+                    orderable: false,
+                    searchable: true
                 },
                 {
                     data: "kategori.jenis_kategori",
                     className: "",
-                    orderable: false, // orderable: true, jika ingin kolom ini bisa diurutkan
-                    searchable: false // searchable: true, jika ingin kolom ini bisa dicari
+                    orderable: false,
+                    searchable: false
                 },
                 {
                     data: "penulis",
                     className: "",
-                    orderable: true, // orderable: true, jika ingin kolom ini bisa diurutkan
-                    searchable: true // searchable: true, jika ingin kolom ini bisa dicari
+                    orderable: true,
+                    searchable: true
                 },
                 {
                     data: "lokasi.nama_rak",
                     className: "",
-                    orderable: false, // orderable: true, jika ingin kolom ini bisa diurutkan
-                    searchable: false // searchable: true, jika ingin kolom ini bisa dicari
+                    orderable: false,
+                    searchable: false
                 },
                 {
                     data: "stok",
                     className: "",
-                    orderable: false, // orderable: true, jika ingin kolom ini bisa diurutkan
-                    searchable: false // searchable: true, jika ingin kolom ini bisa dicari
+                    orderable: false,
+                    searchable: false
                 },
                 {
                     data: "aksi",
                     className: "",
                     orderable: false,
-                    searchable: false // searchable: true, jika ingin kolom ini bisa dicari
+                    searchable: false
                 }
-            ]
+            ],
+            buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
+            initComplete: function () {
+                var api = this.api();
+                // api.buttons().container().appendTo('#table_buku_wrapper .col-md-6:eq(0)');
+                api.buttons().container().appendTo('#buttons');
+            }
         });
         $('#id_penerbit').on('change',function(){
             dataBuku.ajax.reload();
         });
+        $('#buttons').html(dataBuku.buttons().container());
     });
 </script>
 @endpush

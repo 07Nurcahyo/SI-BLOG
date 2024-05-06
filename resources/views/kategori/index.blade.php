@@ -1,11 +1,9 @@
 @extends('layouts.template')
 @section('content')
     <div class="card card-outline card-primary">
-        <div class="card-header">
+        <div class="card-header d-flex justify-content-between align-items-center">
             <h3 class="card-title">{{ $page->title }}</h3>
-            <div class="card-tools">
-                <a class="btn btn-sm btn-primary mt-1" href="{{ url('kategori/create')}}">Tambah</a>
-            </div>
+            <a class="btn btn-sm btn-primary ml-auto" href="{{ url('kategori/create')}}">Tambah</a>
         </div>
         <div class="card-body">
             @if (session('success'))
@@ -15,9 +13,9 @@
                 <div class="alert alert-danger">{{ session('error') }}</div>
             @endif
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <div class="form-group row">
-                        <label class="col-1 control-label col-form-label">Filter : </label>
+                        <label class="pl-2 control-label col-form-label">Filter Kategori : </label>
                         <div class="col-3">
                             <select class="form-control" name="id_kategori" id="id_kategori" required>
                                 <option value="">-- Semua --</option>
@@ -25,11 +23,14 @@
                                     <option value="{{ $item->id_kategori }}">{{ $item->jenis_kategori }}</option>
                                 @endforeach
                             </select>
-                            <small class="form-text text-muted">Kategori</small>
+                            {{-- <small class="form-text text-muted">Kategori</small> --}}
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="col-md-4 text-right" >
+                    <div id="buttons" class="btn-group"></div>
+                </div>
+            </div> <br>
             <table class="table table-bordered table-striped table-hover table-sm" id="table_kategori">
                 <thead>
                     <tr style="text-align: center">
@@ -85,11 +86,18 @@
                     orderable: false,
                     searchable: false // searchable: true, jika ingin kolom ini bisa dicari
                 }
-            ]
+            ],
+            buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
+            initComplete: function () {
+                var api = this.api();
+                // api.buttons().container().appendTo('#table_buku_wrapper .col-md-6:eq(0)');
+                api.buttons().container().appendTo('#buttons');
+            }
         });
         $('#id_kategori').on('change',function(){
             dataKategori.ajax.reload();
         });
+        $('#buttons').html(dataKategori.buttons().container());
     });
 </script>
 @endpush

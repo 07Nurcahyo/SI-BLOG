@@ -68,18 +68,32 @@
 <!-- Bootstrap 4 -->
 <script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 {{-- Datatables dan plugin --}}
+{{-- <script src="{{ asset('adminlte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/jszip/jszip.min.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/pdfmake/vfs_fonts.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.colvis.min.js') }}"></script> --}}
+
 <script src="{{ asset('adminlte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/datatables-buttons/js/dataTables.button.min.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/jszip/jszip.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/pdfmake/pdfmake.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/pdfmake/vfs_font.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/pdfmake/vfs_fonts.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.colvis.min.js') }}"></script>
+
 <!-- AdminLTE App -->
 <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
 <!-- jQuery Mapael -->
@@ -99,5 +113,90 @@
   $.ajaxSetup({headers: {'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')}});
 </script>
 @stack('js')
+{{-- @push('js')
+<script>
+  $(document).ready(function() {
+      var dataBuku = $('#table_buku').DataTable({
+          serverSide: true,
+          ajax: {
+              url: "{{ url('admin/list') }}",
+              dataType: "json",
+              type: "POST",
+              data: function (d) {
+                  d.id_penerbit = $('#id_penerbit').val();
+              }
+          },
+          columns: [
+              {
+                  data: "DT_RowIndex",
+                  className: "text-center",
+                  orderable: false,
+                  searchable: false
+              },
+              {
+                  data: "isbn",
+                  className: "",
+                  orderable: true,
+                  searchable: true
+              },
+              {
+                  data: "judul_buku",
+                  className: "",
+                  orderable: true,
+                  searchable: true
+              },
+              {
+                  data: "tahun_terbit",
+                  className: "",
+                  orderable: true,
+                  searchable: true
+              },
+              {
+                  data: "penerbit.nama_penerbit",
+                  className: "",
+                  orderable: false,
+                  searchable: true
+              },
+              {
+                  data: "kategori.jenis_kategori",
+                  className: "",
+                  orderable: false,
+                  searchable: false
+              },
+              {
+                  data: "penulis",
+                  className: "",
+                  orderable: true,
+                  searchable: true
+              },
+              {
+                  data: "lokasi.nama_rak",
+                  className: "",
+                  orderable: false,
+                  searchable: false
+              },
+              {
+                  data: "stok",
+                  className: "",
+                  orderable: false,
+                  searchable: false
+              },
+              {
+                  data: "aksi",
+                  className: "",
+                  orderable: false,
+                  searchable: false
+              }
+          ],
+          buttons: [
+              'excel', 'csv', 'pdf', 'print', 'reload'
+          ]
+      });
+      $('#id_penerbit').on('change',function(){
+          dataBuku.ajax.reload();
+      });
+  });
+  </script>  
+@endpush --}}
 </body>
 </html>
