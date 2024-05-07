@@ -13,7 +13,7 @@
                 <div class="alert alert-danger">{{ session('error') }}</div>
             @endif
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <div class="form-group row">
                         <label class="pl-2 control-label col-form-label">Filter Penerbit : </label>
                         <div class="col-3">
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 text-right" >
+                <div class="col-md-5 text-right" >
                     <div id="buttons" class="btn-group"></div>
                 </div>
             </div> <br>
