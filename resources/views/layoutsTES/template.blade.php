@@ -36,7 +36,7 @@
     </a> --}}
 
     <!-- Sidebar -->
-    {{-- @include('layout.sidebar') --}}
+    {{-- @include('layouts.sidebar') --}}
     <!-- /.sidebar -->
   {{-- </aside> --}}
 

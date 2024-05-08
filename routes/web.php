@@ -87,8 +87,10 @@ Route::group(['prefix' => 'lokasi'], function() {
 
 Route::get('/guest/statistik', [GuestController::class, 'index']);
 Route::get('/main', [GuestController::class, 'main']);
+// Route::get('listbook', [GuestController::class, 'list']);
 
-Route::get('listbook', [GuestController::class, 'list']);
+Route::get('listbook', [GuestController::class, 'listbook']);
+
 // qrcode
 // Route::get('/qrcode',[ProductController::class,'qrcode']);
 // Route::get('/create',[ProductController::class,'create']);
