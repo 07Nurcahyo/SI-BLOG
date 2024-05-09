@@ -135,7 +135,7 @@
             </ul>
           </li> --}}
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="" class="nav-link">
               <i class="nav-icon fas fa-male"></i>
               <p>
                 Penerbit
@@ -145,7 +145,7 @@
             <ul class="nav nav-treeview">
               @foreach ($penerbit as $item)
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="{{url('/listbook?penerbit='.$item->id_penerbit)}}" class="nav-link">
                     <i class="fas fa-arrow-right nav-icon" style="font-size: 13px"></i>
                     <p style="font-size: 13px">{{$item->nama_penerbit}}</p>
                   </a>
@@ -164,7 +164,7 @@
             <ul class="nav nav-treeview">
               @foreach ($tahun_terbit as $item)
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="{{url('/listbook?tahun_terbit='.$item->tahun_terbit)}}" class="nav-link">
                     <i class="fas fa-arrow-right nav-icon" style="font-size: 13px"></i>
                     <p style="font-size: 13px">{{$item->tahun_terbit}}</p>
                   </a>
@@ -183,7 +183,7 @@
             <ul class="nav nav-treeview">
               @foreach ($kategori as $item)
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="{{url('/listbook?kategori='.$item->id_kategori)}}" class="nav-link">
                     <i class="fas fa-arrow-right nav-icon" style="font-size: 13px"></i>
                     <p style="font-size: 13px">{{$item->jenis_kategori}}</p>
                   </a>
@@ -236,7 +236,7 @@
                     <a class="btn btn-info" href="javascript:void(0)" data-filter="4"> Category 4 (COLORED, BLACK) </a>
                   </div>
                   <div class="mb-2">
-                    <a class="btn btn-secondary" href="javascript:void(0)" data-shuffle> Shuffle items </a>
+                    <a class="btn btn-primary" href="{{url('/listbook')}}">Reset Filter</a>
                     <div class="float-right">
                       <select class="custom-select" style="width: auto;" data-sortOrder>
                         <option value="index"> Sort by Position </option>
@@ -251,52 +251,52 @@
                 </div>
                 <div>
                   <div class="p-0 row">
-                    <div class="filtr-item col-sm-2" data-category="1" data-sort="white sample">
-                      <a href="{{asset('img/coverdummy.png')}}" data-toggle="lightbox" data-title="sample 1 - white" data-gallery="gallery" data-toggle="lightbox">
+                    {{-- <div class="filtr-item col-sm-2" data-category="1" data-sort="white sample">
+                      <a href="{{asset('img/coverdummy.png')}}" data-toggle="lightbox" data-title="judul_buku" data-gallery="gallery" data-toggle="lightbox">
                         <img src="{{asset('img/coverdummy.png')}}" class="img-fluid mb-2" alt="white sample"/>
                       </a>
-                      <p id="kata">Halo guys Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex reprehenderit eveniet quia, corrupti, dolore tempore itaque, id similique cumque dolorem iusto numquam odit iste suscipit quam nostrum? Exercitationem, minus reiciendis!</p>
-                    </div>
-                    <div class="filtr-item col-sm-2" data-category="2, 4" data-sort="black sample">
+                      <p id="kata" style="text-align: justify">Halo guys Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex reprehenderit eveniet quia, corrupti, dolore tempore itaque, id similique cumque dolorem iusto numquam odit iste suscipit quam nostrum? Exercitationem, minus reiciendis!</p>
+                    </div> --}}
+                    {{-- <div class="filtr-item col-sm-2" data-category="2, 4" data-sort="black sample">
                       <a href="https://via.placeholder.com/1200/000000.png?text=2" data-toggle="lightbox" data-title="sample 2 - black" data-gallery="gallery" data-toggle="lightbox">
                         <img src="https://via.placeholder.com/300/000000?text=2" class="img-fluid mb-2" alt="black sample"/>
                       </a>
-                    </div>
-                    <div class="filtr-item col-sm-2" data-category="3, 4" data-sort="red sample">
-                      <a href="https://via.placeholder.com/1200/FF0000/FFFFFF.png?text=3" data-toggle="lightbox" data-title="sample 3 - red" data-gallery="gallery" data-toggle="lightbox">
-                        <img src="https://via.placeholder.com/300/FF0000/FFFFFF?text=3" class="img-fluid mb-2" alt="red sample"/>
+                    </div> --}}
+                    {{-- <div>
+                      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+                        Launch Default Modal
+                      </button>
+                    </div> --}}
+                    @foreach ($buku as $b)
+                    <div class="col-sm-2">
+                      <a href="{{asset('img/coverdummy.png')}}" data-toggle="modal" data-title="{{$b->judul_buku}}" data-target="#modal-default" data-idbuku="{{$b->id_buku}}" name="list_buku">
+                        <img src="{{asset('img/coverdummy.png')}}" class="img-fluid mb-2" alt="white sample"/>
                       </a>
+                      <table class="table table-borderless table-sm w-auto">
+                        <tr>
+                          <th class="py-0">Judul</th>
+                          <td class="py-0">:</td>
+                          <td class="py-0">
+                            <div class="d-inline-block text-truncate" style="max-width: 100px;">{{$b->judul_buku}}</div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th class="py-0">Penulis</th>
+                          <td class="py-0">:</td>
+                          <td class="py-0">
+                            <div class="d-inline-block text-truncate" style="max-width: 100px;">{{$b->penulis}}</div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th class="py-0">Penerbit</th>
+                          <td class="py-0">:</td>
+                          <td class="py-0">
+                            <div class="d-inline-block text-truncate" style="max-width: 100px;">{{$b->penerbit->nama_penerbit}}</div>
+                          </td>
+                        </tr>
+                      </table>
                     </div>
-                    <div class="filtr-item col-sm-2" data-category="3, 4" data-sort="red sample">
-                      <a href="https://via.placeholder.com/1200/FF0000/FFFFFF.png?text=4" data-toggle="lightbox" data-title="sample 4 - red" data-gallery="gallery" data-toggle="lightbox">
-                        <img src="https://via.placeholder.com/300/FF0000/FFFFFF?text=4" class="img-fluid mb-2" alt="red sample"/>
-                      </a>
-                    </div>
-                    <div class="filtr-item col-sm-2" data-category="2, 4" data-sort="black sample">
-                      <a href="https://via.placeholder.com/1200/000000.png?text=5" data-toggle="lightbox" data-title="sample 5 - black" data-gallery="gallery" data-toggle="lightbox">
-                        <img src="https://via.placeholder.com/300/000000?text=5" class="img-fluid mb-2" alt="black sample"/>
-                      </a>
-                    </div>
-                    <div class="filtr-item col-sm-2" data-category="1" data-sort="white sample">
-                      <a href="https://via.placeholder.com/1200/FFFFFF.png?text=6" data-toggle="lightbox" data-title="sample 6 - white" data-gallery="gallery" data-toggle="lightbox">
-                        <img src="https://via.placeholder.com/300/FFFFFF?text=6" class="img-fluid mb-2" alt="white sample"/>
-                      </a>
-                    </div>
-                    <div class="filtr-item col-sm-2" data-category="1" data-sort="white sample">
-                      <a href="https://via.placeholder.com/1200/FFFFFF.png?text=7" data-toggle="lightbox" data-title="sample 7 - white" data-gallery="gallery" data-toggle="lightbox">
-                        <img src="https://via.placeholder.com/300/FFFFFF?text=7" class="img-fluid mb-2" alt="white sample"/>
-                      </a>
-                    </div>
-                    <div class="filtr-item col-sm-2" data-category="2, 4" data-sort="black sample">
-                      <a href="https://via.placeholder.com/1200/000000.png?text=8" data-toggle="lightbox" data-title="sample 8 - black" data-gallery="gallery" data-toggle="lightbox">
-                        <img src="https://via.placeholder.com/300/000000?text=8" class="img-fluid mb-2" alt="black sample"/>
-                      </a>
-                    </div>
-                    <div class="filtr-item col-sm-2" data-category="3, 4" data-sort="red sample">
-                      <a href="https://via.placeholder.com/1200/FF0000/FFFFFF.png?text=9" data-toggle="lightbox" data-title="sample 9 - red" data-gallery="gallery" data-toggle="lightbox">
-                        <img src="https://via.placeholder.com/300/FF0000/FFFFFF?text=9" class="img-fluid mb-2" alt="red sample"/>
-                      </a>
-                    </div>
+                    @endforeach
                   </div>
                 </div>
               </div>
@@ -308,6 +308,109 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  <div class="modal fade" id="modal-default">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Default Modal</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="margin: 0px; padding: 0px" >
+          <div class="card-body">
+            <div class="row">
+              <img src="{{asset('img/coverdummy.png')}}" class="card-img-top col-sm-4" alt="..." style="height: 100%; width: 100%;" id="cover-modal">
+              <div class="col-sm-8">
+                  <table class="table table-borderless table-sm w-auto">
+                    <tr>
+                      <td>Penerbit</td>
+                      <td>:</td>
+                      <td id="penerbit"></td>
+                    </tr>
+                    <tr>
+                      <td>Judul buku</td>
+                      <td>:</td>
+                      <td id="judul_buku"></td>
+                    </tr>
+                    <tr>
+                      <td>Penulis</td>
+                      <td>:</td>
+                      <td id="penulis"></td>
+                    </tr>
+                    <tr>
+                      <td>Kategori</td>
+                      <td>:</td>
+                      <td id="kategori"></td>
+                    </tr>
+                  </table>
+              </div>
+            </div> <br>
+            <h5>Ketersediaan</h5>
+            <hr class="border border-3" style="margin-top: -5px; margin-bottom: 5px;">
+            <p class="card-text" id="ketersediaan">tersedia</p> {{-- jika stok = 0 maka tidak tersedia --}}
+            <br>
+            <h5>Lokasi Buku</h5>
+            <hr class="border border-3" style="margin-top: -5px; margin-bottom: 5px;">
+              <table class="table table-borderless table-sm w-auto">
+                <tr>
+                  <td>Ruangan</td>
+                  <td>:</td>
+                  <td id="ruangan"></td>
+                </tr>
+                <tr>
+                  <td>Rak</td>
+                  <td>:</td>
+                  <td id="rak"></td>
+                </tr>
+              </table>
+            <br>
+            <h5>Deskripsi Buku</h5>
+            <hr class="border border-3" style="margin-top: -5px; margin-bottom: 5px;">
+              <table class="table table-borderless table-sm w-auto">
+                <tr>
+                  <td>ISBN</td>
+                  <td>:</td>
+                  <td id="isbn"></td>
+                </tr>
+                <tr>
+                  <td>Judul Buku</td>
+                  <td>:</td>
+                  <td id="judul_buku_2"></td>
+                </tr>
+                <tr>
+                  <td>Tahun Terbit</td>
+                  <td>:</td>
+                  <td id="tahun_terbit"></td>
+                </tr>
+                <tr>
+                  <td>Penerbit</td>
+                  <td>:</td>
+                  <td id="penerbit_2"></td>
+                </tr>
+                <tr>
+                  <td>Kategori</td>
+                  <td>:</td>
+                  <td id="kategori_2"></td>
+                </tr>
+                <tr>
+                  <td>Penulis</td>
+                  <td>:</td>
+                  <td id="penulis_2"></td>
+                </tr>
+              </table>
+          </div>         
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
 
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
@@ -337,34 +440,77 @@
 <!-- Page specific script -->
 <script>
   $(function () {
-    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-      event.preventDefault();
-      $(this).ekkoLightbox({
-        alwaysShowClose: false,
-        // onShown: function() {
-        // }
+    // $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+    //   event.preventDefault();
+    //   $(this).ekkoLightbox({
+    //     alwaysShowClose: false,
+    //     // onShown: function() {
+    //     // }
+    //   });
+    //   console.log($('.ekko-lightbox-container'));
+    //   // Append alert message to the lightbox container
+    //   const description = $('<div></div>')
+    //     .addClass('description')
+    //     .css({
+    //       position: 'absolute',
+    //       bottom: '0px',
+    //       // right: '10px',
+    //       'background-color': 'rgba(0, 0, 0, 0.5)',
+    //       padding: '5px',
+    //       'border-radius': '5px',
+    //     })
+    //     .append($('<p></p>').addClass('text-light').text($('#kata').text()));
+    //   $('.ekko-lightbox-container').append(description);
+    // });
+    // $('.filter-container').filterizr({gutterPixels: 3});
+    // $('.btn[data-filter]').on('click', function() {
+    //   $('.btn[data-filter]').removeClass('active');
+    //   $(this).addClass('active');
+    // });
+    
+    
+    // $('.list_buku').each(function() {
+      $("#modal-default").on('show.bs.modal', function(event) {
+        console.log("tes");
+        console.log(event);
+        const idBuku = $(event.relatedTarget).data('idbuku');
+        getDataBuku(idBuku);
+        $('#modalBuku').modal('show');
       });
-      console.log($('.ekko-lightbox-container'));
-      // Append alert message to the lightbox container
-      const description = $('<div></div>')
-        .addClass('description')
-        .css({
-          position: 'absolute',
-          bottom: '0px',
-          // right: '10px',
-          'background-color': 'rgba(0, 0, 0, 0.5)',
-          padding: '5px',
-          'border-radius': '5px',
-        })
-        .append($('<p></p>').addClass('text-light').text($('#kata').text()));
-      $('.ekko-lightbox-container').append(description);
-    });
+    // });
+    function getDataBuku(idBuku) {
+      $.ajax({
+        url: 'http://localhost/SI-BLOG/public/api/getDataBuku/' + idBuku,
+        method: 'GET',
+        success: function(data) {
+          $('#isbn').text(data.isbn);
+          $('#judul_buku').text(data.judul_buku);
+          $('#penulis').text(data.penulis);
+          $('#penerbit').text(data.penerbit.nama_penerbit);
+          $('#kategori').text(data.kategori.jenis_kategori);
+          $('#tahun_terbit').text(data.tahun_terbit);
+          $('#ruangan').text(data.lokasi.nama_ruang);
+          $('#rak').text(data.lokasi.nama_rak);
+          if(data.stok == 0) {
+            $('#cover-modal').attr('src', "{{asset('img/sidebar.png')}}");
+            $('#ketersediaan').text("Tidak Tersedia");
+          } else {
+            $('#cover-modal').attr('src', "{{asset('img/coverdummy.png')}}");
+            $('#ketersediaan').text("Tersedia");
+          }
+          $('#judul_buku_2').text(data.judul_buku);
+          $('#penulis_2').text(data.penulis);
+          $('#penerbit_2').text(data.penerbit.nama_penerbit);
+          $('#kategori_2').text(data.kategori.jenis_kategori);
+        },
+        error: function(error) {
+          console.log(error);
+        }
+      });
+    }
 
-    $('.filter-container').filterizr({gutterPixels: 3});
-    $('.btn[data-filter]').on('click', function() {
-      $('.btn[data-filter]').removeClass('active');
-      $(this).addClass('active');
-    });
+    
+
   })
 </script>
 </body>

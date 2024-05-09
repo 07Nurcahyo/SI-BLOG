@@ -37,17 +37,43 @@ class GuestController extends Controller
     //     return view('guest.listbook');
     // }
 
-    public function listbook(){
+    public function listbook(Request $request){
         $penulis = DB::table('buku')
                     ->select('penulis')
                     ->distinct()
                     ->get();
-        // dd($penulis);
         $penerbit = PenerbitModel::all();
         $tahun_terbit = BukuModel::select('tahun_terbit')->distinct()->orderBy('tahun_terbit','asc')->get();
         $kategori = KategoriModel::all();
-        $buku = BukuModel::all();
+
+        if ($request->penerbit != null) {
+            $buku = BukuModel::where('kode_penerbit', $request->penerbit)
+            ->with('penerbit', 'kategori', 'lokasi')->get();
+        } else {
+            $buku = BukuModel::with('penerbit', 'kategori', 'lokasi')->get();
+        }
+
+        if ($request->tahun_terbit != null) {
+            $buku = BukuModel::where('tahun_terbit', $request->tahun_terbit)
+            ->with('penerbit', 'kategori', 'lokasi')->get();
+        } else {
+            $buku = BukuModel::with('penerbit', 'kategori', 'lokasi')->get();
+        }
+
+        if ($request->kategori != null) {
+            $buku = BukuModel::where('kode_kategori', $request->kategori)
+            ->with('penerbit', 'kategori', 'lokasi')->get();
+        } else {
+            $buku = BukuModel::with('penerbit', 'kategori', 'lokasi')->get();
+        }
+
         return view('guest.listbook', ['penulis' => $penulis, 'penerbit' => $penerbit, 'tahun_terbit' => $tahun_terbit, 'kategori' => $kategori, 'buku' => $buku]);
+    }
+
+    public function getDataBuku(int $id_buku){
+        // $buku = BukuModel::find($id_buku);
+        $buku = BukuModel::with('penerbit', 'kategori', 'lokasi')->find($id_buku);
+        return response()->json($buku);
     }
 
     public function main(){
