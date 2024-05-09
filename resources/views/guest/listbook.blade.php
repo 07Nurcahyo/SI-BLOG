@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Gallery</title>
+  <title>List Buku</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -136,7 +136,7 @@
           </li> --}}
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-male"></i>
               <p>
                 Penerbit
                 <i class="right fas fa-angle-left"></i>
@@ -146,8 +146,8 @@
               @foreach ($penerbit as $item)
                 <li class="nav-item">
                   <a href="" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>{{$item->nama_penerbit}}</p>
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: 13px"></i>
+                    <p style="font-size: 13px">{{$item->nama_penerbit}}</p>
                   </a>
                 </li>
               @endforeach
@@ -155,7 +155,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-calendar-alt"></i>
               <p>
                 Tahun Terbit
                 <i class="right fas fa-angle-left"></i>
@@ -165,8 +165,8 @@
               @foreach ($tahun_terbit as $item)
                 <li class="nav-item">
                   <a href="" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>{{$item->tahun_terbit}}</p>
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: 13px"></i>
+                    <p style="font-size: 13px">{{$item->tahun_terbit}}</p>
                   </a>
                 </li>
               @endforeach
@@ -174,7 +174,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-th-list"></i>
               <p>
                 Kategori
                 <i class="right fas fa-angle-left"></i>
@@ -184,8 +184,8 @@
               @foreach ($kategori as $item)
                 <li class="nav-item">
                   <a href="" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>{{$item->jenis_kategori}}</p>
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: 13px"></i>
+                    <p style="font-size: 13px">{{$item->jenis_kategori}}</p>
                   </a>
                 </li>
               @endforeach
