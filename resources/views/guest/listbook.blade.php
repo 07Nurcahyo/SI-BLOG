@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="{{ asset('adminlte/plugins/ekko-lightbox/ekko-lightbox.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
+  <link rel="stylesheet" href="css/guest.css"/>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -24,10 +25,10 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="main" class="nav-link">Home</a>
+        <a href="main" class="nav-link"><i class="fas fa-home"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block" style="display: none;">
-        <a href="#" class="nav-link" onclick="topFunction()">Back to top</a>
+        <a href="#" class="nav-link" onclick="topFunction()"><i class="fas fa-arrow-up"></i></a>
       </li>
     </ul>
 
@@ -38,12 +39,12 @@
         <a class="nav-link" data-widget="navbar-search" href="#" role="button">
           <i class="fas fa-search"></i>
         </a>
-        <div class="navbar-search-block">
-          <form class="form-inline">
+        <div class="navbar-search-block" style="width: 50rem;">
+          <form class="form-inline" id="cari" action="">
             <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" id="cari_buku">
               <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
+                <button class="btn btn-navbar" type="submit" >
                   <i class="fas fa-search"></i>
                 </button>
                 <button class="btn btn-navbar" type="button" data-widget="navbar-search">
@@ -196,7 +197,7 @@
           </li> 
           <li class="nav-item pt-4">
             <a class="nav-link active text-bold" href="{{url('/listbook')}}" style="background-color: #218838">
-              <i class="fas fa-filter nav-icon"></i>
+              <i class="fas fa-sync-alt nav-icon"></i>
               <p>Reset Filter</p>
             </a>
           </li>
@@ -242,10 +243,19 @@
                       Reset Filter 
                       <i class="fas fa-sync-alt nav-icon" style="font-size: 13px"></i>
                     </a>
+                    {{-- <div class="input-wrapper">
+                      <button class="icon"> 
+                          <i class="fas fa-search"></i>
+                          <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#fff" d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"></path>
+                          <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#fff" d="M22 22L20 20"></path>
+                        </svg>
+                      </button>
+                      <input placeholder="search.." class="input" name="text" type="text">
+                    </div> --}}
                     <div class="float-right">
                       <div class="btn-group">
-                        <a class="btn btn-default" href="javascript:void(0)" data-sortAsc> Ascending <i class="fas fa-arrow-up"></i></a>
-                        <a class="btn btn-default" href="javascript:void(0)" data-sortDesc> Descending <i class="fas fa-arrow-down"></i></a>
+                        <a class="btn btn-default" href="{{url('/listbook?sort=ASC')}}" data-sortAsc> Ascending <i class="fas fa-arrow-up"></i></a>
+                        <a class="btn btn-default" href="{{url('/listbook?sort=DESC')}}" data-sortDesc> Descending <i class="fas fa-arrow-down"></i></a>
                       </div>
                     </div>
                   </div>
@@ -308,14 +318,14 @@
             <div class="row">
               <img src="{{asset('img/coverdummy.png')}}" class="card-img-top col-sm-4" alt="..." style="height: 100%; width: 100%;" id="cover-modal">
               <div class="col-sm-8">
-                  <table class="table table-borderless table-sm w-auto">
+                  <table class="table table-borderless table-sm w-auto" style="text-align: justify">
                     <tr>
                       <td>Penerbit</td>
                       <td>:</td>
                       <td id="penerbit"></td>
                     </tr>
                     <tr>
-                      <td>Judul buku</td>
+                      <td>Judul</td>
                       <td>:</td>
                       <td id="judul_buku"></td>
                     </tr>
@@ -353,14 +363,14 @@
             <br>
             <h5>Deskripsi Buku</h5>
             <hr class="border border-3" style="margin-top: -5px; margin-bottom: 5px;">
-              <table class="table table-borderless table-sm w-auto">
+              <table class="table table-borderless table-sm w-auto" style="text-align: justify">
                 <tr>
                   <td>ISBN</td>
                   <td>:</td>
                   <td id="isbn"></td>
                 </tr>
                 <tr>
-                  <td>Judul Buku</td>
+                  <td>Judul</td>
                   <td>:</td>
                   <td id="judul_buku_2"></td>
                 </tr>
@@ -425,44 +435,24 @@
 <!-- Page specific script -->
 <script>
   $(function () {
-    // $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-    //   event.preventDefault();
-    //   $(this).ekkoLightbox({
-    //     alwaysShowClose: false,
-    //     // onShown: function() {
-    //     // }
-    //   });
-    //   console.log($('.ekko-lightbox-container'));
-    //   // Append alert message to the lightbox container
-    //   const description = $('<div></div>')
-    //     .addClass('description')
-    //     .css({
-    //       position: 'absolute',
-    //       bottom: '0px',
-    //       // right: '10px',
-    //       'background-color': 'rgba(0, 0, 0, 0.5)',
-    //       padding: '5px',
-    //       'border-radius': '5px',
-    //     })
-    //     .append($('<p></p>').addClass('text-light').text($('#kata').text()));
-    //   $('.ekko-lightbox-container').append(description);
-    // });
-    // $('.filter-container').filterizr({gutterPixels: 3});
-    // $('.btn[data-filter]').on('click', function() {
-    //   $('.btn[data-filter]').removeClass('active');
-    //   $(this).addClass('active');
-    // });
     
-    
-    // $('.list_buku').each(function() {
-      $("#modal-default").on('show.bs.modal', function(event) {
-        console.log("tes");
-        console.log(event);
-        const idBuku = $(event.relatedTarget).data('idbuku');
-        getDataBuku(idBuku);
-        $('#modalBuku').modal('show');
-      });
-    // });
+    $("#modal-default").on('show.bs.modal', function(event) {
+      console.log("tes");
+      console.log(event);
+      const idBuku = $(event.relatedTarget).data('idbuku');
+      getDataBuku(idBuku);
+      $('#modalBuku').modal('show');
+    });
+
+    $("#cari").on('submit', function(event) {
+      event.preventDefault();
+      console.log("tes");
+      let url="http://localhost/SI-BLOG/public/listbook?search="+$('#cari_buku').val();
+      // alert(url);
+      window.location.assign(url);
+    });
+
+    // api untuk mengambil data buku
     function getDataBuku(idBuku) {
       $.ajax({
         url: 'http://localhost/SI-BLOG/public/api/getDataBuku/' + idBuku,
@@ -476,8 +466,9 @@
           $('#tahun_terbit').text(data.tahun_terbit);
           $('#ruangan').text(data.lokasi.nama_ruang);
           $('#rak').text(data.lokasi.nama_rak);
+          // api jika stok buku 0 maka akan menampilkan info tidak tersedia
           if(data.stok == 0) {
-            $('#cover-modal').attr('src', "{{asset('img/sidebar.png')}}");
+            $('#cover-modal').attr('src', "{{asset('img/coverdummy.png')}}");
             $('#ketersediaan').text("Tidak Tersedia");
           } else {
             $('#cover-modal').attr('src', "{{asset('img/coverdummy.png')}}");
@@ -494,7 +485,6 @@
       });
     }
 
-    
 
   })
 </script>

@@ -37,8 +37,8 @@
           <h2>Portal Layanan</h2>
           <h1 class="jti">Ruang Baca JTI</h1>
           <div class="input-group searchbar">
-            <input type="search" class="form-control" placeholder="Cari Buku.."/>
-            <button type="button" class="btn btn-primary btn-lg" data-mdb-ripple-init>Cari</button>
+            <input type="search" class="form-control" placeholder="Cari Buku.." id="cari"/>
+            <button type="button" class="btn btn-primary btn-lg" id="cari_buku">Cari</button>
           </div>
       </div>
     </section>
@@ -152,6 +152,15 @@
         }
       }
       getCategoryCountData();
+
+      // cari
+      $("#cari").on('change', function(event) {
+      event.preventDefault();
+      console.log("tes");
+      let url="http://localhost/SI-BLOG/public/listbook?search="+$('#cari').val();
+      // alert(url);
+      window.location.assign(url);
+    });
     })
   </script>
 </body>

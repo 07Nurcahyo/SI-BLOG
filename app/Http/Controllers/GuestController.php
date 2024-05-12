@@ -67,6 +67,21 @@ class GuestController extends Controller
             $buku = BukuModel::with('penerbit', 'kategori', 'lokasi')->get();
         }
 
+        // cari di listbook guest
+        if ($request->search != null) {
+            $buku = BukuModel::where('judul_buku', 'like', '%'.$request->search.'%')
+            ->orWhereHas('penerbit', function ($query) use ($request) {
+                $query->where('nama_penerbit', 'like', '%'.$request->search.'%');
+            })
+            ->orWhere('penulis', 'like', '%'.$request->search.'%')
+            ->with('penerbit', 'kategori', 'lokasi')->get();
+        }
+
+        // sorting asc dsc
+        if ($request->sort != null) {
+            $buku = BukuModel::with('penerbit', 'kategori', 'lokasi')->orderBy('judul_buku',$request->sort)->get();
+        }
+
         return view('guest.listbook', ['penulis' => $penulis, 'penerbit' => $penerbit, 'tahun_terbit' => $tahun_terbit, 'kategori' => $kategori, 'buku' => $buku]);
     }
 
