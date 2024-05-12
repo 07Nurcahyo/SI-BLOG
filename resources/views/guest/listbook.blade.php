@@ -193,6 +193,7 @@
           </li>
         </ul>
       </nav>
+      <a class="btn btn-primary" href="{{url('/listbook')}}">Reset Filter</a>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
