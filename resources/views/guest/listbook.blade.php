@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>List Buku</title>
+  <title>Daftar Buku</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -17,7 +17,7 @@
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <nav class="main-header navbar navbar-expand-md navbar-white navbar-light sticky-top">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -25,6 +25,9 @@
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="main" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block" style="display: none;">
+        <a href="#" class="nav-link" onclick="topFunction()">Back to top</a>
       </li>
     </ul>
 
@@ -52,7 +55,7 @@
         </div>
       </li>
       <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
+      {{-- <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
           <span class="badge badge-warning navbar-badge">15</span>
@@ -77,7 +80,7 @@
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
-      </li>
+      </li> --}}
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
@@ -88,17 +91,17 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background: url({{asset('img/sidebar.png')}}) rgba(0, 0, 0, 0.7); background-size: cover; background-blend-mode: darken; position: fixed;">
     <!-- Brand Logo -->
-    <a href="../index3.html" class="brand-link">
-      <img src="{{asset('img/ekatalog.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">E-Katalog</span>
+    <a href="main" class="brand-link">
+      <img src="{{asset('img/ekatalog.png')}}" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-bold">E-Katalog</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- SidebarSearch Form -->
-      <div class="form-inline">
+      {{-- <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
           <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
           <div class="input-group-append">
@@ -107,14 +110,14 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> --}}
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-header">FILTER</li>
+          <li class="nav-header pt-4">FILTER</li>
           {{-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -190,10 +193,15 @@
                 </li>
               @endforeach
             </ul>
+          </li> 
+          <li class="nav-item pt-4">
+            <a class="nav-link active text-bold" href="{{url('/listbook')}}" style="background-color: #218838">
+              <i class="fas fa-filter nav-icon"></i>
+              <p>Reset Filter</p>
+            </a>
           </li>
         </ul>
       </nav>
-      <a class="btn btn-primary" href="{{url('/listbook')}}">Reset Filter</a>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
@@ -206,12 +214,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>List Buku</h1>
+            <h1>Daftar Buku</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">List Buku</li>
+              <li class="breadcrumb-item"><a href="main">Home</a></li>
+              <li class="breadcrumb-item active">Daftar Buku</li>
             </ol>
           </div>
         </div>
@@ -224,50 +232,26 @@
         <div class="row">
           <div class="col-12">
             <div class="card card-primary">
-              <div class="card-header">
+              {{-- <div class="card-header">
                 <h4 class="card-title">FilterizR Gallery with Ekko Lightbox</h4>
-              </div>
+              </div> --}}
               <div class="card-body">
                 <div>
-                  <div class="btn-group w-100 mb-2">
-                    <a class="btn btn-info active" href="javascript:void(0)" data-filter="all"> All items </a>
-                    <a class="btn btn-info" href="javascript:void(0)" data-filter="1"> Category 1 (WHITE) </a>
-                    <a class="btn btn-info" href="javascript:void(0)" data-filter="2"> Category 2 (BLACK) </a>
-                    <a class="btn btn-info" href="javascript:void(0)" data-filter="3"> Category 3 (COLORED) </a>
-                    <a class="btn btn-info" href="javascript:void(0)" data-filter="4"> Category 4 (COLORED, BLACK) </a>
-                  </div>
                   <div class="mb-2">
-                    <a class="btn btn-primary" href="{{url('/listbook')}}">Reset Filter</a>
+                    <a class="btn btn-success" href="{{url('/listbook')}}">
+                      Reset Filter 
+                      <i class="fas fa-sync-alt nav-icon" style="font-size: 13px"></i>
+                    </a>
                     <div class="float-right">
-                      <select class="custom-select" style="width: auto;" data-sortOrder>
-                        <option value="index"> Sort by Position </option>
-                        <option value="sortData"> Sort by Custom Data </option>
-                      </select>
                       <div class="btn-group">
-                        <a class="btn btn-default" href="javascript:void(0)" data-sortAsc> Ascending </a>
-                        <a class="btn btn-default" href="javascript:void(0)" data-sortDesc> Descending </a>
+                        <a class="btn btn-default" href="javascript:void(0)" data-sortAsc> Ascending <i class="fas fa-arrow-up"></i></a>
+                        <a class="btn btn-default" href="javascript:void(0)" data-sortDesc> Descending <i class="fas fa-arrow-down"></i></a>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div>
                   <div class="p-0 row">
-                    {{-- <div class="filtr-item col-sm-2" data-category="1" data-sort="white sample">
-                      <a href="{{asset('img/coverdummy.png')}}" data-toggle="lightbox" data-title="judul_buku" data-gallery="gallery" data-toggle="lightbox">
-                        <img src="{{asset('img/coverdummy.png')}}" class="img-fluid mb-2" alt="white sample"/>
-                      </a>
-                      <p id="kata" style="text-align: justify">Halo guys Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex reprehenderit eveniet quia, corrupti, dolore tempore itaque, id similique cumque dolorem iusto numquam odit iste suscipit quam nostrum? Exercitationem, minus reiciendis!</p>
-                    </div> --}}
-                    {{-- <div class="filtr-item col-sm-2" data-category="2, 4" data-sort="black sample">
-                      <a href="https://via.placeholder.com/1200/000000.png?text=2" data-toggle="lightbox" data-title="sample 2 - black" data-gallery="gallery" data-toggle="lightbox">
-                        <img src="https://via.placeholder.com/300/000000?text=2" class="img-fluid mb-2" alt="black sample"/>
-                      </a>
-                    </div> --}}
-                    {{-- <div>
-                      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
-                        Launch Default Modal
-                      </button>
-                    </div> --}}
                     @foreach ($buku as $b)
                     <div class="col-sm-2">
                       <a href="{{asset('img/coverdummy.png')}}" data-toggle="modal" data-title="{{$b->judul_buku}}" data-target="#modal-default" data-idbuku="{{$b->id_buku}}" name="list_buku">
