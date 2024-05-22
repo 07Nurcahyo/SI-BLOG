@@ -39,7 +39,7 @@
         <a class="nav-link" data-widget="navbar-search" href="#" role="button">
           <i class="fas fa-search"></i>
         </a>
-        <div class="navbar-search-block" style="width: 50rem;">
+        <div class="navbar-search-block" style="">
           <form class="form-inline" id="cari" action="">
             <div class="input-group input-group-sm">
               <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" id="cari_buku">
@@ -92,7 +92,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background: url({{asset('img/sidebar.png')}}) rgba(0, 0, 0, 0.7); background-size: cover; background-blend-mode: darken; position: fixed;">
+  <aside class="main-sidebar sidebar-dark-primary sticky" style="background: url({{asset('img/sidebar.png')}}) rgba(0, 0, 0, 0.7); background-position: fixed; background-blend-mode: darken; position: fixed; overflow-y: scroll; top: 0; bottom: 0">
     <!-- Brand Logo -->
     <a href="main" class="brand-link">
       <img src="{{asset('img/ekatalog.png')}}" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -101,43 +101,12 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- SidebarSearch Form -->
-      {{-- <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div> --}}
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-header pt-4">FILTER</li>
-          {{-- <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Penulis
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              @foreach ($penulis as $item)
-                <li class="nav-item">
-                  <a href="" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>{{$item->penulis}}</p>
-                  </a>
-                </li>
-              @endforeach
-            </ul>
-          </li> --}}
           <li class="nav-item">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-male"></i>
@@ -254,43 +223,43 @@
                     </div> --}}
                     <div class="float-right">
                       <div class="btn-group">
-                        <a class="btn btn-default" href="{{url('/listbook?sort=ASC')}}" data-sortAsc> Ascending <i class="fas fa-arrow-up"></i></a>
-                        <a class="btn btn-default" href="{{url('/listbook?sort=DESC')}}" data-sortDesc> Descending <i class="fas fa-arrow-down"></i></a>
+                        <a class="btn btn-info" href="{{url('/listbook?sort=ASC')}}" data-sortAsc> Ascending <i class="fas fa-arrow-up"></i></a>
+                        <a class="btn btn-info" href="{{url('/listbook?sort=DESC')}}" data-sortDesc> Descending <i class="fas fa-arrow-down"></i></a>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div>
+                <div class="pt-2">
                   <div class="p-0 row">
                     @foreach ($buku as $b)
-                    <div class="col-sm-2">
-                      <a href="{{asset('img/coverdummy.png')}}" data-toggle="modal" data-title="{{$b->judul_buku}}" data-target="#modal-default" data-idbuku="{{$b->id_buku}}" name="list_buku">
-                        <img src="{{asset('img/coverdummy.png')}}" class="img-fluid mb-2" alt="white sample"/>
-                      </a>
-                      <table class="table table-borderless table-sm w-auto">
-                        <tr>
-                          <th class="py-0">Judul</th>
-                          <td class="py-0">:</td>
-                          <td class="py-0">
-                            <div class="d-inline-block text-truncate" style="max-width: 100px;">{{$b->judul_buku}}</div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th class="py-0">Penulis</th>
-                          <td class="py-0">:</td>
-                          <td class="py-0">
-                            <div class="d-inline-block text-truncate" style="max-width: 100px;">{{$b->penulis}}</div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th class="py-0">Penerbit</th>
-                          <td class="py-0">:</td>
-                          <td class="py-0">
-                            <div class="d-inline-block text-truncate" style="max-width: 100px;">{{$b->penerbit->nama_penerbit}}</div>
-                          </td>
-                        </tr>
-                      </table>
-                    </div>
+                      <div class="col-sm-2">
+                        <a href="{{asset('img/coverdummy.png')}}" data-toggle="modal" data-title="{{$b->judul_buku}}" data-target="#modal-default" data-idbuku="{{$b->id_buku}}" name="list_buku">
+                          <img src="{{asset('img/coverdummy.png')}}" class="img-fluid mb-2" alt="white sample"/>
+                        </a>
+                        <table class="table table-borderless table-sm w-auto">
+                          <tr>
+                            <th class="py-0">Judul</th>
+                            <td class="py-0">:</td>
+                            <td class="py-0">
+                              <div class="d-inline-block text-truncate" style="max-width: 100px;">{{$b->judul_buku}}</div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th class="py-0">Penulis</th>
+                            <td class="py-0">:</td>
+                            <td class="py-0">
+                              <div class="d-inline-block text-truncate" style="max-width: 100px;">{{$b->penulis}}</div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th class="py-0">Penerbit</th>
+                            <td class="py-0">:</td>
+                            <td class="py-0">
+                              <div class="d-inline-block text-truncate" style="max-width: 100px;">{{$b->penerbit->nama_penerbit}}</div>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
                     @endforeach
                   </div>
                 </div>
@@ -306,9 +275,9 @@
 
   <div class="modal fade" id="modal-default">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
+      <div class="modal-content" style="background-color: antiquewhite">
         <div class="modal-header">
-          <h4 class="modal-title">Default Modal</h4>
+          {{-- <h4 class="modal-title">Default Modal</h4> --}}
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -344,7 +313,8 @@
             </div> <br>
             <h5>Ketersediaan</h5>
             <hr class="border border-3" style="margin-top: -5px; margin-bottom: 5px;">
-            <p class="card-text" id="ketersediaan">tersedia</p> {{-- jika stok = 0 maka tidak tersedia --}}
+            {{-- jika stok = 0 maka tidak tersedia --}}
+            <p class="badge" id="ketersediaan" style="font-weight: 400; font-size: 120%">tersedia</p> 
             <br>
             <h5>Lokasi Buku</h5>
             <hr class="border border-3" style="margin-top: -5px; margin-bottom: 5px;">
@@ -398,7 +368,7 @@
           </div>         
         </div>
         <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-warning" data-dismiss="modal">Tutup</button>
         </div>
       </div>
       <!-- /.modal-content -->
@@ -406,13 +376,6 @@
     <!-- /.modal-dialog -->
   </div>
   <!-- /.modal -->
-
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.2.0
-    </div>
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -469,10 +432,18 @@
           // api jika stok buku 0 maka akan menampilkan info tidak tersedia
           if(data.stok == 0) {
             $('#cover-modal').attr('src', "{{asset('img/coverdummy.png')}}");
-            $('#ketersediaan').text("Tidak Tersedia");
+            $('#ketersediaan').text("Tidak Tersedia  ");
+            $('#ketersediaan').css({
+              "background-color": "#FF0000",
+              "color": "#FFFFFF"
+            }).append('<i class="fas fa-times-circle"></i>');
           } else {
             $('#cover-modal').attr('src', "{{asset('img/coverdummy.png')}}");
-            $('#ketersediaan').text("Tersedia");
+            $('#ketersediaan').text(" Tersedia ");
+            $('#ketersediaan').css({
+              "background-color": "green",
+              "color": "#FFFFFF"
+            }).append('<i class="fas fa-check-circle"></i>');
           }
           $('#judul_buku_2').text(data.judul_buku);
           $('#penulis_2').text(data.penulis);

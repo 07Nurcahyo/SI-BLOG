@@ -42,47 +42,42 @@ class GuestController extends Controller
                     ->select('penulis')
                     ->distinct()
                     ->get();
+
         $penerbit = PenerbitModel::all();
         $tahun_terbit = BukuModel::select('tahun_terbit')->distinct()->orderBy('tahun_terbit','asc')->get();
         $kategori = KategoriModel::all();
 
+        $buku = BukuModel::with('penerbit', 'kategori', 'lokasi');
+
         if ($request->penerbit != null) {
-            $buku = BukuModel::where('kode_penerbit', $request->penerbit)
-            ->with('penerbit', 'kategori', 'lokasi')->get();
-        } else {
-            $buku = BukuModel::with('penerbit', 'kategori', 'lokasi')->get();
+            $buku = $buku->where('kode_penerbit', $request->penerbit);
         }
 
         if ($request->tahun_terbit != null) {
-            $buku = BukuModel::where('tahun_terbit', $request->tahun_terbit)
-            ->with('penerbit', 'kategori', 'lokasi')->get();
-        } else {
-            $buku = BukuModel::with('penerbit', 'kategori', 'lokasi')->get();
+            $buku = $buku->where('tahun_terbit', $request->tahun_terbit);
         }
 
         if ($request->kategori != null) {
-            $buku = BukuModel::where('kode_kategori', $request->kategori)
-            ->with('penerbit', 'kategori', 'lokasi')->get();
-        } else {
-            $buku = BukuModel::with('penerbit', 'kategori', 'lokasi')->get();
+            $buku = $buku->where('kode_kategori', $request->kategori);
         }
 
-        // cari di listbook guest
         if ($request->search != null) {
-            $buku = BukuModel::where('judul_buku', 'like', '%'.$request->search.'%')
-            ->orWhereHas('penerbit', function ($query) use ($request) {
-                $query->where('nama_penerbit', 'like', '%'.$request->search.'%');
-            })
-            ->orWhere('penulis', 'like', '%'.$request->search.'%')
-            ->with('penerbit', 'kategori', 'lokasi')->get();
+            $buku = $buku->where(function ($query) use ($request) {
+                $query->where('judul_buku', 'like', '%'.$request->search.'%')
+                    ->orWhereHas('penerbit', function ($query) use ($request) {
+                        $query->where('nama_penerbit', 'like', '%'.$request->search.'%');
+                    })
+                    ->orWhere('penulis', 'like', '%'.$request->search.'%');
+            });
         }
 
-        // sorting asc dsc
         if ($request->sort != null) {
-            $buku = BukuModel::with('penerbit', 'kategori', 'lokasi')->orderBy('judul_buku',$request->sort)->get();
+            $buku = $buku->orderBy('judul_buku', $request->sort);
         }
 
-        return view('guest.listbook', ['penulis' => $penulis, 'penerbit' => $penerbit, 'tahun_terbit' => $tahun_terbit, 'kategori' => $kategori, 'buku' => $buku]);
+        $buku = $buku->get();
+
+        return view('guest.listbook', compact('penulis', 'penerbit', 'tahun_terbit', 'kategori', 'buku'));
     }
 
     public function getDataBuku(int $id_buku){

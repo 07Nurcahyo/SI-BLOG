@@ -33,3 +33,55 @@ VALUES
 ('75','1','Implementasi Augmented Reality untuk Pengenalan Energi Terbarukan','2017','POL','MB','Damon Satya As Sabili, Rama Adi Nugroho','R5','1'),
 ('81','1','Rancang Bangun Sistem Informasi Pengarsipan Pada KB/TK Ceria Mandiri','2022','POL','LA','Abiyan Fawwaz, Erni Srihartini','R6','1')
 ;
+
+
+
+
+//
+    public function listbook(Request $request){
+        $penulis = DB::table('buku')
+                    ->select('penulis')
+                    ->distinct()
+                    ->get();
+        $penerbit = PenerbitModel::all();
+        $tahun_terbit = BukuModel::select('tahun_terbit')->distinct()->orderBy('tahun_terbit','asc')->get();
+        $kategori = KategoriModel::all();
+
+        if ($request->penerbit != null) {
+            $buku = BukuModel::where('kode_penerbit', $request->penerbit)
+            ->with('penerbit', 'kategori', 'lokasi')->get();
+        } else {
+            $buku = BukuModel::with('penerbit', 'kategori', 'lokasi')->get();
+        }
+
+        if ($request->tahun_terbit != null) {
+            $buku = BukuModel::where('tahun_terbit', $request->tahun_terbit)
+            ->with('penerbit', 'kategori', 'lokasi')->get();
+        } else {
+            $buku = BukuModel::with('penerbit', 'kategori', 'lokasi')->get();
+        }
+
+        if ($request->kategori != null) {
+            $buku = BukuModel::where('kode_kategori', $request->kategori)
+            ->with('penerbit', 'kategori', 'lokasi')->get();
+        } else {
+            $buku = BukuModel::with('penerbit', 'kategori', 'lokasi')->get();
+        }
+
+        // cari di listbook guest
+        if ($request->search != null) {
+            $buku = BukuModel::where('judul_buku', 'like', '%'.$request->search.'%')
+            ->orWhereHas('penerbit', function ($query) use ($request) {
+                $query->where('nama_penerbit', 'like', '%'.$request->search.'%');
+            })
+            ->orWhere('penulis', 'like', '%'.$request->search.'%')
+            ->with('penerbit', 'kategori', 'lokasi')->get();
+        }
+
+        // sorting asc dsc
+        if ($request->sort != null) {
+            $buku = BukuModel::with('penerbit', 'kategori', 'lokasi')->orderBy('judul_buku',$request->sort)->get();
+        }
+
+        return view('guest.listbook', ['penulis' => $penulis, 'penerbit' => $penerbit, 'tahun_terbit' => $tahun_terbit, 'kategori' => $kategori, 'buku' => $buku]);
+    }
