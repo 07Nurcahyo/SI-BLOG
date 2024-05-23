@@ -106,6 +106,12 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+          <li class="nav-item pt-4">
+            <a class="nav-link active text-bold" href="{{url('/listbook')}}" style="background-color: rgb(33, 136, 56, 1); box-shadow: 0px 0px 10px 0px rgba(33, 136, 56, 0.9), 0px 0px 20px 0px rgba(33, 136, 56, 0.8)">
+              <i class="fas fa-sync-alt nav-icon"></i>
+              <p>Reset Filter</p>
+            </a>
+          </li>
           <li class="nav-header pt-4">FILTER</li>
           <li class="nav-item">
             <a href="" class="nav-link">
@@ -164,12 +170,6 @@
               @endforeach
             </ul>
           </li> 
-          <li class="nav-item pt-4">
-            <a class="nav-link active text-bold" href="{{url('/listbook')}}" style="background-color: #218838">
-              <i class="fas fa-sync-alt nav-icon"></i>
-              <p>Reset Filter</p>
-            </a>
-          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
