@@ -64,10 +64,10 @@
     <section class="koleksi" id="koleksi">
       <div class="container mt-5">
         <div class="row justify-content-center content text-center">
-          <p class="text-koleksi">Koleksi ruang baca</p>
+          <p class="text-koleksi">Koleksi Ruang Baca</p>
           <div class="col-lg-3">
             <div class="card custom-card">
-              <img src="img/books.svg" class="card-img-top card-gambar position-relative start-50 translate-middle" alt="...">
+              <img src="img/books.svg" class="card-img-top card-gambar position-relative start-50 translate-middle">
               <div class="card-body">
                 <h1 id="jumlah_buku">0</h1>
                 <h5 class="card-title">Buku Ruang Baca</h5>
@@ -87,13 +87,13 @@
         <br>
         <div class="row justify-content-center content text-center">
           <div class="col-lg-4">
-            <span class="badge text-bg-light">
+            <span class="badge text-bg-light manualbook">
               <h4 id="manual_book">0</h4>
               <p>Manual Book</p>
             </span>
           </div>
           <div class="col-lg-4 skripsi">
-            <span class="badge text-bg-light">
+            <span class="badge text-bg-light skripsita">
               <h4 id="skripsi">0</h4>
               <p>Skripsi & TA</p>
             </span>
