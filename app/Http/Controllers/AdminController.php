@@ -87,9 +87,9 @@ class AdminController extends Controller
         return DataTables::of($bukus)
             ->addIndexColumn() // menambahkan kolom index / no urut (default nama kolom: DT_RowIndex)
             ->addColumn('aksi', function ($buku) { // menambahkan kolom aksi
-                $btn = '<a href="'.url('/admin/' . $buku->id_buku).'" class="btn btn-info btn-sm">Detail</a> ';
-                $btn .= '<a href="'.url('/admin/' . $buku->id_buku . '/edit').'" class="btn btn-warning btn-sm">Edit</a> ';
-                $btn .= '<form class="d-inline-block" method="POST" action="'.url('/admin/'.$buku->id_buku).'">'. csrf_field() . method_field('DELETE') .'<button type="submit" class="btn btn-danger btn-sm"onclick="return confirm(\'Apakah Anda yakin menghapus data ini?\');">Hapus</button></form>';
+                $btn = '<a href="'.url('/admin/' . $buku->id_buku).'" class="btn btn-info btn-sm"><i class="fas fa-info-circle"></i></a> ';
+                $btn .= '<a href="'.url('/admin/' . $buku->id_buku . '/edit').'" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a> ';
+                $btn .= '<form class="d-inline-block" method="POST" action="'.url('/admin/'.$buku->id_buku).'">'. csrf_field() . method_field('DELETE') .'<button type="submit" class="btn btn-danger btn-sm"onclick="return confirm(\'Apakah Anda yakin menghapus data ini?\');"><i class="fas fa-trash-alt"></i></button></form>';
                 return $btn;
             })
             ->rawColumns(['aksi']) // memberitahu bahwa kolom aksi adalah html

@@ -53,7 +53,7 @@
                                 <select class="form-control" id="id_penerbit" name="kode_penerbit" required>
                                     <option value="">- Pilih Penerbit -</option>
                                     @foreach($penerbit as $item)
-                                        <option value="{{ $item->id_penerbit }}" @if($item->id_penerbit == $buku->id_penerbit) selected @endif>{{ $item->nama_penerbit }}</option>
+                                        <option value="{{ $item->id_penerbit }}" @if($item->id_penerbit == $buku->kode_penerbit) selected @endif>{{ $item->nama_penerbit }}</option>
                                     @endforeach
                                 </select>
                                 @error('id_penerbit')
@@ -67,7 +67,7 @@
                                 <select class="form-control" id="id_kategori" name="kode_kategori" required>
                                     <option value="">- Pilih Kategori -</option>
                                     @foreach($kategori as $item)
-                                        <option value="{{ $item->id_kategori }}" @if($item->id_kategori == $buku->id_kategori) selected @endif>{{ $item->jenis_kategori }}</option>
+                                        <option value="{{ $item->id_kategori }}" @if($item->id_kategori == $buku->kode_kategori) selected @endif>{{ $item->jenis_kategori }}</option>
                                     @endforeach
                                 </select>
                                 @error('id_kategori')
@@ -90,7 +90,7 @@
                                 <select class="form-control" id="id_rak" name="kode_rak" required>
                                     <option value="">- Pilih Lokasi -</option>
                                     @foreach($lokasi as $item)
-                                        <option value="{{ $item->id_rak }}" @if($item->id_rak == $buku->id_rak) selected @endif>{{ $item->nama_rak }}</option>
+                                        <option value="{{ $item->id_rak }}" @if($item->id_rak == $buku->kode_rak) selected @endif>{{ $item->nama_rak }}</option>
                                     @endforeach
                                 </select>
                                 @error('id_rak')

@@ -3,7 +3,7 @@
     <div class="card card-outline card-primary">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h3 class="card-title">{{ $page->title }}</h3>
-            <a class="btn btn-sm btn-primary ml-auto" href="{{ url('admin/create')}}">Tambah</a>
+            <a class="btn btn-sm btn-primary ml-auto" href="{{ url('admin/create')}}"><i class="fas fa-plus" style="font-size: 12px"></i> Tambah</a>
         </div>
         <div class="card-body">
             @if (session('success'))
@@ -44,7 +44,7 @@
                         <th>Lokasi</th>
                         <th>Stok</th>
                         {{-- <th>QRCode</th> --}}
-                        <th style="width: 155px">Aksi</th>
+                        <th style="width: 105px">Aksi</th>
                     </tr>
                 </thead>
             </table>

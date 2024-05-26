@@ -43,9 +43,6 @@
       </div>
     </section>
 
-    {{-- <a href="listbook" type="button" class="btn btn-light btn-lg start-50 translate-middle mt-1 rounded-5 lihatSemuaBuku" style="">
-      <p style="padding-top: 10px"><i class="fa fa-book" aria-hidden="true"></i> ‎ Lihat Semua Buku</p>
-    </a> --}}
     <button class="continue-application" onclick="window.location.href='listbook'">
       <div>
         <div class="pencil"></div>

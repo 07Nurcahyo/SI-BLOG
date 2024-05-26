@@ -33,9 +33,9 @@ class KategoriController extends Controller
         return DataTables::of($kategoris)
             ->addIndexColumn() // menambahkan kolom index / no urut (default nama kolom: DT_RowIndex)
             ->addColumn('aksi', function ($kategori) { // menambahkan kolom aksi
-                $btn = '<a href="'.url('/kategori/' . $kategori->id_kategori).'" class="btn btn-info btn-sm">Detail</a> ';
-                $btn .= '<a href="'.url('/kategori/' . $kategori->id_kategori . '/edit').'" class="btn btn-warning btn-sm">Edit</a> ';
-                $btn .= '<form class="d-inline-block" method="POST" action="'.url('/kategori/'.$kategori->id_kategori).'">'. csrf_field() . method_field('DELETE') .'<button type="submit" class="btn btn-danger btn-sm"onclick="return confirm(\'Apakah Anda yakin menghapus data ini?\');">Hapus</button></form>';
+                $btn = '<a href="'.url('/kategori/' . $kategori->id_kategori).'" class="btn btn-info btn-sm">Detail <i class="fas fa-info-circle"></i></a> ';
+                $btn .= '<a href="'.url('/kategori/' . $kategori->id_kategori . '/edit').'" class="btn btn-warning btn-sm">Edit <i class="fas fa-edit"></i></a> ';
+                $btn .= '<form class="d-inline-block" method="POST" action="'.url('/kategori/'.$kategori->id_kategori).'">'. csrf_field() . method_field('DELETE') .'<button type="submit" class="btn btn-danger btn-sm"onclick="return confirm(\'Apakah Anda yakin menghapus data ini?\');">Hapus <i class="fas fa-trash"></i></button></form>';
                 return $btn;
             })
             ->rawColumns(['aksi']) // memberitahu bahwa kolom aksi adalah html
