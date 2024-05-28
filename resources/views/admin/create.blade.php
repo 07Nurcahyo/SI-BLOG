@@ -81,7 +81,7 @@
                     <label class="col-1 control-label col-form-label">Kode Rak</label>
                     <div class="col-11">
                         <select class="form-control" id="id_rak" name="kode_rak" required>
-                            <option value="">- Pilih Kategori -</option>
+                            <option value="">- Pilih Rak -</option>
                             @foreach($lokasi as $item)
                                 <option value="{{ $item->id_rak }}">{{ $item->nama_rak}}</option>
                             @endforeach

@@ -66,21 +66,24 @@
 <script src="{{ asset('adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/datatables-buttons/js/dataTables.button.min.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/datatables-buttons/js/dataTables.buttons.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/jszip/jszip.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/pdfmake/pdfmake.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/pdfmake/vfs_font.js') }}"></script>
+{{-- <script src="{{ asset('adminlte/plugins/pdfmake/vfs_font.js') }}"></script> --}}
 <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.colvis.min.js') }}"></script>
 {{-- graph --}}
 <script src="{{ asset('adminlte/plugins/chart.js/Chart.min.js') }}"></script>
-<script src="{{ asset('adminlte/dist/js/pages/dashboard2.js') }}"></script>
+{{-- <script src="{{ asset('adminlte/dist/js/pages/dashboard2.js') }}"></script> --}}
 <!-- AdminLTE App -->
 <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 {{-- <script src="{{ asset('adminlte/dist/js/demo.js') }}"></script> --}}
+{{-- Mapael --}}
+<script src="{{ asset('adminlte/plugins/raphael/raphael.min.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/jquery-mapael/jquery.mapael.js') }}"></script>
 <script>
   // untuk mengirimkan token laravel csrf pada setiap request ajax
   $.ajaxSetup({headers: {'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')}});
