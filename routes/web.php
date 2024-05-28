@@ -94,4 +94,4 @@ Route::get('listbook', [GuestController::class, 'listbook']);
 // qrcode
 // Route::get('/qrcode',[ProductController::class,'qrcode']);
 // Route::get('/create',[ProductController::class,'create']);
-// Route::post('/post',[ProductController::Class,'store']);
+// Route::post('/post',[ProductController::Class,'store']); 

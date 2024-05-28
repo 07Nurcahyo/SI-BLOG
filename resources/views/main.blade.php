@@ -110,55 +110,59 @@
   <!-- jQuery -->
   <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-	<script src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/style.js"></script>
+	{{-- <script src="js/bootstrap.min.js"></script> --}}
+  {{-- <script type="text/javascript" src="js/style.js"></script> --}}
   <script src="{{ asset('adminlte/plugins/chart.js/Chart.min.js') }}"></script>
-  <script src="{{ asset('adminlte/dist/js/pages/dashboard2.js') }}"></script>
+  {{-- <script src="{{ asset('adminlte/dist/js/pages/dashboard2.js') }}"></script> --}}
   <script>
-    $(function () {
-      async function getBookCount(){
-        try {
-          const response = await fetch('http://localhost/SI-BLOG/public/api/getBookCount');
-          const data = await response.json();
-          console.log(data);
-          $('#jumlah_buku').html(data.book_count);
-          $('#jumlah_kategori').html(data.category_count);
-        } catch (error) {
-          console.error('Error fetching data:', error);
-          return null; // Handle errors gracefully, e.g., display an error message
+    window.addEventListener('DOMContentLoaded', function() {
+      // Your code here
+      $(function () {
+        async function getBookCount(){
+          try {
+            const response = await fetch('http://localhost/SI-BLOG/public/api/getBookCount');
+            const data = await response.json();
+            console.log(data);
+            $('#jumlah_buku').html(data.book_count);
+            $('#jumlah_kategori').html(data.category_count);
+          } catch (error) {
+            console.error('Error fetching data:', error);
+            return null; // Handle errors gracefully, e.g., display an error message
+          }
         }
-      }
-      getBookCount();
-
-      // manual book dan skripsi
-      async function getCategoryCountData() {
-        try {
-          const response = await fetch('http://localhost/SI-BLOG/public/api/getBookCountByCategory');
-          const data = await response.json();
-          $.each(data, function(i, item) {
-            if (data[i].jenis_kategori=='Manual Book') {
-              $('#manual_book').html(data[i].total_buku);
-            }else if (data[i].jenis_kategori=='Skripsi & TA') {
-              $('#skripsi').html(data[i].total_buku);
-            }
-            // console.log( data[i].jenis_kategori );
-          });
-        } catch (error) {
-          console.error('Error fetching data:', error);
-          return null; // Handle errors gracefully, e.g., display an error message
+        getBookCount();
+  
+        // manual book dan skripsi
+        async function getCategoryCountData() {
+          try {
+            const response = await fetch('http://localhost/SI-BLOG/public/api/getBookCountByCategory');
+            const data = await response.json();
+            $.each(data, function(i, item) {
+              if (data[i].jenis_kategori=='Manual Book') {
+                $('#manual_book').html(data[i].total_buku);
+              }else if (data[i].jenis_kategori=='Skripsi & TA') {
+                $('#skripsi').html(data[i].total_buku);
+              }
+              // console.log( data[i].jenis_kategori );
+            });
+          } catch (error) {
+            console.error('Error fetching data:', error);
+            return null; // Handle errors gracefully, e.g., display an error message
+          }
         }
-      }
-      getCategoryCountData();
-
-      // cari
-      $("#cari").on('change', function(event) {
-      event.preventDefault();
-      console.log("tes");
-      let url="http://localhost/SI-BLOG/public/listbook?search="+$('#cari').val();
-      // alert(url);
-      window.location.assign(url);
+        getCategoryCountData();
+  
+        // cari
+        $("#cari").on('change', function(event) {
+        event.preventDefault();
+        console.log("tes");
+        let url="http://localhost/SI-BLOG/public/listbook?search="+$('#cari').val();
+        // alert(url);
+        window.location.assign(url);
+      });
+      })
     });
-    })
+
   </script>
 </body>
 </html>
