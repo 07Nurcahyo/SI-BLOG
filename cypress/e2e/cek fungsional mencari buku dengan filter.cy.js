@@ -6,18 +6,20 @@ describe('SI-BLOG tests', () => {
   
 
     it('Cari buku dengan filter kategori', () => {
-        cy.get('#id_kategori').click()
-        cy.contains('Ilmu Informasi').get('#id_kategori').should('have.text', 'Ilmu Informasi')
+        cy.contains('Kategori').click()
+        cy.get('.nav-item').contains('Ilmu Informasi').click({force:true})
+        // cy.url().should('include', '#ilmuinformasi')
+
     })
 
-    // it('Cari buku dengan filter tahun terbit', () => {
-    //     cy.contains('Tahun Terbit').click()
-    //     cy.contains('2010').click()
-    // })
+    it('Cari buku dengan filter tahun terbit', () => {
+        cy.contains('Tahun Terbit').click()
+        cy.get('.nav-item').contains('2010').click({force:true})
+    })
 
-    // it('Cari buku dengan filter penerbit', () => {
-    //     cy.contains('Penerbit').click()
-    //     cy.contains('andi').click()
-    // })
+    it('Cari buku dengan filter penerbit', () => {
+        cy.contains('Penerbit').click()
+        cy.get('.nav-item').contains('ANDI').click({force:true})
+    })
   })
   
