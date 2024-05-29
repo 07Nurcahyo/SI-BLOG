@@ -38,13 +38,14 @@
                 <div class="col-md-6">
                     <div class="card ">
                         <div class="card-body">
-                            <form action="{{ url('actionlogin') }}" method="post">
+                            @error('error')
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <b>Opps!</b> {{$message}}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            @enderror
+                            <form action="{{ url('proses_login') }}" method="post">
                                 @csrf
-                                @if(session('error'))
-                                <div class="alert alert-danger">
-                                    <b>Opps!</b> {{session('error')}}
-                                </div>
-                                @endif
                                 <div class="form-group">
                                     <label for="username">Username:</label>
                                     <input type="text" class="form-control" name="username" id="username" required>

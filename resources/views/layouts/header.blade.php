@@ -70,7 +70,7 @@
         </a>
       </li>
 
-      <a href="{{route('actionlogout')}}" class="btn btn-light" style="border-radius: 15px"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout</a>
+      <a href="{{route('logout')}}" class="btn btn-light" style="border-radius: 15px"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout</a>
 
     </ul>
   </nav>

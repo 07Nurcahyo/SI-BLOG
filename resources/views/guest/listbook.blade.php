@@ -170,6 +170,25 @@
               @endforeach
             </ul>
           </li> 
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-pencil-alt"></i>
+              <p>
+                Penulis
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              @foreach ($penulis as $item)
+                <li class="nav-item">
+                  <a href="{{url('/listbook?penulis='.$item->penulis)}}" class="nav-link">
+                    <i class="fas fa-arrow-right nav-icon" style="font-size: 13px"></i>
+                    <p style="font-size: 13px">{{$item->penulis}}</p>
+                  </a>
+                </li>
+              @endforeach
+            </ul>
+          </li> 
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -410,7 +429,12 @@
     $("#cari").on('submit', function(event) {
       event.preventDefault();
       console.log("tes");
-      let url="http://localhost/SI-BLOG/public/listbook?search="+$('#cari_buku').val();
+      let url = "";
+      if(!isNaN(Date.parse($('#cari_buku').val()))){
+        url="http://localhost/SI-BLOG/public/listbook?tahun_terbit="+$('#cari_buku').val();
+      }else{
+        url="http://localhost/SI-BLOG/public/listbook?search="+$('#cari_buku').val();
+      }
       // alert(url);
       window.location.assign(url);
     });

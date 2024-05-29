@@ -14,35 +14,12 @@ class GuestController extends Controller
         return view('guest.statistik');
     }
 
-    // public function list(){
-    //     $books = [
-    //         [
-    //             'title' => 'Book 1',
-    //             'author' => 'Author 1',
-    //             'publisher' => 'Publisher 1',
-    //             'year' => '2020',
-    //             'category' => 'Category 1'
-    //         ],
-    //         [
-    //             'title' => 'Book 2',
-    //             'author' => 'Author 2',
-    //             'publisher' => 'Publisher 2',
-    //             'year' => '2019',
-    //             'category' => 'Category 2'
-    //         ],
-    //         // Add more books as needed
-    //     ];
-        
-    //     return view('books.index', ['books' => $books]);
-    //     return view('guest.listbook');
-    // }
-
     public function listbook(Request $request){
         $penulis = DB::table('buku')
                     ->select('penulis')
                     ->distinct()
+                    ->orderBy('penulis','asc')
                     ->get();
-
         $penerbit = PenerbitModel::all();
         $tahun_terbit = BukuModel::select('tahun_terbit')->distinct()->orderBy('tahun_terbit','asc')->get();
         $kategori = KategoriModel::all();
@@ -69,6 +46,10 @@ class GuestController extends Controller
                     })
                     ->orWhere('penulis', 'like', '%'.$request->search.'%');
             });
+        }
+
+        if ($request->penulis != null) {
+            $buku = $buku->where('penulis', 'like', '%'.$request->penulis.'%');
         }
 
         if ($request->sort != null) {

@@ -36,7 +36,7 @@
         </li>
         <li class="nav-header">Data Buku</li>
         <li class="nav-item">
-            <a href="{{ url('/admin') }}" class="nav-link {{ ($activeMenu == 'admin') ? 'active' : '' }} ">
+            <a href="{{ url('/buku') }}" class="nav-link {{ ($activeMenu == 'buku') ? 'active' : '' }} ">
                 <i class="nav-icon fas fa-book"></i>
                 <p>Data Buku</p>
             </a>

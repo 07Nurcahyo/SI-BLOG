@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Session;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
@@ -34,30 +35,57 @@ class AdminController extends Controller
 
     public function login()
     {
-        if (Auth::check()) {
-            return redirect('admin.dashboard');
-        }else{
-            return view('admin/admin_login');
+        // if (Auth::check()) {
+        //     return redirect('admin.dashboard');
+        // }else{
+        //     return view('admin/admin_login');
+        // }
+        $user = Auth::user();
+        // kondisi jika usernya ada
+        if ($user) {
+            return redirect()->intended('admin');
         }
+        return view('admin/admin_login');
     }
 
-    public function actionlogin(Request $request)
-    {
-        $data = [
-            'username' => $request->input('username'),
-            'password' => $request->input('password'),
-        ];
-        $user = AdminModel::where([['username', $data['username']],['password', $data['password']]])->first();
-        if ($user != null) {
-            return view('index');
-        }else{
-            // Session::flash('error', 'Username atau Password Salah');
-            return redirect('login_admin');
+    // public function actionlogin(Request $request)
+    // {
+    //     $data = [
+    //         'username' => $request->input('username'),
+    //         'password' => $request->input('password'),
+    //     ];
+    //     $user = AdminModel::where([['username', $data['username']],['password', $data['password']]])->first();
+    //     if ($user != null) {
+    //         return view('index');
+    //     }else{
+    //         // Session::flash('error', 'Username atau Password Salah');
+    //         return redirect('login_admin');
+    //     }
+    // }
+
+    public function proses_login(Request $request){
+        // form username password wajib diisi
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+        // ambil data request username dan password saja
+        $credential = $request->only('username', 'password');
+        if (Auth::attempt($credential)) {
+            $user = Auth::user();
+            if ($user) {
+                return redirect()->intended('dashboard');
+            }
+            return redirect()->intended('/');
         }
+        return redirect('login_admin')
+            ->withInput()
+            ->withErrors(['error' => 'Pastikan kembali username dan password yang dimasukkan sudah benar']);
     }
 
-    public function actionlogout()
-    {
+    public function logout(Request $request){
+        // logout harus menghapus session
+        $request->session()->flush();
         Auth::logout();
         return redirect('login_admin');
     }
@@ -71,7 +99,7 @@ class AdminController extends Controller
         $page = (object) [
             'title' => 'Daftar buku yang terdaftar dalam sistem'
         ];
-        $activeMenu = 'admin'; //set menu yang sedang aktif
+        $activeMenu = 'buku'; //set menu yang sedang aktif
         $penerbit = PenerbitModel::all();
         $kategori = KategoriModel::all();
         $lokasi = LokasiModel::all();
