@@ -341,7 +341,7 @@ section.koleksi{
 .statistik:hover{
     background-color: rgb(255, 213, 0);
 }
-.fa-long-arrow-right{
-    padding-top: 2px;
-    color: white;
+.fa-chart-pie{
+    padding-top: 4px;
+    color: darkcyan;
 }

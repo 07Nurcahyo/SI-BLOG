@@ -7,6 +7,8 @@
     <title>Login Admin</title>
     <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></link>
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/admin_login.css"/>
 </head>
 <body>
@@ -55,8 +57,9 @@
                                     <input type="password" class="form-control" name="password" id="password" required>
                                 </div>
                                 <div class="text-center">
-                                  <button type="submit" class="btn btn-primary">Login</button>
-                                  <a href="{{ url('/') }}" class="btn btn-warning">Kembali</a>
+                                    <a href="{{ url('/') }}" class="btn btn-warning"><i class="fas fa-chevron-circle-left"></i> Kembali</a>
+                                    <span class="ms-3"></span>
+                                    <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Login</button>
                                 </div>
                             </form>
                             <!-- <div class="mt-3 text-center">

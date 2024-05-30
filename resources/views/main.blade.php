@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SI-BLOG</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></link>
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css"/>
 </head>
@@ -24,7 +25,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         </ul>
         <form class="d-flex">
-          <a href="login_admin" class="btn btn-light rounded-4" role="button">Login admin &nbsp;<i class="fa fa-user" aria-hidden="true"></i></a>
+          <a href="login_admin" class="btn btn-light rounded-3" role="button">Login admin <i class="fas fa-user-cog" aria-hidden="true"></i></a>
         </form>
       </div>
     </div>
@@ -38,7 +39,7 @@
           <h1 class="jti">Ruang Baca JTI</h1>
           <div class="input-group searchbar">
             <input type="search" class="form-control" placeholder="Cari Buku.." id="cari"/>
-            <button type="button" class="btn btn-primary btn-lg" id="cari_buku">Cari</button>
+            <button type="button" class="btn btn-primary btn-lg" id="cari_buku"><i class="fas fa-search"></i></button>
           </div>
       </div>
     </section>
@@ -99,7 +100,7 @@
         <br><br>
         <div class="row justify-content-center content text-center">
             <a href="guest/statistik" class="badge btn statistik">
-              <p>Statistik &nbsp;&nbsp;<i class="fa fa-long-arrow-right" aria-hidden="true"></i></p>
+              <p>Statistik <i class="fas fa-chart-pie fa-sm"></i></p>
             </a>
         </div>
       </div>
