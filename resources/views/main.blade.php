@@ -153,13 +153,26 @@
         getCategoryCountData();
   
         // cari
+
+        // $("#cari").on('change', function(event) {
+        // event.preventDefault();
+        // console.log("tes");
+        // let url="http://localhost/SI-BLOG/public/listbook?search="+$('#cari').val();
+        // // alert(url);
+        // window.location.assign(url);
+        // });
         $("#cari").on('change', function(event) {
         event.preventDefault();
         console.log("tes");
-        let url="http://localhost/SI-BLOG/public/listbook?search="+$('#cari').val();
+        let url = "";
+        if(!isNaN(Date.parse($('#cari').val()))){
+          url="http://localhost/SI-BLOG/public/listbook?tahun_terbit="+$('#cari').val();
+        }else{
+          url="http://localhost/SI-BLOG/public/listbook?search="+$('#cari').val();
+        }
         // alert(url);
         window.location.assign(url);
-      });
+        });
       })
     });
 
