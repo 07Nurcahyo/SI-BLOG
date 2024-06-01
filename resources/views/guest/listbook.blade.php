@@ -252,8 +252,9 @@
                   <div class="p-0 row">
                     @foreach ($buku as $b)
                       <div class="col-sm-2">
-                        <a href="{{asset('img/coverdummy.png')}}" data-toggle="modal" data-title="{{$b->judul_buku}}" data-target="#modal-default" data-idbuku="{{$b->id_buku}}" name="list_buku">
-                          <img src="{{asset('img/coverdummy.png')}}" class="img-fluid mb-2" alt="white sample"/>
+                        @php $gambar = $b->gambar!=null ? 'storage/'. $b->gambar : 'img/coverdummy.png' @endphp
+                        <a href="{{url($gambar)}}" data-toggle="modal" data-title="{{$b->judul_buku}}" data-target="#modal-default" data-idbuku="{{$b->id_buku}}" name="list_buku">
+                          <img src="{{url($gambar)}}" class="img-fluid mb-2" alt="white sample"/>
                         </a>
                         <table class="table table-borderless table-sm w-auto">
                           <tr>
@@ -417,7 +418,7 @@
 <!-- Page specific script -->
 <script>
   $(function () {
-    
+    var baseUrl = {!!json_encode(url('/'))!!} + '/';
     $("#modal-default").on('show.bs.modal', function(event) {
       console.log("tes");
       console.log(event);
@@ -431,9 +432,9 @@
       console.log("tes");
       let url = "";
       if(!isNaN(Date.parse($('#cari_buku').val()))){
-        url="http://localhost/SI-BLOG/public/listbook?tahun_terbit="+$('#cari_buku').val();
+        url = baseUrl + "listbook?tahun_terbit="+$('#cari_buku').val();
       }else{
-        url="http://localhost/SI-BLOG/public/listbook?search="+$('#cari_buku').val();
+        url = baseUrl + "listbook?search="+$('#cari_buku').val();
       }
       // alert(url);
       window.location.assign(url);
@@ -442,7 +443,7 @@
     // api untuk mengambil data buku
     function getDataBuku(idBuku) {
       $.ajax({
-        url: 'http://localhost/SI-BLOG/public/api/getDataBuku/' + idBuku,
+        url: baseUrl+'api/getDataBuku/' + idBuku,
         method: 'GET',
         success: function(data) {
           $('#isbn').text(data.isbn);
@@ -454,15 +455,17 @@
           $('#ruangan').text(data.lokasi.nama_ruang);
           $('#rak').text(data.lokasi.nama_rak);
           // api jika stok buku 0 maka akan menampilkan info tidak tersedia
+          var gambar = data.gambar != null ? 'storage/' + data.gambar : 'img/coverdummy.png';
+          console.log(baseUrl+gambar);
           if(data.stok == 0) {
-            $('#cover-modal').attr('src', "{{asset('img/coverdummy.png')}}");
+            $('#cover-modal').attr('src', baseUrl+gambar);
             $('#ketersediaan').text("Tidak Tersedia  ");
             $('#ketersediaan').css({
               "background-color": "#FF0000",
               "color": "#FFFFFF"
             }).append('<i class="fas fa-times-circle"></i>');
           } else {
-            $('#cover-modal').attr('src', "{{asset('img/coverdummy.png')}}");
+            $('#cover-modal').attr('src', baseUrl+gambar);
             $('#ketersediaan').text(" Tersedia ");
             $('#ketersediaan').css({
               "background-color": "green",

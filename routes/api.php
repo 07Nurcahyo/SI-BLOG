@@ -26,3 +26,5 @@ Route::get('getBookCount', [AdminController::class, 'getBookCount']);
 
 // untuk mengambil data di list buku
 Route::get('getDataBuku/{id}', [GuestController::class, 'getDataBuku']);
+
+// Route::post('/gambarbuku', App\Http\Controllers\AdminController::class)->name('gambarbuku');

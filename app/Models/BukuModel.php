@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -21,7 +22,8 @@ class BukuModel extends Model
         'kode_kategori', //fk
         'penulis',
         'kode_rak', //fk
-        'stok'
+        'stok',
+        'gambar'
     ];
 
     public function penerbit(): BelongsTo{
@@ -32,5 +34,10 @@ class BukuModel extends Model
     }
     public function lokasi(): BelongsTo{
         return $this->belongsTo(LokasiModel::class, 'kode_rak', 'id_rak');
+    }
+    public function image(): Attribute{
+        return Attribute::make(
+            get: fn ($gambar) => url('/storage/posts' . $gambar),
+        );
     }
 }

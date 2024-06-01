@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use Session;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -146,7 +147,8 @@ class AdminController extends Controller
             'kode_kategori' => 'required|string|max:10|exists:kategori,id_kategori', //fk
             'penulis'       => 'required|string|max:100',
             'kode_rak'      => 'required|string|max:10|exists:lokasi,id_rak', //fk
-            'stok'          => 'required|integer'
+            'stok'          => 'required|integer',
+            'gambar'        => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         BukuModel::create([
             'isbn'          => $request->isbn,
@@ -156,10 +158,23 @@ class AdminController extends Controller
             'kode_kategori' => $request->kode_kategori, //fk
             'penulis'       => $request->penulis,
             'kode_rak'      => $request->kode_rak, //fk
-            'stok'          => $request->stok
+            'stok'          => $request->stok,
+            // 'gambar'        => $request->image->hashName(),
+            'gambar'        => $this->storeImage($request->file('gambar')),
         ]);
         return redirect('/admin')->with('success', 'Data buku berhasil disimpan!');
-        // return 'Yeah'+$request->tahun_terbit;
+    }
+    protected function storeImage ($image)
+    {
+        if(!$image){
+            return null;
+        }
+        $originalFileName = $image->getClientOriginalName();
+        $hashedFileName = Hash::make($originalFileName);
+        $extension = $image->getClientOriginalExtension();
+        $filepath = 'images/'.$hashedFileName.'.'.$extension;
+        Storage::disk('public')->put($filepath, file_get_contents($image));
+        return $filepath;
     }
     public function show(String $id){
         $buku = BukuModel::with('penerbit', 'kategori', 'lokasi')->find($id);
@@ -197,7 +212,8 @@ class AdminController extends Controller
             'kode_kategori' => 'required|string|max:10', //fk
             'penulis'       => 'required|string|max:100',
             'kode_rak'      => 'required|string|max:10', //fk
-            'stok'          => 'required|integer'
+            'stok'          => 'required|integer',
+            'gambar'        => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         BukuModel::find($id)->update([
             'isbn'          => $request->isbn,
@@ -207,7 +223,8 @@ class AdminController extends Controller
             'kode_kategori' => $request->kode_kategori, //fk
             'penulis'       => $request->penulis,
             'kode_rak'      => $request->kode_rak, //fk
-            'stok'          => $request->stok
+            'stok'          => $request->stok,
+            'gambar'        => $request->image->hashName(),
         ]);
         return redirect('/admin')->with('success', 'Data buku berhasil diubah!');
     }
