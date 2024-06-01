@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 02, 2024 at 12:49 PM
+-- Generation Time: Jun 01, 2024 at 04:32 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -37,6 +37,13 @@ CREATE TABLE `admin` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id_admin`, `username`, `password`, `nama_admin`, `jenis_kelamin`, `created_at`, `updated_at`) VALUES
+(2, 'admin', '$2y$12$mMr4ziBTJoQyx1V5tqVKZOc40Iqsg3QnvdeXJTvKBwVfVo9zebJyS', 'yanto', 'L', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -62,7 +69,7 @@ CREATE TABLE `buku` (
 --
 
 INSERT INTO `buku` (`id_buku`, `isbn`, `judul_buku`, `tahun_terbit`, `kode_penerbit`, `kode_kategori`, `penulis`, `kode_rak`, `stok`, `created_at`, `updated_at`) VALUES
-(1, '978-602-8758-27-7', 'Pemrograman Brorientasi Objek C#', 2011, 'INB', 'PG', 'Erico Darmawan H. & Laurentius Risal', 'R1', 1, NULL, '2024-04-22 06:37:59'),
+(1, '978-602-8758-27-7', 'Pemrograman Brorientasi Objek C#', 2011, 'INB', 'PG', 'Erico Darmawan H. & Laurentius Risal', 'R1', 1, NULL, '2024-05-26 05:17:17'),
 (2, '978-979-29-1664-5', 'Cepat Kuasai PHP & MySQL', 2010, 'AND', 'PG', 'Andreas Hery Prasetya', 'R1', 1, NULL, NULL),
 (3, '978-602-8758-44-4', 'Belajar Otodidak Pemrograman Web dengan PHP +Oracle', 2011, 'INB', 'PG', 'Budi Raharjo', 'R1', 2, NULL, NULL),
 (4, '978-979-29-1301-9', 'Mengembangkan Aplikasi Basis Data Menggunakan C# +SQLServer', 2010, 'AND', 'PG', 'Adi Nugroho', 'R1', 2, NULL, NULL),
@@ -115,7 +122,38 @@ INSERT INTO `buku` (`id_buku`, `isbn`, `judul_buku`, `tahun_terbit`, `kode_pener
 (51, '979-3338-33-4', 'Sistem Manajemen Basis Data Pemodelan, Perancangan, dan Terapanya', 2004, 'INB', 'LSG', 'Bambang Harianto', 'R8', 1, NULL, NULL),
 (54, '1', 'tes', 2000, 'AND', 'IIN', 'tes', 'R1', 1, '2024-04-29 21:41:51', '2024-04-29 21:41:51'),
 (55, '1', 'Tes skripsi dan ta', 2000, 'POL', 'STA', 'Mahasiswa', 'R1', 1, '2024-04-30 20:22:05', '2024-04-30 20:22:05'),
-(56, '1', 'Tes Manual Book', 2000, 'AND', 'MB', 'Wahyu', 'R6', 1, NULL, NULL);
+(56, '1', 'Tes Manual Book', 2000, 'AND', 'MB', 'Wahyu', 'R6', 1, NULL, NULL),
+(57, '1', 'Buku Manual Pengembangan Sistem Informasi FIDS(Flight Information Display System) Abdulrachman Saleh Berbasis Andorid', 2017, 'POL', 'MB', 'Annisa Noviana, Dindha Maria Ulfa', 'R4', 1, NULL, NULL),
+(58, '1', 'Impelementasi Web Crawler dan Perangkingan Data Hotel Menggunakan Metode ANP ', 2017, 'POL', 'MB', 'Sabilah Faza', 'R4', 1, NULL, NULL),
+(59, '1', 'Implementasi K-Means Clustering untuk Pengolahan Sistem Persediaan Obat', 2017, 'POL', 'MB', 'Dadid Okta Pramudiyanto', 'R4', 1, NULL, NULL),
+(60, '1', 'Simulasi Pembelajaran Beternak Burung Puyuh Menggunakan Metode Finite State Machine Berbasis Android', 2017, 'POL', 'MB', 'Nindy Alvi Fajarina', 'R4', 1, NULL, NULL),
+(61, '1', 'Implementasi Steganografi Menggunakan Metode Bit Plane Complexity Segmentation pada Citra Digital', 2017, 'POL', 'MB', 'Rachmad Jibril Al Kautsar', 'R4', 1, NULL, NULL),
+(62, '1', 'Rancang Bangun Aplikasi Pencarian Guru Les Privat di Kota Malang Berbasis Android (Studi Kasus: Sandi Privat-Malang)', 2019, 'POL', 'MB', 'Budi Purwanto', 'R4', 1, NULL, NULL),
+(63, '1', 'Pengembangan Aplikasi Peramalan Penjualan Barang Menggunakan Metode Double Exponential Smoothing pada KP-RI Harapan Plumpang', 2017, 'POL', 'MB', 'Adix Mukhib Zulis Saputra', 'R4', 1, NULL, NULL),
+(64, '1', 'Pengembangan Sistem Peramalan Stok Obat di Puskesmas Gending Probolinggo Menggunakan Metode Winters Exponential Smoothing', 2017, 'POL', 'MB', 'Muhammad Ishaq Habibi', 'R4', 1, NULL, NULL),
+(65, '1', 'Aplikasi Penetuan Prioritas Belanja Barang atau Jasa Menggunakan Metode Moora di Politeknik Kesehatan Kemenkes Malang', 2017, 'POL', 'MB', 'Afif Ashar Pambudi', 'R4', 1, NULL, NULL),
+(66, '1', 'Aplikasi Pengenalan Hewan Laut Dalam DESEA-ENS Berbasis Augmented Reality', 2017, 'POL', 'MB', 'Deni Aprianto , Nurcahyo Aswin Damasworo', 'R4', 1, NULL, NULL),
+(67, '1', 'Sistem Pendukung Keputusan untuk Menentukan Kelayakan Penerimaan Raskin di Karangsari Kota Blitar', 2018, 'POL', 'MB', 'Muhammad Syafi\'i', 'R5', 1, NULL, NULL),
+(68, '1', 'Pengolahan Citra Digital Identifikasi Jenis Tanah Menggunakan Metode Naive Bayes Classifier', 2018, 'POL', 'MB', 'Rohmad Wahyu Syaifi A', 'R5', 1, NULL, NULL),
+(69, '1', 'Apikasi Pengolahan Citra untuk Pengenalan Tingkat Kematangan Tomat Menggunakan Konversi Warna HSV dan Klasifikasi Naif Bayes', 2018, 'POL', 'MB', 'Muhammad Firman Aulia Syah Putra', 'R5', 1, NULL, NULL),
+(70, '1', 'Implementasi Analisis Clustering dan Sentimen Data Twitter pada Opini Wisata Pantai Menggunakan Metode K-Means', 2017, 'POL', 'MB', 'Rizki Andi Irawan', 'R5', 1, NULL, NULL),
+(71, '1', 'Implementasi Game Herbs Rescue pada Aplikasi Ensiklopedia Tanaman Obat Tradisional Indoenesia (HerbAR)', 2017, 'POL', 'MB', 'Sari Anggraeni', 'R5', 1, NULL, NULL),
+(72, '1', 'Pengembangan SIstem Informasi Pemilihan Objek Wisata Berdasarkan Kriteria Destinasi Pariwisata Unggulan Menggunakan Metode TOPSIS (Studi Kasus: Kabupaten Tulungagung', 2017, 'POL', 'MB', 'Yuda Krisna Wijaya', 'R5', 1, NULL, NULL),
+(73, '1', 'Sistem Pendukung Keputusan Penerima Bantuan Beras Bersubsidi Menggunakan Metode TOPSIS Berbasis Web (Studi Kasus: Kantor Desa Dringu Kabupaten Probolinggo)', 2019, 'POL', 'MB', 'Bhaktiar Adi Nugraha, Hanif Hidayatturrohim', 'R5', 1, NULL, NULL),
+(74, '1', 'Implementasi Pencarian Rute Perjalanan Terpendek untuk Distribusi Kopi Berbasis Android dengan Menggunakan Metode GREEDY (Studi Kasus: Kecamatan Kota Gresik)', 2017, 'POL', 'MB', 'M. Rizki Ananda', 'R5', 1, NULL, NULL),
+(75, '1', 'Implementasi Augmented Reality untuk Pengenalan Energi Terbarukan', 2017, 'POL', 'MB', 'Damon Satya As Sabili, Rama Adi Nugroho', 'R5', 1, NULL, NULL),
+(76, '1', 'Identifikasi Kecerdasan Majemuk Siswa untuk Pertimbangan Studi Lebih Lanjut dengan Metode FUZZY TOPSIS', 2019, 'POL', 'MB', 'Nuansa Fitri Sukma', 'R5', 1, NULL, NULL),
+(77, '1', 'Pengembangan Sistem Pembelajaran Logika Berbasis Komponen Visual Dengan Memanfaatkan Perangkat IOT Development Board', 2023, 'POL', 'SK', 'Muhammad Tyone Noor Satria', 'R6', 1, NULL, NULL),
+(78, '1', 'Penetuan Penempatan Posisi Pemain Inti Futsal Berbasis Group Decision Support System Dengan Menggunakan Metode Profile Matching dan BORDA (Studi Kasus: PORPROV Kab. Dompu)', 2023, 'POL', 'SK', 'M. Fajrin', 'R6', 1, NULL, NULL),
+(79, '1', 'Sistem Rekomendasi Dosen Penguji Skripsi Dengan Algoritma Intuitionistic-Fuzzy (IF) Dematel dan IF-VIKOR', 2022, 'POL', 'SK', 'Alan Perdhana Timor', 'R6', 1, NULL, NULL),
+(80, '1', 'Metode Random Forest untuk Klasifikasi Kerusakan Transformator Daya Berdasarkan Gas Terlarut pada Duval Triangle dan Duval Pentagon', 2022, 'POL', 'SK', 'Hunayn Risatayn', 'R6', 1, NULL, NULL),
+(81, '1', 'Rancang Bangun Sistem Informasi Pengarsipan Pada KB/TK Ceria Mandiri', 2022, 'POL', 'LA', 'Abiyan Fawwaz, Erni Srihartini', 'R6', 1, NULL, NULL),
+(82, '1', 'Sistem Temu Kembali Informasi Pesawat Udara Militer Menggunakan Jaringan Syaraf Tiruan Back Propagation Network', 2022, 'POL', 'SK', 'Ardyansyah Vira Bahrudin', 'R6', 1, NULL, NULL),
+(83, '1', 'Sistem Alokasi Air Berbasis Sistem Informasi Geografis (Studi Kasus : Perusahaan Umum Jasa Tirta 1)', 2022, 'POL', 'SK', 'Muhammad Yuki Miftakhurrizqi', 'R6', 1, NULL, NULL),
+(84, '1', 'Development of Abdullah Permata Jingga Mosque Website Interface With User Centered Design Method', 2022, 'POL', 'SK', 'Salsabila Firdausy', 'R6', 1, NULL, NULL),
+(85, '1', 'Pengembangan Topik Data Service untuk Pembelajaran Aplikasi Berbasis Android pada Platform Intelligent Computer-Assisted Programming Learning Platform (iCLOP)', 2022, 'POL', 'SK', 'Muhammad Afandi', 'R6', 1, NULL, NULL),
+(86, '1', 'Sistem E-Learning Sebagai Media Pembelajaran pada Bimbingan Belajar Privat Juara', 2022, 'POL', 'LA', 'Falya Charismatul Ayza, Novelya Asis Sholikha', 'R6', 1, NULL, NULL),
+(87, '123', 'testes', 2000, 'INK', 'TES', 'tes', 'R2', 1, '2024-05-29 07:24:34', '2024-05-29 07:24:34');
 
 -- --------------------------------------------------------
 
@@ -158,6 +196,7 @@ INSERT INTO `kategori` (`id_kategori`, `jenis_kategori`, `created_at`, `updated_
 ('LSG', 'Literatur, Sejarah, Geografi', NULL, NULL),
 ('MB', 'Manual Book', NULL, NULL),
 ('PG', 'Pemrograman', NULL, NULL),
+('SK', 'Skripsi', '2024-05-02 06:33:40', '2024-05-02 06:33:40'),
 ('STA', 'Skripsi & TA', '2024-04-30 20:16:47', '2024-04-30 20:16:47'),
 ('TES', 'tes', '2024-04-29 21:37:32', '2024-04-29 21:37:32'),
 ('UIK', 'Umum dan Ilmu Komputer', NULL, NULL);
@@ -270,19 +309,6 @@ INSERT INTO `penerbit` (`id_penerbit`, `nama_penerbit`, `created_at`, `updated_a
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penulis`
---
-
-CREATE TABLE `penulis` (
-  `id_penulis` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_penulis` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `personal_access_tokens`
 --
 
@@ -389,12 +415,6 @@ ALTER TABLE `penerbit`
   ADD PRIMARY KEY (`id_penerbit`);
 
 --
--- Indexes for table `penulis`
---
-ALTER TABLE `penulis`
-  ADD PRIMARY KEY (`id_penulis`);
-
---
 -- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
@@ -423,13 +443,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_admin` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id_buku` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id_buku` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
