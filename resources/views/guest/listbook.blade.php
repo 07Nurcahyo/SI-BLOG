@@ -454,9 +454,9 @@
           $('#tahun_terbit').text(data.tahun_terbit);
           $('#ruangan').text(data.lokasi.nama_ruang);
           $('#rak').text(data.lokasi.nama_rak);
-          // api jika stok buku 0 maka akan menampilkan info tidak tersedia
-          var gambar = data.gambar != null ? 'storage/' + data.gambar : 'img/coverdummy.png';
+          var gambar = data.gambar ? `storage/${data.gambar}` : 'img/coverdummy.png';
           console.log(baseUrl+gambar);
+          // api jika stok buku 0 maka akan menampilkan info tidak tersedia
           if(data.stok == 0) {
             $('#cover-modal').attr('src', baseUrl+gambar);
             $('#ketersediaan').text("Tidak Tersedia  ");

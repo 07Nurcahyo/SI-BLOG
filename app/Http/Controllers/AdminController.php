@@ -224,7 +224,8 @@ class AdminController extends Controller
             'penulis'       => $request->penulis,
             'kode_rak'      => $request->kode_rak, //fk
             'stok'          => $request->stok,
-            'gambar'        => $request->image->hashName(),
+            // 'gambar'        => $request->image->hashName(),
+            'gambar'        => $this->storeImage($request->file('gambar')),
         ]);
         return redirect('/admin')->with('success', 'Data buku berhasil diubah!');
     }
