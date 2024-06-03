@@ -48,9 +48,16 @@
                     <th>stok</th>
                     <td>{{ $buku->stok }}</td>
                 </tr>
+                <tr>
+                    <th>Cover</th>
+                    <td>
+                        <img src="{{ $buku->gambar ? asset('storage/'.$buku->gambar) : asset('img/coverdummy.png') }}"
+                            class="img-fluid w-25 d-block" style="max-width:150px">
+                    </td>
+                </tr>
             </table>
             @endempty
-            <a href="{{ url('admin') }}" class="btn btn-sm btn-default mt-2">Kembali</a>
+            <a href="{{ url('admin') }}" class="btn btn-sm btn-warning mt-2"><i class="fas fa-chevron-circle-left"></i> Kembali</a>
         </div>
     </div>
 @endsection

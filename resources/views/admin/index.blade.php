@@ -43,8 +43,9 @@
                         <th>Penulis</th>
                         <th>Lokasi</th>
                         <th>Stok</th>
+                        <th>Cover</th>
                         {{-- <th>QRCode</th> --}}
-                        <th style="width: 105px">Aksi</th>
+                        <th style="width: 135px">Aksi</th>
                     </tr>
                 </thead>
             </table>
@@ -59,7 +60,7 @@
 <script>
     $(document).ready(function() {
         var dataBuku = $('#table_buku').DataTable({
-            serverSide: true,
+            serverSide: false,
             ajax: {
                 url: "{{ url('admin/list') }}",
                 dataType: "json",
@@ -124,13 +125,75 @@
                     searchable: false
                 },
                 {
+                    data: "gambar",
+                    render: function(data, type, row, meta) { // row instead of full
+                        var baseUrl = {!!json_encode(url('/'))!!} + '/';
+                        var gambar = row["gambar"] ? `storage/${row["gambar"]}` : 'img/coverdummy.png';
+                        var imgUrl = baseUrl+gambar;
+                        return '<img src="' + imgUrl + '" height="120px"/>';
+                    },
+                    className: "",
+                    orderable: false,
+                    searchable: false
+                },
+                {
                     data: "aksi",
                     className: "",
                     orderable: false,
                     searchable: false
                 }
             ],
-            buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
+            // buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
+            // dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'copy',
+                    title: 'Data Buku Perpustakaan JTI Lantai 6',
+                    // message: 'opsional',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                    }
+                },
+                {
+                    extend: 'csv',
+                    title: 'Data Buku Perpustakaan JTI Lantai 6',
+                    // message: 'opsional',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                    }
+                },
+                {
+                    extend: 'excel',
+                    title: ' Data Buku Perpustakaan JTI Lantai 6',
+                    // message: 'opsional',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                    }
+                },
+                {
+                    extend: 'pdf',
+                    title: 'Data Buku Perpustakaan JTI Lantai 6',
+                    // message: 'opsional',
+                    pageSize: 'A4',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                    }
+                },
+                {
+                    extend: 'print',
+                    title: 'Data Buku Perpustakaan JTI Lantai 6',
+                    // message: 'opsioanl',
+                    pageSize: 'A4',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                    }
+                },
+                'colvis',
+            ],
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                ['10', '25', '50', 'All']
+            ],
             initComplete: function () {
                 var api = this.api();
                 // api.buttons().container().appendTo('#table_buku_wrapper .col-md-6:eq(0)');

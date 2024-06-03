@@ -114,12 +114,29 @@
                             <div class="form-group">
                                 <label>Cover Buku</label>
                                 <div>
-                                    <input type="file" class="form-control" id="gambar" name="gambar" value="{{ old('gambar', $buku->gambar) }}" required>
+                                    {{-- <input type="file" class="form-control" id="gambar" name="gambar" onchange="previewImage()"> --}}
+                                    <input type="file" id="gambar" name="gambar" class="form-control dropify" data-default-file="{{ $buku->gambar ? asset('storage/'.$buku->gambar) : asset('img/coverdummy.png') }}">
                                     @error('gambar')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
+                                    {{-- @if ($buku->gambar)
+                                        <img id="previewImg" src="{{ $buku->gambar ? asset('storage/'.$buku->gambar) : asset('images/default.png') }}" style="max-width: 150px; margin-top: 20px">
+                                    @else
+                                        <img id="previewImg" src="{{ old('gambar') ? asset('storage/'.old('gambar')) : asset('images/default.png') }}" style="max-width: 150px; margin-top: 20px">
+                                    @endif --}}
                                 </div>
                             </div>
+                            {{-- <script>
+                                function previewImage() {
+                                    const gambar = document.querySelector('#gambar');
+                                    const previewImg = document.querySelector('#previewImg');
+                                    const fileGambar = new FileReader();
+                                    fileGambar.readAsDataURL(gambar.files[0]);
+                                    fileGambar.onload = function(e) {
+                                        previewImg.src = e.target.result;
+                                    }
+                                }
+                            </script> --}}
                         </div>
                     </div>
                     <div class="form-group">
@@ -137,4 +154,16 @@
 @push('css')
 @endpush
 @push('js')
+<script>
+    $(document).ready(function() {
+        $('.dropify').dropify({
+            messages: {
+                'default': 'Klik atau drag & drop cover buku disini',
+                'replace': 'Klik atau drag & drop cover buku disini',
+                'remove':  'Hapus',
+                'error':   'Ooops, something wrong happended.'
+            }
+        });
+    })
+</script>
 @endpush

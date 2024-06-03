@@ -107,7 +107,7 @@ class AdminController extends Controller
         return view('admin.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'penerbit' => $penerbit, 'kategori' => $kategori, 'lokasi' => $lokasi, 'activeMenu' => $activeMenu]);
     }
     public function list(Request $request){
-        $bukus = BukuModel::select('id_buku', 'isbn', 'judul_buku', 'tahun_terbit', 'kode_penerbit', 'kode_kategori', 'penulis', 'kode_rak', 'stok')->with('penerbit', 'kategori', 'lokasi');
+        $bukus = BukuModel::select('id_buku', 'isbn', 'judul_buku', 'tahun_terbit', 'kode_penerbit', 'kode_kategori', 'penulis', 'kode_rak', 'stok', 'gambar')->with('penerbit', 'kategori', 'lokasi');
         //filter
         if ($request->id_penerbit) {
             $p = strval($request->id_penerbit);
