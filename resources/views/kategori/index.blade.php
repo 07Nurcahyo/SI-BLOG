@@ -1,9 +1,9 @@
 @extends('layouts.template')
 @section('content')
-    <div class="card card-outline card-primary">
+    <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h3 class="card-title">{{ $page->title }}</h3>
-            <a class="btn btn-sm btn-primary ml-auto" href="{{ url('kategori/create')}}"><i class="fas fa-plus" style="font-size: 12px"></i> Tambah</a>
+            <a class="btn btn-success ml-auto" href="{{ url('kategori/create')}}"><i class="fas fa-plus" style="font-size: 12px"></i> Tambah Kategori</a>
         </div>
         <div class="card-body">
             @if (session('success'))
@@ -31,7 +31,7 @@
                     <div id="buttons" class="btn-group"></div>
                 </div>
             </div> <br>
-            <table class="table table-bordered table-striped table-hover table-sm" id="table_kategori">
+            <table class="table table-striped" id="table_kategori">
                 <thead>
                     <tr style="text-align: center">
                         <th>No</th>
@@ -52,7 +52,7 @@
 <script>
     $(document).ready(function() {
         var dataKategori = $('#table_kategori').DataTable({
-            serverSide: true, // serverSide: true, jika ingin menggunakan server side processing
+            serverSide: false, // serverSide: true, jika ingin menggunakan server side processing
             ajax: {
                 "url": "{{ url('kategori/list') }}",
                 "dataType": "json",
@@ -87,7 +87,61 @@
                     searchable: false // searchable: true, jika ingin kolom ini bisa dicari
                 }
             ],
-            buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
+            // buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
+            buttons: [
+                {
+                    extend: 'copy',
+                    text: 'Copy <i class="fas fa-copy"></i>',
+                    title: 'Data Penerbit Buku Perpustakaan JTI Lantai 6',
+                    // message: 'opsional',
+                    exportOptions: {
+                        columns: [0, 1, 2],
+                    }
+                },
+                {
+                    extend: 'csv',
+                    text: 'CSV <i class="fas fa-file-csv"></i>',
+                    title: 'Data Penerbit Buku Perpustakaan JTI Lantai 6 [CSV]',
+                    // message: 'opsional',
+                    exportOptions: {
+                        columns: [0, 1, 2],
+                    }
+                },
+                {
+                    extend: 'excel',
+                    text: 'Excel <i class="fas fa-file-excel"></i>',
+                    title: ' Data Penerbit Buku Perpustakaan JTI Lantai 6 [Excel]',
+                    // message: 'opsional',
+                    exportOptions: {
+                        columns: [0, 1, 2],
+                    }
+                },
+                {
+                    extend: 'pdf',
+                    text: 'PDF <i class="fas fa-file-pdf"></i>',
+                    title: 'Data Penerbit Buku Perpustakaan JTI Lantai 6 [PDF]',
+                    // message: 'opsional',
+                    pageSize: 'A4',
+                    exportOptions: {
+                        columns: [0, 1, 2],
+                    }
+                },
+                {
+                    extend: 'print',
+                    text: 'Print <i class="fas fa-print"></i>',
+                    title: 'Data Penerbit Buku Perpustakaan JTI Lantai 6',
+                    // message: 'opsioanl',
+                    pageSize: 'A4',
+                    exportOptions: {
+                        columns: [0, 1, 2],
+                    },
+                },
+                // 'colvis',
+            ],
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                ['10', '25', '50', 'All']
+            ],
             initComplete: function () {
                 var api = this.api();
                 // api.buttons().container().appendTo('#table_buku_wrapper .col-md-6:eq(0)');

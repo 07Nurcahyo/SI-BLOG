@@ -1,9 +1,9 @@
 @extends('layouts.template')
 @section('content')
-    <div class="card card-outline card-primary">
+    <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h3 class="card-title">{{ $page->title }}</h3>
-            <a class="btn btn-sm btn-primary ml-auto" href="{{ url('admin/create')}}"><i class="fas fa-plus" style="font-size: 12px"></i> Tambah</a>
+            <a class="btn btn-success ml-auto" href="{{ url('admin/create')}}"><i class="fas fa-plus" style="font-size: 12px"></i> Tambah Buku</a>
         </div>
         <div class="card-body">
             @if (session('success'))
@@ -31,7 +31,7 @@
                     <div id="buttons" class="btn-group"></div>
                 </div>
             </div> <br>
-            <table class="table table-bordered table-striped table-hover " id="table_buku">
+            <table class="table table-striped" id="table_buku">
                 <thead>
                     <tr style="text-align: center">
                         <th style="width: 45px">ID</th>
@@ -45,7 +45,7 @@
                         <th>Stok</th>
                         <th>Cover</th>
                         {{-- <th>QRCode</th> --}}
-                        <th style="width: 135px">Aksi</th>
+                        <th style="width: 148px">Aksi</th>
                     </tr>
                 </thead>
             </table>
@@ -138,7 +138,7 @@
                 },
                 {
                     data: "aksi",
-                    className: "",
+                    className: "text-center",
                     orderable: false,
                     searchable: false
                 }
@@ -148,6 +148,7 @@
             buttons: [
                 {
                     extend: 'copy',
+                    text: 'Copy <i class="fas fa-copy"></i>',
                     title: 'Data Buku Perpustakaan JTI Lantai 6',
                     // message: 'opsional',
                     exportOptions: {
@@ -156,7 +157,8 @@
                 },
                 {
                     extend: 'csv',
-                    title: 'Data Buku Perpustakaan JTI Lantai 6',
+                    text: 'CSV <i class="fas fa-file-csv"></i>',
+                    title: 'Data Buku Perpustakaan JTI Lantai 6 [CSV]',
                     // message: 'opsional',
                     exportOptions: {
                         columns: [0, 1, 2, 3, 4, 5, 6, 7, 8],
@@ -164,7 +166,8 @@
                 },
                 {
                     extend: 'excel',
-                    title: ' Data Buku Perpustakaan JTI Lantai 6',
+                    text: 'Excel <i class="fas fa-file-excel"></i>',
+                    title: ' Data Buku Perpustakaan JTI Lantai 6 [Excel]',
                     // message: 'opsional',
                     exportOptions: {
                         columns: [0, 1, 2, 3, 4, 5, 6, 7, 8],
@@ -172,7 +175,8 @@
                 },
                 {
                     extend: 'pdf',
-                    title: 'Data Buku Perpustakaan JTI Lantai 6',
+                    text: 'PDF <i class="fas fa-file-pdf"></i>',
+                    title: 'Data Buku Perpustakaan JTI Lantai 6 [PDF]',
                     // message: 'opsional',
                     pageSize: 'A4',
                     exportOptions: {
@@ -181,6 +185,7 @@
                 },
                 {
                     extend: 'print',
+                    text: 'Print <i class="fas fa-print"></i>',
                     title: 'Data Buku Perpustakaan JTI Lantai 6',
                     // message: 'opsioanl',
                     pageSize: 'A4',
@@ -188,7 +193,7 @@
                         columns: [0, 1, 2, 3, 4, 5, 6, 7, 8],
                     }
                 },
-                'colvis',
+                // 'colvis',
             ],
             "lengthMenu": [
                 [10, 25, 50, -1],

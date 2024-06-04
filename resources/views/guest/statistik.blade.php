@@ -1,6 +1,6 @@
 @extends('layoutsTES.template')
 @section('content')
-    <div class="card card-outline card-primary">
+    <div class="card">
         <div class="card-body">
           <div class="row">
             <div class="col-md-12">

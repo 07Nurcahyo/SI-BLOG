@@ -1,10 +1,10 @@
 @extends('layouts.template')
 @section('content')
-    <div class="card card-outline card-primary">
-        <div class="card-header">
+    <div class="card">
+        {{-- <div class="card-header">
             <h3 class="card-title">{{ $page->title }}</h3>
             <div class="card-tools"></div>
-        </div>
+        </div> --}}
         <div class="card-body">
             @if ($errors->any())
                 @foreach ($errors->all() as $item)
@@ -77,8 +77,6 @@
                                     @enderror
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>Penulis</label>
                                 <div>
@@ -88,8 +86,10 @@
                                     @enderror
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label>Kode Rak</label>
+                                <label>Lokasi</label>
                                 <div>
                                     <select class="form-control" id="id_rak" name="kode_rak" required>
                                         <option value="">- Pilih Lokasi -</option>
@@ -103,7 +103,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Stok</label>
+                                <label>Jumlah</label>
                                 <div>
                                     <input type="text" class="form-control" id="stok" name="stok" value="{{ old('stok', $buku->stok) }}" required>
                                     @error('stok')
@@ -114,36 +114,18 @@
                             <div class="form-group">
                                 <label>Cover Buku</label>
                                 <div>
-                                    {{-- <input type="file" class="form-control" id="gambar" name="gambar" onchange="previewImage()"> --}}
                                     <input type="file" id="gambar" name="gambar" class="form-control dropify" data-default-file="{{ $buku->gambar ? asset('storage/'.$buku->gambar) : asset('img/coverdummy.png') }}">
                                     @error('gambar')
                                         <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
-                                    {{-- @if ($buku->gambar)
-                                        <img id="previewImg" src="{{ $buku->gambar ? asset('storage/'.$buku->gambar) : asset('images/default.png') }}" style="max-width: 150px; margin-top: 20px">
-                                    @else
-                                        <img id="previewImg" src="{{ old('gambar') ? asset('storage/'.old('gambar')) : asset('images/default.png') }}" style="max-width: 150px; margin-top: 20px">
-                                    @endif --}}
                                 </div>
                             </div>
-                            {{-- <script>
-                                function previewImage() {
-                                    const gambar = document.querySelector('#gambar');
-                                    const previewImg = document.querySelector('#previewImg');
-                                    const fileGambar = new FileReader();
-                                    fileGambar.readAsDataURL(gambar.files[0]);
-                                    fileGambar.onload = function(e) {
-                                        previewImg.src = e.target.result;
-                                    }
-                                }
-                            </script> --}}
                         </div>
                     </div>
                     <div class="form-group">
-                        <label></label>
                         <div>
-                            <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
-                            <a class="btn btn-sm btn-default ml-1" href="{{ url('admin')}}">Kembali</a>
+                            <button type="submit" class="btn btn-success" style="color: black"><i class="fas fa-save"></i> Simpan</button>
+                            <a class="btn btn-warning ml-1" href="{{ url('admin')}}"><i class="fas fa-chevron-circle-left"></i> Kembali</a>
                         </div>
                     </div>
                 </form>
