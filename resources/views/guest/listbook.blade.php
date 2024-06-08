@@ -18,7 +18,7 @@
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand-md navbar-white navbar-light sticky-top">
+  <nav class="main-header navbar navbar-expand-md navbar-light sticky-top">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -254,7 +254,7 @@
                       <div class="col-sm-2">
                         @php $gambar = $b->gambar!=null ? 'storage/'. $b->gambar : 'img/coverdummy.png' @endphp
                         <a href="{{url($gambar)}}" data-toggle="modal" data-title="{{$b->judul_buku}}" data-target="#modal-default" data-idbuku="{{$b->id_buku}}" name="list_buku">
-                          <img src="{{url($gambar)}}" class="img-fluid mb-2" alt="white sample"/>
+                          <img src="{{url($gambar)}}" class="img-fluid mb-2 album" alt="white sample"/>
                         </a>
                         <table class="table table-borderless table-sm w-auto">
                           <tr>

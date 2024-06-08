@@ -1,3 +1,14 @@
+.navbar{
+  background-color: rgba(23, 107, 135, 1);
+}
+.navbar .fas {
+  color: white;
+}
+.album{
+  width: 170px; 
+  height: 230px; 
+  object-fit: cover;
+}
 .input-wrapper {
     display: flex;
     align-items: center;
