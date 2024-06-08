@@ -11,7 +11,7 @@
                     <p>{{ $item }}</p>
                 @endforeach
             @endif
-            <form method="POST" action="{{ url('penerbit') }}" class="form-horizontal">
+            <form method="POST" action="{{ url('penerbit') }}" class="form-horizontal" id="tambah_">
                 @csrf
                 <div class="form-group">
                     <label class="control-label col-form-label">ID Penerbit</label>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="form-group">
                     <div>
-                        <button type="submit" class="btn btn-success" style="color: black"><i class="fas fa-save"></i> Simpan</button>
+                        <button type="submit" class="btn btn-success" style="color: black" onclick="tambahConfirm('Berhasil menambahkan data penerbit!🗿')"><i class="fas fa-save"></i> Simpan</button>
                         <a class="btn btn-warning ml-1" href="{{ url('penerbit')}}"><i class="fas fa-chevron-circle-left"></i> Kembali</a>
                     </div>
                 </div>

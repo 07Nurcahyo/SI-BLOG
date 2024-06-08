@@ -11,7 +11,7 @@
                     <p>{{ $item }}</p>
                 @endforeach
             @endif
-            <form method="POST" enctype="multipart/form-data" action="{{ url('admin') }}" class="form-horizontal">
+            <form method="POST" enctype="multipart/form-data" action="{{ url('admin') }}" class="form-horizontal" id="tambah_">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
@@ -117,7 +117,7 @@
                 </div>
                 <div class="form-group">
                     <div>
-                        <button type="submit" class="btn btn-success" style="color: black"><i class="fas fa-save"></i> Simpan</button>
+                        <button type="submit" class="btn btn-success" style="color: black" onclick="tambahConfirm('Berhasil menambahkan data buku!🗿')"><i class="fas fa-save"></i> Simpan</button>
                         <a class="btn btn-warning ml-1" href="{{ url('admin')}}"><i class="fas fa-chevron-circle-left"></i> Kembali</a>
                     </div>
                 </div>
@@ -138,6 +138,18 @@
                 'error':   'Ooops, something wrong happended.'
             }
         });
+
+        // tambahConfirm = function() {
+        //     console.log('#tambah_');
+        //     event.preventDefault();
+        //     Swal.fire({
+        //         title: "Tersimpan",
+        //         text: "Berhasil menambahkan data buku!🗿",
+        //         icon: "success"
+        //     }).then((result) => {
+        //         $('#tambah_').submit();
+        //     });
+        // }
     })
 </script>
 @endpush

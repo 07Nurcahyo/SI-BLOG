@@ -12,7 +12,7 @@
                 </div>
                 <a href="{{ url('lokasi') }}" class="btn btn-sm btn-default mt-2">Kembali</a>
                 @else
-                <form method="POST" action="{{ url('/lokasi/'.$lokasi->id_rak) }}" class="form-horizontal">
+                <form method="POST" action="{{ url('/lokasi/'.$lokasi->id_rak) }}" class="form-horizontal" id="edit_{{ $lokasi->id_rak }}">
                     @csrf
                     {!! method_field('PUT') !!} <!-- tambahkan baris ini untuk proses edit yang butuh method PUT -->
                     <div class="form-group">
@@ -53,7 +53,7 @@
                     </div>
                     <div class="form-group">
                         <div>
-                            <button type="submit" class="btn btn-success" style="color: black"><i class="fas fa-save"></i> Simpan</button>
+                            <button type="submit" class="btn btn-success" style="color: black" onclick="updateConfirm('{{ $lokasi->id_rak }}', 'Berhasil mengubah data rak!🗿')"><i class="fas fa-save"></i> Simpan</button>
                             <a class="btn btn-warning ml-1" href="{{ url('lokasi')}}"><i class="fas fa-chevron-circle-left"></i> Kembali</a>
                         </div>
                     </div>

@@ -17,7 +17,7 @@
                 </div>
                 <a href="{{ url('admin') }}" class="btn btn-sm btn-default mt-2">Kembali</a>
                 @else
-                <form method="POST" enctype="multipart/form-data" action="{{ url('/admin/'.$buku->id_buku) }}" class="form-horizontal">
+                <form method="POST" enctype="multipart/form-data" action="{{ url('/admin/'.$buku->id_buku) }}" class="form-horizontal" id="edit_{{ $buku->id_buku }}">
                     @csrf
                     {!! method_field('PUT') !!} <!-- tambahkan baris ini untuk proses edit yang butuh method PUT -->
                     <div class="row">
@@ -124,7 +124,7 @@
                     </div>
                     <div class="form-group">
                         <div>
-                            <button type="submit" class="btn btn-success" style="color: black"><i class="fas fa-save"></i> Simpan</button>
+                            <button type="submit" class="btn btn-success" style="color: black" onclick="updateConfirm({{ $buku->id_buku }}, 'Berhasil mengubah data buku!🗿')"><i class="fas fa-save"></i> Simpan</button>
                             <a class="btn btn-warning ml-1" href="{{ url('admin')}}"><i class="fas fa-chevron-circle-left"></i> Kembali</a>
                         </div>
                     </div>
@@ -146,6 +146,18 @@
                 'error':   'Ooops, something wrong happended.'
             }
         });
+
+        // updateConfirm = function(id) {
+        //     console.log('#edit_'+id);
+        //     event.preventDefault();
+        //     Swal.fire({
+        //         title: "Terubah",
+        //         text: "Data buku berhasil diubah!🗿",
+        //         icon: "success"
+        //     }).then((result) => {
+        //         $('#edit_'+id).submit();
+        //     });
+        // }
     })
 </script>
 @endpush

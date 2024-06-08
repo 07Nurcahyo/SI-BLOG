@@ -1,7 +1,12 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BukuController;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\LokasiController;
+use App\Http\Controllers\PenerbitController;
+use App\Models\PenerbitModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,3 +33,9 @@ Route::get('getBookCount', [AdminController::class, 'getBookCount']);
 Route::get('getDataBuku/{id}', [GuestController::class, 'getDataBuku']);
 
 // Route::post('/gambarbuku', App\Http\Controllers\AdminController::class)->name('gambarbuku');
+
+// untuk confirm delete
+Route::delete('deleteBuku/{id}', [AdminController::class, 'deleteBuku']);
+Route::delete('deleteKategori/{id}', [KategoriController::class, 'deleteKategori']);
+Route::delete('deletePenerbit/{id}', [PenerbitController::class, 'deletePenerbit']);
+Route::delete('deleteLokasi/{id}', [LokasiController::class, 'deleteLokasi']);

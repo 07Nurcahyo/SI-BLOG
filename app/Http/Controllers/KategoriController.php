@@ -35,7 +35,7 @@ class KategoriController extends Controller
             ->addColumn('aksi', function ($kategori) { // menambahkan kolom aksi
                 $btn = '<a href="'.url('/kategori/' . $kategori->id_kategori).'" class="btn btn-info btn-sm">Detail <i class="fas fa-info-circle"></i></a> ';
                 $btn .= '<a href="'.url('/kategori/' . $kategori->id_kategori . '/edit').'" class="btn btn-warning btn-sm">Edit <i class="fas fa-edit"></i></a> ';
-                $btn .= '<form class="d-inline-block" method="POST" action="'.url('/kategori/'.$kategori->id_kategori).'">'. csrf_field() . method_field('DELETE') .'<button type="submit" class="btn btn-danger btn-sm"onclick="return confirm(\'Apakah Anda yakin menghapus data ini?\');">Hapus <i class="fas fa-trash"></i></button></form>';
+                $btn .= '<form class="d-inline-block" method="POST" action="'.url('/kategori/'.$kategori->id_kategori).'" id="delete_'.$kategori->id_kategori.'">'. csrf_field() . method_field('DELETE') .'<button type="submit" class="btn btn-danger btn-sm" onclick="return deleteConfirm(\''.$kategori->id_kategori.'\')";>Hapus <i class="fas fa-trash"></i></button></form>';
                 return $btn;
             })
             ->rawColumns(['aksi']) // memberitahu bahwa kolom aksi adalah html
@@ -62,7 +62,7 @@ class KategoriController extends Controller
             'id_kategori'   => $request->id_kategori,
             'jenis_kategori' => $request->jenis_kategori
         ]);
-        return redirect('/kategori')->with('success', 'Data kategori berhasil disimpan!');
+        return redirect('/kategori');
     }
     public function show(String $id){
         $kategori = KategoriModel::find($id);
@@ -98,7 +98,7 @@ class KategoriController extends Controller
             'id_kategori'   => $request->id_kategori,
             'jenis_kategori' => $request->jenis_kategori
         ]);
-        return redirect('/kategori')->with('success', 'Data kategori berhasil diubah!');
+        return redirect('/kategori');
     }
     public function destroy(String $id){
         $check = KategoriModel::find($id);
@@ -107,9 +107,24 @@ class KategoriController extends Controller
         }
         try {
             KategoriModel::destroy($id);
-            return redirect('/kategori')->with('success', 'Data kategori berhasil dihapus');
+            return redirect('/kategori');
         } catch (\Illuminate\Database\QueryException $te) {
             return redirect('/kategori')->with('error', 'Data kategori gagal di hapus karena masih terdapat table lain terkait dengan data ini');
         }
+    }
+
+    public function deleteKategori(String $id){
+        $check = KategoriModel::find($id);
+        if (!$check) {
+            // return redirect('/kategori')->with('error', 'Data kategori tidak ditemukan');
+            return '';
+        }
+        try {
+            KategoriModel::destroy($id);
+            return response()->json(['success' => true]);
+        } catch (\Illuminate\Database\QueryException $te) {
+            return response()->json(['success' => false, 'error' => 'Data kategori gagal di hapus karena masih terdapat table lain terkait dengan data ini']);
+        }
+        return view('kategori.delete', ['id' => $id]);
     }
 }

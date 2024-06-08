@@ -152,6 +152,45 @@
             dataKategori.ajax.reload();
         });
         $('#buttons').html(dataKategori.buttons().container());
+
+        deleteConfirm = function(id) {
+            event.preventDefault(); // mencegah form submit
+            console.log("buku"+id);
+            Swal.fire({
+                title: "Apakah Anda yakin?",
+                text: "Data dengan ID " +id+ " akan dihapus!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Hapus!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: 'api/deleteKategori/' + id,
+                        type: 'DELETE',
+                        success: function(response) {
+                            if (response.success == true) {
+                                Swal.fire({
+                                    title: "Terhapus!",
+                                    text: "Data kategori telah terhapus!",
+                                    icon: "success"
+                                }).then((result) => {
+                                    dataKategori.ajax.reload();
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: "Gagal Terhapus!",
+                                    text: response.error,
+                                    // icon: "error"
+                                    imageUrl: "https://i.gifer.com/XwI7.gif",
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        }
     });
 </script>
 @endpush

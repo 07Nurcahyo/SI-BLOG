@@ -36,7 +36,7 @@ class PenerbitController extends Controller
             ->addColumn('aksi', function ($penerbit) { // menambahkan kolom aksi
                 $btn = '<a href="'.url('/penerbit/' . $penerbit->id_penerbit).'" class="btn btn-info btn-sm">Detail <i class="fas fa-info-circle"></i></a> ';
                 $btn .= '<a href="'.url('/penerbit/' . $penerbit->id_penerbit . '/edit').'" class="btn btn-warning btn-sm">Edit <i class="fas fa-edit"></i></a> ';
-                $btn .= '<form class="d-inline-block" method="POST" action="'.url('/penerbit/'.$penerbit->id_penerbit).'">'. csrf_field() . method_field('DELETE') .'<button type="submit" class="btn btn-danger btn-sm"onclick="return confirm(\'Apakah Anda yakin menghapus data ini?\');">Hapus <i class="fas fa-trash-alt"></i></button></form>';
+                $btn .= '<form class="d-inline-block" method="POST" action="'.url('/penerbit/'.$penerbit->id_penerbit).'" id="delete_'.$penerbit->id_penerbit.'">'. csrf_field() . method_field('DELETE') .'<button type="submit" class="btn btn-danger btn-sm" onclick="return deleteConfirm(\''.$penerbit->id_penerbit.'\');">Hapus <i class="fas fa-trash-alt"></i></button></form>';
                 return $btn;
             })
             ->rawColumns(['aksi']) // memberitahu bahwa kolom aksi adalah html
@@ -63,7 +63,7 @@ class PenerbitController extends Controller
             'id_penerbit'   => $request->id_penerbit,
             'nama_penerbit' => $request->nama_penerbit
         ]);
-        return redirect('/penerbit')->with('success', 'Data penerbit berhasil disimpan!');
+        return redirect('/penerbit');
     }
     public function show(String $id){
         $penerbit = PenerbitModel::where(['id_penerbit'=>$id])->first();
@@ -99,18 +99,33 @@ class PenerbitController extends Controller
             'id_penerbit'   => $request->id_penerbit,
             'nama_penerbit' => $request->nama_penerbit
         ]);
-        return redirect('/penerbit')->with('success', 'Data penerbit berhasil diubah!');
+        return redirect('/penerbit');
     }
     public function destroy(String $id){
         $check = PenerbitModel::find($id);
         if (!$check) {
-            return redirect('/penerbit')->with('error', 'Data buku tidak ditemukan');
+            return redirect('/penerbit');
         }
         try {
             PenerbitModel::destroy($id);
-            return redirect('/penerbit')->with('success', 'Data penerbit berhasil dihapus');
+            return redirect('/penerbit');
         } catch (\Illuminate\Database\QueryException $te) {
             return redirect('/penerbit')->with('error', 'Data penerbit gagal di hapus karena masih terdapat table lain terkait dengan data ini');
         }
+    }
+
+    public function deletePenerbit(String $id){
+        $check = PenerbitModel::find($id);
+        if (!$check) {
+            // return redirect('/kategori')->with('error', 'Data kategori tidak ditemukan');
+            return '';
+        }
+        try {
+            PenerbitModel::destroy($id);
+            return response()->json(['success' => true]);
+        } catch (\Illuminate\Database\QueryException $te) {
+            return response()->json(['success' => false, 'error' => 'Data penerbit gagal di hapus karena masih terdapat table lain terkait dengan data ini']);
+        }
+        return view('penerbit.delete', ['id' => $id]);
     }
 }

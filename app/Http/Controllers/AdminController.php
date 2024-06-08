@@ -118,7 +118,8 @@ class AdminController extends Controller
             ->addColumn('aksi', function ($buku) { // menambahkan kolom aksi
                 $btn = '<a href="'.url('/admin/' . $buku->id_buku).'" class="btn btn-info btn-sm"><i class="fas fa-info-circle"></i></a> ';
                 $btn .= '<a href="'.url('/admin/' . $buku->id_buku . '/edit').'" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a> ';
-                $btn .= '<form class="d-inline-block" method="POST" action="'.url('/admin/'.$buku->id_buku).'">'. csrf_field() . method_field('DELETE') .'<button type="submit" class="btn btn-danger btn-sm"onclick="return confirm(\'Apakah Anda yakin menghapus data ini?\');"><i class="fas fa-trash-alt"></i></button></form>';
+                $btn .= '<form class="d-inline-block" method="POST" action="'.url('/admin/'.$buku->id_buku).'" id="delete_'.$buku->id_buku.'">'. csrf_field() . method_field('DELETE') .'<button type="" class="btn btn-danger btn-sm" onclick="return deleteConfirm(\''.$buku->id_buku.'\');"><i class="fas fa-trash-alt"></i></button></form>';
+                // $btn .= '<script></script>';
                 return $btn;
             })
             ->rawColumns(['aksi']) // memberitahu bahwa kolom aksi adalah html
@@ -162,7 +163,7 @@ class AdminController extends Controller
             // 'gambar'        => $request->image->hashName(),
             'gambar'        => $this->storeImage($request->file('gambar')),
         ]);
-        return redirect('/admin')->with('success', 'Data buku berhasil disimpan!');
+        return redirect('/admin');
     }
     protected function storeImage ($image)
     {
@@ -213,9 +214,10 @@ class AdminController extends Controller
             'penulis'       => 'required|string|max:100',
             'kode_rak'      => 'required|string|max:10', //fk
             'stok'          => 'required|integer',
-            'gambar'        => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'gambar'        => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
-        BukuModel::find($id)->update([
+        $buku = BukuModel::find($id);
+        $buku->update([
             'isbn'          => $request->isbn,
             'judul_buku'    => $request->judul_buku,
             'tahun_terbit'  => $request->tahun_terbit,
@@ -225,9 +227,10 @@ class AdminController extends Controller
             'kode_rak'      => $request->kode_rak, //fk
             'stok'          => $request->stok,
             // 'gambar'        => $request->image->hashName(),
-            'gambar'        => $this->storeImage($request->file('gambar')),
+            'gambar'        => $request->hasFile('gambar') ? $this->storeImage($request->file('gambar')) : $buku->gambar,
+            // 'gambar'        => $this->storeImage($request->file('gambar')),
         ]);
-        return redirect('/admin')->with('success', 'Data buku berhasil diubah!');
+        return redirect('/admin');
     }
     public function destroy(String $id){
         $check = BukuModel::find($id);
@@ -236,7 +239,7 @@ class AdminController extends Controller
         }
         try {
             BukuModel::destroy($id);
-            return redirect('/admin')->with('success', 'Data buku berhasil dihapus');
+            return redirect('/admin');
         } catch (\Illuminate\Database\QueryException $te) {
             return redirect('/admin')->with('error', 'Data buku gagal di hapus karena masih terdapat table lain terkait dengan data ini');
         }
@@ -267,6 +270,21 @@ class AdminController extends Controller
             'distinct_author_count' => BukuModel::select(DB::raw('COUNT(DISTINCT penulis) AS distinct_author_count'))->first()->distinct_author_count,
         ];
         return response()->json($data);
+    }
+
+    public function deleteBuku(String $id){
+        $check = BukuModel::find($id);
+        if (!$check) {
+            // return redirect('/kategori')->with('error', 'Data kategori tidak ditemukan');
+            return '';
+        }
+        try {
+            BukuModel::destroy($id);
+            return response()->json(['success' => true]);
+        } catch (\Illuminate\Database\QueryException $te) {
+            return response()->json(['success' => false, 'error' => 'Data buku gagal di hapus karena masih terdapat table lain terkait dengan data ini']);
+        }
+        return view('admin.delete', ['id' => $id]);
     }
 
 }

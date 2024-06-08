@@ -35,7 +35,7 @@ class LokasiController extends Controller
                 ->addColumn('aksi', function ($lokasi) { // menambahkan kolom aksi
                     $btn = '<a href="'.url('/lokasi/' . $lokasi->id_rak).'" class="btn btn-info btn-sm">Detail <i class="fas fa-info-circle"></i></a> ';
                     $btn .= '<a href="'.url('/lokasi/' . $lokasi->id_rak . '/edit').'" class="btn btn-warning btn-sm">Edit <i class="fas fa-edit"></i></a> ';
-                    $btn .= '<form class="d-inline-block" method="POST" action="'.url('/lokasi/'.$lokasi->id_rak).'">'. csrf_field() . method_field('DELETE') .'<button type="submit" class="btn btn-danger btn-sm"onclick="return confirm(\'Apakah Anda yakin menghapus data ini?\');">Hapus <i class="fas fa-trash"></button></form>';
+                    $btn .= '<form class="d-inline-block" method="POST" action="'.url('/lokasi/'.$lokasi->id_rak).'" id="delete_'.$lokasi->id_rak.'">'. csrf_field() . method_field('DELETE') .'<button type="submit" class="btn btn-danger btn-sm" onclick="return deleteConfirm(\''.$lokasi->id_rak.'\')";>Hapus <i class="fas fa-trash"></button></form>';
                     return $btn;
                 })
                 ->rawColumns(['aksi']) // memberitahu bahwa kolom aksi adalah html
@@ -66,7 +66,7 @@ class LokasiController extends Controller
                 'nama_ruang' => $request->nama_ruang,
                 'lantai'     => $request->lantai
             ]);
-            return redirect('/lokasi')->with('success', 'Data lokasi berhasil disimpan!');
+            return redirect('/lokasi');
         }
         public function show(String $id){
             $lokasi = LokasiModel::find($id);
@@ -106,7 +106,7 @@ class LokasiController extends Controller
                 'nama_ruang' => $request->nama_ruang,
                 'lantai'     => $request->lantai
             ]);
-            return redirect('/lokasi')->with('success', 'Data lokasi buku berhasil diubah!');
+            return redirect('/lokasi');
         }
         public function destroy(String $id){
             $check = LokasiModel::find($id);
@@ -115,9 +115,24 @@ class LokasiController extends Controller
             }
             try {
                 LokasiModel::destroy($id);
-                return redirect('/lokasi')->with('success', 'Data lokasi buku berhasil dihapus');
+                return redirect('/lokasi');
             } catch (\Illuminate\Database\QueryException $te) {
                 return redirect('/lokasi')->with('error', 'Data lokasi buku gagal di hapus karena masih terdapat table lain terkait dengan data ini');
             }
+        }
+
+        public function deleteLokasi(String $id){
+            $check = LokasiModel::find($id);
+            if (!$check) {
+                // return redirect('/kategori')->with('error', 'Data kategori tidak ditemukan');
+                return '';
+            }
+            try {
+                LokasiModel::destroy($id);
+                return response()->json(['success' => true]);
+            } catch (\Illuminate\Database\QueryException $te) {
+                return response()->json(['success' => false, 'error' => 'Data lokasi gagal di hapus karena masih terdapat table lain terkait dengan data ini']);
+            }
+            return view('lokasi.delete', ['id' => $id]);
         }
 }

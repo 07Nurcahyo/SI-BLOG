@@ -165,6 +165,44 @@
             dataLokasi.ajax.reload();
         });
         $('#buttons').html(dataLokasi.buttons().container());
+
+        deleteConfirm = function(id) {
+            event.preventDefault(); // mencegah form submit
+            Swal.fire({
+                title: "Apakah Anda yakin?",
+                text: "Data dengan ID " +id+ " akan dihapus!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Hapus!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: 'api/deleteLokasi/' + id,
+                        type: 'DELETE',
+                        success: function(response) {
+                            if (response.success == true) {
+                                Swal.fire({
+                                    title: "Terhapus!",
+                                    text: "Data lokasi telah terhapus!",
+                                    icon: "success"
+                                }).then((result) => {
+                                    dataLokasi.ajax.reload();
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: "Gagal Terhapus!",
+                                    text: response.error,
+                                    // icon: "error"
+                                    imageUrl: "https://i.gifer.com/XwI7.gif",
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        }
     });
 </script>
 @endpush
