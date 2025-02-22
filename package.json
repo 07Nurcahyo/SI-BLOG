@@ -186,6 +186,7 @@
     "untildify": "^4.0.0",
     "url-parse": "^1.5.10",
     "uuid": "^8.3.2",
+    "vercel": "^41.2.0",
     "verror": "^1.10.0",
     "vite-plugin-full-reload": "^1.1.0",
     "which": "^2.0.2",
