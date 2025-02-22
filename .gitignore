@@ -1,4 +1,3 @@
-/cypress
 /.phpunit.cache
 /node_modules
 /public/build
@@ -20,3 +19,4 @@ yarn-error.log
 /.vscode
 
 .vercel
+node_modules
