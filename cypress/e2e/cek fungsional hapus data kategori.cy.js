@@ -17,5 +17,6 @@ describe('SI-BLOG tests', () => {
 
     it('menghapus data kategori', () => {
         cy.contains('AAA').parents('tr').find('.btn-danger').click()
+        cy.contains('Hapus!').click()
     })
 })

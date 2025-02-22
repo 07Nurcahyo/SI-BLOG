@@ -18,22 +18,6 @@ use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
-    // public function main(){
-    //     $buku = BukuModel::all();
-    //     return view('admin.admin', ['data' => $buku]);
-    // }
-    // public function backup(){
-    //     $buku = BukuModel::all();
-    //     return view('admin.Backupadmin', ['data' => $buku]);
-    // }
-    // public function data_buku(){
-    //     $buku = BukuModel::all();
-    //     return view('admin.admin', ['data' => $buku]);
-    //     $breadcrumb = (object) [
-    //         'title' => 'Halaman data buku admin'
-    //     ];
-    // }
-
     public function login()
     {
         // if (Auth::check()) {
@@ -48,21 +32,6 @@ class AdminController extends Controller
         }
         return view('admin/admin_login');
     }
-
-    // public function actionlogin(Request $request)
-    // {
-    //     $data = [
-    //         'username' => $request->input('username'),
-    //         'password' => $request->input('password'),
-    //     ];
-    //     $user = AdminModel::where([['username', $data['username']],['password', $data['password']]])->first();
-    //     if ($user != null) {
-    //         return view('index');
-    //     }else{
-    //         // Session::flash('error', 'Username atau Password Salah');
-    //         return redirect('login_admin');
-    //     }
-    // }
 
     public function proses_login(Request $request){
         // form username password wajib diisi
