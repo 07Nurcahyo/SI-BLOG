@@ -9,8 +9,8 @@
   "devDependencies": {
     "axios": "^1.6.4",
     "cypress": "^13.10.0",
-    "laravel-vite-plugin": "^1.0.0",
-    "vite": "^5.0.0"
+    "laravel-vite-plugin": "^0.1.0",
+    "vite": "^0.10.3"
   },
   "name": "si-blog",
   "description": "<p align=\"center\"><img src=\"public/img/ekatalog.png\" class=\"img-thumbnail\"></p>",
@@ -70,7 +70,7 @@
     "enquirer": "^2.4.1",
     "es-define-property": "^1.0.0",
     "es-errors": "^1.3.0",
-    "esbuild": "^0.20.2",
+    "esbuild": "^0.25.0",
     "escape-string-regexp": "^1.0.5",
     "eventemitter2": "^6.4.7",
     "execa": "^4.1.0",
@@ -116,6 +116,7 @@
     "json-stringify-safe": "^5.0.1",
     "jsonfile": "^6.1.0",
     "jsprim": "^2.0.2",
+    "laravel-datatables-vite": "^0.6.1",
     "lazy-ass": "^1.6.0",
     "listr2": "^3.14.0",
     "lodash": "^4.17.21",
@@ -171,7 +172,7 @@
     "strip-ansi": "^6.0.1",
     "strip-final-newline": "^2.0.0",
     "supports-color": "^8.1.1",
-    "sweetalert2": "^11.12.3",
+    "sweetalert2": "^11.6.13",
     "throttleit": "^1.0.1",
     "through": "^2.3.8",
     "tmp": "^0.2.3",

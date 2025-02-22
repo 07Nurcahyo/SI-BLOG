@@ -8,4 +8,9 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    resolve: {
+        alias: {
+            'laravel-datatables-vite': '/node_modules/laravel-datatables-vite',
+        },
+    },
 });
